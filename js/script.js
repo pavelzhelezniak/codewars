@@ -43,3 +43,32 @@ function count(string) {
 
 console.log(count('aba'));
 console.log(count(''));
+
+// Split Strings (6 kyu)
+
+/*
+Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+*/
+
+function solution(str) {
+	const array = str.split('');
+	const newArray = [];
+
+	if (str.length === 0) {
+		return [];
+	} else {
+
+		for (let i = 0; i < array.length; i += 2) {
+			if (i === array.length - 1) {
+				newArray.push(array[i] + '_');
+			} else {
+				newArray.push(array[i] + array[i + 1]);
+			}
+		}
+		return newArray;
+	}
+}
+
+console.log(solution('abcdef'));
+console.log(solution('abcdefg'));
+console.log(solution(''));
