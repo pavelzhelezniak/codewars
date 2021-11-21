@@ -157,3 +157,43 @@ function narcissistic(value) {
 console.log(narcissistic(7));
 console.log(narcissistic(371));
 console.log(narcissistic(1652));
+
+// Encrypt this! (6 kyu)
+
+/*
+Acknowledgments:
+I thank yvonne-liu for the idea and for the example tests :)
+
+Description:
+Encrypt this!
+
+You want to create secret messages which can be deciphered by the Decipher this! kata. Here are the conditions:
+
+Your message is a string containing space separated words.
+You need to encrypt each word in the message using the following rules:
+The first letter must be converted to its ASCII code.
+The second letter must be switched with the last letter
+Keepin' it simple: There are no special characters in the input.
+*/
+
+let encryptThis = function (text) {
+	return text.split(' ')
+		.map(item => {
+			if (item.length === 1) {
+				return item.charCodeAt().toString();
+			} else if (item.length === 2) {
+				return item.charCodeAt() + item[1];
+			} else {
+				return item.charCodeAt() + item[item.length - 1] + item.substring(2, item.length - 1) + item[1];
+			}
+		})
+		.join(' ');
+
+};
+
+console.log(encryptThis("A"));
+console.log(encryptThis("A wise old owl lived in an oak"));
+console.log(encryptThis("The more he saw the less he spoke"));
+console.log(encryptThis("The less he spoke the more he heard"));
+console.log(encryptThis("Why can we not all be like that wise old bird"));
+console.log(encryptThis("Thank you Piotr for all your help"));
