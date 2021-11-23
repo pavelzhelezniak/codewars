@@ -217,3 +217,31 @@ function squareDigits(num) {
 console.log(squareDigits(3212));//9414
 console.log(squareDigits(2112));//4114
 console.log(squareDigits(0));//0
+
+// Get the integers between two numbers (7 kyu)
+
+/*
+Build a function that can get all the integers between two given numbers.
+Example: (2,9)
+
+Should give you this output back: [ 3, 4, 5, 6, 7, 8 ]
+
+If startNum is the same as endNum, return an empty array.
+*/
+
+function range(startNum, endNum) {
+	const array = [];
+
+	if (startNum === endNum) {
+		return array;
+	}
+	for (let i = ++startNum; i < endNum; i++) {
+		array.push(i);
+	}
+	return array;
+
+}
+
+console.log(range(2, 9));
+console.log(range(6, 8));
+console.log(range(2, 2));
