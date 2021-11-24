@@ -267,3 +267,19 @@ function toNumberArray(stringarray) {
 }
 
 console.log(toNumberArray(["1.1", "2.2", "3.3"]));
+
+// Factorial (7kyu)
+
+// Your task is to write function factorial.
+
+function factorial(n) {
+
+	return n === 0 || n === 1 ? 1 : n * factorial(n - 1);
+
+}
+
+console.log(factorial(0));
+console.log(factorial(1));
+console.log(factorial(4));
+console.log(factorial(7));
+console.log(factorial(17));
