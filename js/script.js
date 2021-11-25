@@ -284,3 +284,26 @@ console.log(factorial(4));
 console.log(factorial(7));
 console.log(factorial(17));
 console.log(factorial(18));
+
+// JavaScript Array Filter (7 kyu)
+
+/*
+JavaScript Arrays support a filter function (starting in JavaScript 1.6).
+Use the filter functionality to complete the function given.
+
+The solution would work like the following:
+
+getEvenNumbers([2,4,5,6]) // should == [2,4,6]
+*/
+
+function getEvenNumbers(numbersArray) {
+
+	return numbersArray.filter(item => item % 2 === 0);
+
+}
+
+console.log(getEvenNumbers([1, 2, 3, 6, 8, 10]));
+console.log(getEvenNumbers([1, 2]));
+console.log(getEvenNumbers([12, 14, 15]));
+console.log(getEvenNumbers([13, 15]));
+console.log(getEvenNumbers([1, 3, 9]));
