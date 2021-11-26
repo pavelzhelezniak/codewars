@@ -307,3 +307,32 @@ console.log(getEvenNumbers([1, 2]));
 console.log(getEvenNumbers([12, 14, 15]));
 console.log(getEvenNumbers([13, 15]));
 console.log(getEvenNumbers([1, 3, 9]));
+
+// Descending Order (7 kyu)
+
+/*
+Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+
+Examples:
+Input: 42145 Output: 54421
+
+Input: 145263 Output: 654321
+
+Input: 123456789 Output: 987654321
+*/
+
+function descendingOrder(n) {
+
+	return parseFloat(n.toString().split('').map(Number).sort((a, b) => b - a).join(''));
+
+}
+
+
+
+console.log(descendingOrder(0));
+console.log(descendingOrder(1));
+console.log(descendingOrder(111));
+console.log(descendingOrder(15));
+console.log(descendingOrder(1021));
+console.log(descendingOrder(123456789));
+console.log(descendingOrder(865974));
