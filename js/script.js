@@ -419,3 +419,35 @@ function openOrSenior(data) {
 console.log(openOrSenior([[45, 12], [55, 21], [19, -2], [104, 20]]));
 console.log(openOrSenior([[3, 12], [55, 1], [91, -2], [53, 23]]));
 console.log(openOrSenior([[59, 12], [55, -1], [12, -2], [12, 12]]));
+
+// RGB To Hex Conversion (5 kyu)
+
+/*
+The rgb function is incomplete.
+Complete it so that passing in RGB decimal values will result in a hexadecimal representation being returned.
+Valid decimal values for RGB are 0 - 255.
+Any values that fall out of that range must be rounded to the closest valid value.
+
+Note: Your answer should always be 6 characters long, the shorthand with 3 will not work here.
+*/
+
+function rgb(r, g, b) {
+
+	function conversionColor(value) {
+		if (value >= 255) {
+			return 'FF';
+		}
+		if (value <= 0) {
+			return '00';
+		}
+		return value > 15 ? value.toString(16).toUpperCase() : '0' + value.toString(16).toUpperCase();
+
+	}
+
+	return conversionColor(r) + conversionColor(g) + conversionColor(b);
+}
+
+console.log(rgb(0, 0, 0));
+console.log(rgb(0, 0, -20));
+console.log(rgb(300, 255, 255));
+console.log(rgb(173, 255, 47));
