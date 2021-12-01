@@ -451,3 +451,44 @@ console.log(rgb(0, 0, 0));
 console.log(rgb(0, 0, -20));
 console.log(rgb(300, 255, 255));
 console.log(rgb(173, 255, 47));
+
+// Persistent Bugger (6kyu)
+
+/*
+Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence,
+which is the number of times you must multiply the digits in num until you reach a single digit.
+
+For example (Input --> Output):
+
+39 --> 3 (because 3*9 = 27, 2*7 = 14, 1*4 = 4 and 4 has only one digit)
+999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2)
+4 --> 0 (because 4 is already a one-digit number)
+*/
+
+function persistence(num) {
+	let count = 0;
+
+	function recursivePersistence(numPers) {
+		if (numPers.toString().length === 1) {
+			return count;
+		} else {
+			count++;
+			const number = numPers
+				.toString()
+				.split('')
+				.reduce((accum, item) => accum.toString(10) * item.toString(10));
+			if (number.toString().length === 1) {
+				return count;
+			} else {
+				return recursivePersistence(number);
+			}
+		}
+	}
+
+	return recursivePersistence(num);
+}
+
+console.log(persistence(39));
+console.log(persistence(4));
+console.log(persistence(25));
+console.log(persistence(999));
