@@ -512,3 +512,97 @@ function findShort(s) {
 console.log(findShort("bitcoin take over the world maybe who knows perhaps"));
 console.log(findShort("turns out random test cases are easier than writing out basic ones"));
 console.log(findShort("Let's travel abroad shall we"));
+
+// Your order, please (6 kyu)
+
+/*
+Your task is to sort a given string. Each word in the string will contain a single number.
+This number is the position the word should have in the result.
+Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+
+Examples
+"is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+"4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+""  -->  ""
+*/
+
+function order(words) {
+	return words
+		.split(' ')
+		.sort(function (first, second) {
+			return first.match(/\d/) - second.match(/\d/);
+		})
+		.join(' ');
+}
+
+console.log(order("is2 Thi1s T4est 3a"));
+console.log(order("4of Fo1r pe6ople g3ood th5e the2"));
+console.log(order(""));
+
+// Credit Card Mask (7kyu)
+
+/*
+Usually when you buy something, you're asked whether your credit card number,
+phone number or answer to your most secret question is still correct.
+However, since someone could look over your shoulder,
+you don't want that shown on your screen. Instead, we mask it.
+
+Your task is to write a function maskify,
+which changes all but the last four characters into '#'.
+*/
+
+function maskify(cc) {
+	if (cc.length < 5) {
+		return cc;
+	}
+
+	const newArray = [];
+	for (let i = 0; i < cc.length - 4; i++) {
+		newArray.push('#');
+	}
+
+	const subString = cc.substring(cc.length - 4).split('');
+	return newArray.concat(subString).join('');
+
+}
+
+console.log(maskify('4556364607935616'));
+console.log(maskify('1'));
+console.log(maskify('11111'));
+
+// The Hashtag Generator (5 kyu)
+
+/*
+The marketing team is spending way too much time typing in hashtags.
+Let's help them with our own Hashtag Generator!
+
+Here's the deal:
+
+It must start with a hashtag (#).
+All words must have their first letter capitalized.
+If the final result is longer than 140 chars it must return false.
+If the input or the result is an empty string it must return false.
+Examples
+" Hello there thanks for trying my Kata"  =>  "#HelloThereThanksForTryingMyKata"
+"    Hello     World   "                  =>  "#HelloWorld"
+""                                        =>  false
+*/
+
+/* function generateHashtag(str) {
+
+	if (str.length > 139) {
+		return false;
+	}
+
+}
+
+console.log(generateHashtag(""));
+console.log(generateHashtag("Do We have A Hashtag"));
+console.log(generateHashtag("Codewars"));
+console.log(generateHashtag("Codewars Is Nice"));
+console.log(generateHashtag("Codewars is nice"));
+console.log(generateHashtag("Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Cat"));
+console.log(generateHashtag("code" + " ".repeat(140) + "wars"));
+console.log(generateHashtag("a".repeat(139)));
+console.log(generateHashtag("a".repeat(140))); */
