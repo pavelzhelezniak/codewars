@@ -589,15 +589,31 @@ Examples
 ""                                        =>  false
 */
 
-/* function generateHashtag(str) {
+function generateHashtag(str) {
 
-	if (str.length > 139) {
+	if (str.trim() === '') {
 		return false;
 	}
 
+	const newStr = str
+		.split(' ')
+		.reduce((accum, item) => {
+			if (item.trim() === '') {
+				return accum + '';
+			} else {
+				return accum + item[0].toUpperCase() + item.slice(1);
+			}
+		}, '#');
+
+	if (newStr.length > 140) {
+		return false;
+	}
+
+	return newStr;
 }
 
 console.log(generateHashtag(""));
+console.log(generateHashtag(" ".repeat(200)));
 console.log(generateHashtag("Do We have A Hashtag"));
 console.log(generateHashtag("Codewars"));
 console.log(generateHashtag("Codewars Is Nice"));
@@ -605,4 +621,4 @@ console.log(generateHashtag("Codewars is nice"));
 console.log(generateHashtag("Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Cat"));
 console.log(generateHashtag("code" + " ".repeat(140) + "wars"));
 console.log(generateHashtag("a".repeat(139)));
-console.log(generateHashtag("a".repeat(140))); */
+console.log(generateHashtag("a".repeat(140)));
