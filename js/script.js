@@ -664,8 +664,18 @@ function isPrime(num) {
 	if (num < 2) {
 		return false;
 	}
-	for (let i = 2; i < num; i++) {
+	if (num % 2 == 0) {
+		return (num === 2);
+	}
+	if (num % 3 == 0) {
+		return (num == 3);
+	}
+	let m = Math.sqrt(num);
+	for (let i = 5; i <= m; i += 6) {
 		if (num % i == 0) {
+			return false;
+		}
+		if (num % (i + 2) == 0) {
 			return false;
 		}
 	}
