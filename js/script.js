@@ -725,7 +725,7 @@ Leading zeros (e.g. 01.02.03.04) are considered invalid
 Inputs are guaranteed to be a single string
 */
 
-/* function isValidIP(str) {
+function isValidIP(str) {
 	let array = str.split('.');
 	if (str === '0.0.0.0') {
 		return true;
@@ -741,7 +741,10 @@ Inputs are guaranteed to be a single string
 				return false;
 			}
 			const newArray = array[i].split('');
-			if (newArray[0] === '0' && typeof Number(newArray[1]) === 'number') {
+			if (newArray[0] === '0' && newArray.length !== 0) {
+				return false;
+			}
+			if (array[i].length > 3 || array[i].length === 0) {
 				return false;
 			}
 			if (newArray[0] === '\n' || newArray[1] === '\n' || newArray[2] === '\n') {
@@ -750,13 +753,9 @@ Inputs are guaranteed to be a single string
 			if (newArray[0] === ' ' || newArray[1] === ' ' || newArray[2] === ' ') {
 				return false;
 			}
-			if (isNaN(Number(newArray[1]))) {
+			if ((/\d\D\d/gi).test(array[i])) {
 				return false;
 			}
-
-			// if (parseInt(array[i].split('')) === 0) {
-			// 	return false;
-			// }
 		}
 	}
 
@@ -780,4 +779,4 @@ console.log(isValidIP(' 1.2.3.4'));
 console.log(isValidIP('1.2.3.4 '));
 console.log(isValidIP('12.34.56.-7'));
 console.log(isValidIP('1.2.3.4\n'));
-console.log(isValidIP('\n1.2.3.4')); */
+console.log(isValidIP('\n1.2.3.4'));
