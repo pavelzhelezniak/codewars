@@ -847,3 +847,65 @@ console.log(binaryArrayToNumber([0, 0, 0, 1]), 1);
 console.log(binaryArrayToNumber([0, 0, 1, 0]), 2);
 console.log(binaryArrayToNumber([1, 1, 1, 1]), 15);
 console.log(binaryArrayToNumber([0, 1, 1, 0]), 6);
+
+// getNames() (7 kyu)
+
+/* 
+The following code is not giving the expected results. Can you debug what the issue is?
+
+The following is an example of data that would be passed in to the function.
+
+var data = [
+  {name: 'Joe', age: 20},
+  {name: 'Bill', age: 30},
+  {name: 'Kate', age: 23}
+]
+
+getNames(data) // should return ['Joe', 'Bill', 'Kate']
+*/
+
+function getNames(data) {
+	return data.map(item => item.name);
+}
+
+console.log(getNames([
+	{ name: 'Joe', age: 20 },
+	{ name: 'Bill', age: 30 },
+	{ name: 'Kate', age: 23 }
+]));
+
+// Coprime Validator (7 kyu)
+
+/*
+Write a program to determine if the two given numbers are coprime.
+A pair of numbers are coprime if their greatest shared factor is 1.
+
+The inputs will always be two positive integers between 2 and 99.
+
+Examples
+20 and 27:
+
+Factors of 20: 1, 2, 4, 5, 10, 20
+Factors of 27: 1, 3, 9, 27
+Greatest shared factor: 1
+Result: 20 and 27 are coprime
+12 and 39:
+
+Factors of 12: 1, 2, 3, 4, 6, 12
+Factors of 39: 1, 3, 13, 39
+Greatest shared factor: 3
+Result: 12 and 39 are not coprimes
+*/
+/*
+function isCoprime(x, y) {
+
+	// your code here
+
+}
+
+console.log(isCoprime(20, 27));
+console.log(isCoprime(12, 39));
+ */
+
+
+
