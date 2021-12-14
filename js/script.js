@@ -923,6 +923,45 @@ console.log(sequenceSum(780, 68515438, 5), 469436517521190);
 console.log(sequenceSum(9383, 71418, 2), 1253127200);
 console.log(sequenceSum(20, 67338879, 5), 453452442295970);
 
+// SumFibs (6 kyu)
+
+/*
+Create a function that takes an argument n and sums even Fibonacci
+numbers up to n's index in the Fibonacci sequence.
+
+Example:
+
+sumFibs(5) === 2 // (0, 1, 1, 2, 3, 5);2 is the only even number
+in the sequence and doesn't have another number in the sequence to
+get added to in the indexed Fibonacci sequence.
+Example:
+
+sumFibs(9) === 44; // (0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
+// 2 + 8 + 34 = 44;
+*/
+
+function sumFibs(n) {
+	// you are the golden ratio.
+	const array = [0, 1];
+	let count = 0;
+
+	for (let i = 0; i < n - 1; i++) {
+		const number = array[i] + array[i + 1];
+		array.push(number);
+		if (number % 2 === 0) {
+			count += number;
+		}
+	}
+
+	return count;
+
+}
+
+console.log(sumFibs(5), 2);
+console.log(sumFibs(9), 44);
+console.log(sumFibs(10), 44);
+console.log(sumFibs(11), 44);
+
 // Coprime Validator (7 kyu)
 
 /*
