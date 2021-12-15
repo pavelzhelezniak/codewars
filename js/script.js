@@ -1024,3 +1024,38 @@ console.log(isCoprime(20, 27));
 console.log(isCoprime(12, 39));
 console.log(isCoprime(35, 10));
 console.log(isCoprime(12, 7));
+
+// Calculate number of inversions in array (6 kyu)
+
+/* 
+Array inversion indicates how far the array is from being sorted.
+Inversions are pairs of elements in array that are out of order.
+
+Examples
+[1, 2, 3, 4]  =>  0 inversions
+[1, 3, 2, 4]  =>  1 inversion: 2 and 3
+[4, 1, 2, 3]  =>  3 inversions: 4 and 1, 4 and 2, 4 and 3
+[4, 3, 2, 1]  =>  6 inversions: 4 and 3, 4 and 2, 4 and 1, 3 and 2, 3 and 1, 2 and 1
+Goal
+The goal is to come up with a function that can calculate inversions for any arbitrary array
+*/
+
+function countInversions(array) {
+	let count = 0;
+	const arrayLength = array.length;
+
+	for (let i = 0; i < arrayLength; i++) {
+		for (let k = 1; k < arrayLength - i; k++) {
+			if (array[i] > array[i + k]) {
+				count++;
+			}
+		}
+	}
+	return count;
+}
+
+console.log(countInversions([]), 0);
+console.log(countInversions([1, 2, 3]), 0);
+console.log(countInversions([2, 1, 3]), 1);
+console.log(countInversions([6, 5, 4, 3, 2, 1]), 15);
+console.log(countInversions([6, 5, 4, 3, 3, 3, 3, 2, 1]), 30);
