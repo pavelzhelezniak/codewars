@@ -984,16 +984,43 @@ Factors of 39: 1, 3, 13, 39
 Greatest shared factor: 3
 Result: 12 and 39 are not coprimes
 */
-/*
+
 function isCoprime(x, y) {
+	const upeerValue = x > y ? x : y;
+	const lowerValue = x < y ? x : y;
 
-	// your code here
+	if (upeerValue % lowerValue === 0) {
+		return false;
+	}
 
+	const arr1 = getDeviders(upeerValue);
+	const arr2 = getDeviders(lowerValue);
+
+	const simpleMap = {};
+
+	arr1.forEach((item) => {
+		simpleMap[item] = true;
+	});
+
+	const result = arr2.reduce((acc, val) => {
+		return simpleMap[val] ? ++acc : acc;
+	}, 0);
+
+	return result < 2;
+}
+
+function getDeviders(x) {
+	const result = [];
+	for (let i = 1; i <= x; i++) {
+		if (x % i === 0) {
+			result.push(i);
+		}
+	}
+
+	return result;
 }
 
 console.log(isCoprime(20, 27));
 console.log(isCoprime(12, 39));
- */
-
-
-
+console.log(isCoprime(35, 10));
+console.log(isCoprime(12, 7));
