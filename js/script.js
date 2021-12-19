@@ -1275,3 +1275,33 @@ function isPowerOfTwo(n) {
 console.log(isPowerOfTwo(2), true);
 console.log(isPowerOfTwo(4096), true);
 console.log(isPowerOfTwo(5), false);
+
+// Reverse a Number (7 kyu)
+
+/* 
+Given a number, write a function to output its reverse digits. (e.g. given 123 the answer is 321)
+
+Numbers should preserve their sign; i.e. a negative number should still be negative when reversed.
+*/
+
+function reverseNumber(n) {
+
+	function toStrings(num) {
+		return n.toString().split('').reverse().join('');
+	}
+
+	if (n < 0) {
+		return -parseInt(toStrings(n.toString().match(/\d/g)), 10);
+	}
+
+	return parseInt(toStrings(n), 10);
+
+}
+
+console.log(reverseNumber(123), 321);
+console.log(reverseNumber(-123), -321, 'Negative Numbers should be preserved');
+console.log(reverseNumber(1000), 1, 'Should handle numbers ending with "0"');
+console.log(reverseNumber(4321234), 4321234);
+console.log(reverseNumber(5), 5);
+console.log(reverseNumber(0), 0);
+console.log(reverseNumber(98989898), 89898989);
