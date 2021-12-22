@@ -1348,3 +1348,35 @@ console.log(singleDigit(4868872), 8);
 console.log(singleDigit(234234235), 2);
 console.log(singleDigit(567448), 7);
 console.log(singleDigit(1000000000), 3);
+
+// Exclamation marks series #17: Put the exclamation marks and question marks on the balance - are they balanced? (6 kyu)
+
+/* 
+Each exclamation mark's weight is 2; each question mark's weight is 3.
+Putting two strings left and right on the balance - are they balanced?
+
+If the left side is more heavy, return "Left";
+if the right side is more heavy, return "Right";
+if they are balanced, return "Balance".
+*/
+
+function balance(left, right) {
+	return (weightCalculation(left) > weightCalculation(right)) ? 'Left' : (weightCalculation(left) < weightCalculation(right)) ? 'Right' : 'Balance';
+
+}
+
+function weightCalculation(side) {
+	let count = 0;
+	side.split('').forEach(symbol => {
+
+		return (symbol === '!') ? count += 2 : count += 3;
+
+	});
+
+	return count;
+}
+
+console.log(balance("!!", "??"), "Right");
+console.log(balance("!??", "?!!"), "Left");
+console.log(balance("!?!!", "?!?"), "Left");
+console.log(balance("!!???!????", "??!!?!!!!!!!"), "Balance");
