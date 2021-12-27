@@ -1545,3 +1545,54 @@ console.log(lostSheep([1, 1, 1, 2, 1, 2], [2, 1, 2, 1, 2, 1], 30), 13);
 console.log(lostSheep([5, 10, 15], [11, 23, 3, 4, 15], 89), 3);
 console.log(lostSheep([3, 6, 9, 12], [3, 2, 1, 2, 3, 1], 44), 2);
 console.log(lostSheep([], [], 15), 15);
+
+// Count the smiley faces! (6 kyu)
+
+/* 
+Given an array (arr) as an argument complete the function 
+countSmileys that should return the total number of smiling faces.
+
+Rules for a smiling face:
+
+Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+Every smiling face must have a smiling mouth that should be marked with either ) or D
+No additional characters are allowed except for those mentioned.
+
+Valid smiley face examples: :) :D ;-D :~)
+Invalid smiley faces: ;( :> :} :]
+
+Note
+In case of an empty array return 0. You will not be tested with invalid input (input will always be an array).
+Order of the face (eyes, nose, mouth) elements will always be the same.
+*/
+
+function countSmileys(arr) {
+	return arr.filter(item => {
+		switch (item) {
+			case ':D':
+			case ':~D':
+			case ':-D':
+			case ';D':
+			case ';~D':
+			case ';-D':
+			case ':)':
+			case ':~)':
+			case ':-)':
+			case ';)':
+			case ';~)':
+			case ';-)':
+
+				return item;
+				break;
+
+		}
+	}).length
+}
+
+console.log(countSmileys([]), 0);
+console.log(countSmileys([':D', ':~)', ';~D', ':)']), 4);
+console.log(countSmileys([':)', ':(', ':D', ':O', ':;']), 2);
+console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']), 1);
+console.log(countSmileys([';]', ':[', ';*', ':$', ';-D']), 1);
+console.log(countSmileys([';->', ';>', ';->', ':o)', ':~>', ';~(', ';(']), 0);
