@@ -1590,6 +1590,10 @@ function countSmileys(arr) {
 	}).length
 }
 
+function countSmileys(arr) {
+	return arr.filter(item => /^[:;][-~]?[)D]$/.test(item)).length;
+}
+
 console.log(countSmileys([]), 0);
 console.log(countSmileys([':D', ':~)', ';~D', ':)']), 4);
 console.log(countSmileys([':)', ':(', ':D', ':O', ':;']), 2);
