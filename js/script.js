@@ -1713,3 +1713,29 @@ console.log(high('b aa'), 'b');
 console.log(high('bb d'), 'bb');
 console.log(high('d bb'), 'd');
 console.log(high('aaa b'), 'aaa');
+
+// Rearrange Number to Get its Maximum (7 kyu)
+
+/* 
+Create a function that takes one positive three digit integer and rearranges its digits to get the maximum possible number. Assume that the argument is an integer.
+
+Return -1 if the argument is not valid
+Return null (nil for Ruby, nothing for Julia) if the argument is not valid.
+
+maxRedigit(123); // returns 321
+*/
+
+const maxRedigit = function (num) {
+	if (num <= 0 || num.toString().length > 3 || num.toString().length < 3) {
+		return null;
+	}
+
+	return parseInt(num.toString().split('').sort((a, b) => b - a).join(''), 10);
+};
+
+console.log(maxRedigit(123), 321, "123 => 321");
+console.log(maxRedigit(278), 872, "278 => 872");
+console.log(maxRedigit(-1), null, "-1 => null");
+console.log(maxRedigit(0), null, "0 => null");
+console.log(maxRedigit(99), null, "99 => null");
+console.log(maxRedigit(18), null, "18 => null");
