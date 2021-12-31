@@ -1739,3 +1739,27 @@ console.log(maxRedigit(-1), null, "-1 => null");
 console.log(maxRedigit(0), null, "0 => null");
 console.log(maxRedigit(99), null, "99 => null");
 console.log(maxRedigit(18), null, "18 => null");
+
+// Digitize (7 kyu)
+
+/* 
+Given a non-negative integer, return an array / a list of the individual digits in order.
+
+Examples:
+
+123 => [1,2,3]
+
+1 => [1]
+
+8675309 => [8,6,7,5,3,0,9]
+*/
+
+function digitize(n) {
+	return n.toString().split('').map(Number);
+}
+
+console.log(digitize(123), [1, 2, 3])
+console.log(digitize(1), [1])
+console.log(digitize(0), [0])
+console.log(digitize(1230), [1, 2, 3, 0])
+console.log(digitize(8675309), [8, 6, 7, 5, 3, 0, 9])
