@@ -2004,3 +2004,24 @@ console.log(lastDigit(34625647867585, 10), [5, 6, 4, 7, 8, 6, 7, 5, 8, 5]);
 console.log(lastDigit(1234, 0), []);
 console.log(lastDigit(24134, -4), []);
 console.log(lastDigit(1343, 5), [1, 3, 4, 3]);
+
+// All Star Code Challenge #3 (7 kyu)
+
+/* 
+This Kata is intended as a small challenge for my students
+
+Create a function, called removeVowels (or remove_vowels), 
+that takes a string argument and returns that same string 
+with all vowels removed (vowels are "a", "e", "i", "o", "u").
+*/
+
+var removeVowels = function (str) {
+	const newStr = str.match(/[^aeiou]/gi);
+	if (newStr === null) {
+		return '';
+	}
+	return newStr.join('');
+}
+
+console.log(removeVowels("drake"), "drk");
+console.log(removeVowels("aeiou"), "");
