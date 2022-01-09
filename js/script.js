@@ -2055,3 +2055,33 @@ function generateShape(integer) {
 
 
 console.log(generateShape(5));
+
+// Multiplication table (6 kyu)
+
+/* 
+Your task, is to create NxN multiplication table, of size provided in parameter.
+
+for example, when given size is 3:
+
+1 2 3
+2 4 6
+3 6 9
+for given example, the return value should be: [[1,2,3],[2,4,6],[3,6,9]]
+
+*/
+
+const multiplicationTable = function (size) {
+	const arr = [];
+	for (let i = 1; i <= size; i++) {
+		const newArray = [];
+
+		for (let k = 1; k <= size; k++) {
+			newArray.push(k * i);
+		}
+		arr.push(newArray);
+	}
+	return arr;
+}
+
+console.log(multiplicationTable(3), [[1, 2, 3], [2, 4, 6], [3, 6, 9]]);
+console.log(multiplicationTable(5));
