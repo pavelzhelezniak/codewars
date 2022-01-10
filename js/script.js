@@ -2085,3 +2085,25 @@ const multiplicationTable = function (size) {
 
 console.log(multiplicationTable(3), [[1, 2, 3], [2, 4, 6], [3, 6, 9]]);
 console.log(multiplicationTable(5));
+
+// Zero-plentiful Array (6 kyu)
+
+/* 
+An array is called zero-plentiful if it contains at least one 0 and every sequence of 0s is of length at least 4. 
+Your task is to return the number of zero sequences if the given array
+is zero-plentiful else 0.
+*/
+
+function zeroPlentiful(arr) {
+	if ((arr.join('').match(/0+/g)) === null || (arr.join('').match(/0+/g).filter(item => item.length < 4).length) > 0) {
+		return 0;
+	}
+
+	return arr.join('').match(/0+/g).filter(item => item.length >= 4).length;
+}
+
+console.log(zeroPlentiful([]), 0);
+console.log(zeroPlentiful([3]), 0);
+console.log(zeroPlentiful([0, 0, 0, 0, 0, 0]), 1);
+console.log(zeroPlentiful([0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 1, 0, 0]), 2);
+console.log(zeroPlentiful([1, 0, 0, 0, 0, 1, 0, 0, 0]), 1);
