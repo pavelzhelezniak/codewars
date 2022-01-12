@@ -2139,3 +2139,63 @@ console.log(pyramid(0), []);
 console.log(pyramid(1), [[1]]);
 console.log(pyramid(2), [[1], [1, 1]]);
 console.log(pyramid(3), [[1], [1, 1], [1, 1, 1]]);
+
+// Greatest Common Factor of an ArrayGreatest Common Factor of an Array (6 kyu)
+
+/* 
+Write a function that returns the greatest common factor of an array of positive integers. Your return value should be a number, you will only receive positive integers.
+
+greatestCommonFactor([46, 14, 20, 88]); // --> 2
+*/
+
+function greatestCommonFactor(array) {
+	const newArr = [];
+	const leastDivisor = Math.min(...array);
+	for (let i = 1; i < leastDivisor; i++) {
+		array.forEach(item => {
+			if (item % i === 0) { }
+		})
+
+	}
+
+	return leastDivisor;
+}
+
+console.log(greatestCommonFactor([1, 8]), 1, "Should return 1");
+console.log(greatestCommonFactor([16, 4, 8]), 4, "Should return 4");
+console.log(greatestCommonFactor([46, 14, 20, 88]), 2, "Should return 2");
+console.log(greatestCommonFactor([468, 156, 806, 312, 442]), 26, "Should return 26");
+console.log(greatestCommonFactor([48, 99, 18]), 3, "Should return 3");
+console.log(greatestCommonFactor([32, 96, 120, 80]), 8, "Should return 8");
+console.log(greatestCommonFactor([91, 143, 234, 52]), 13, "Should return 13");
+console.log(greatestCommonFactor([171, 45, 297, 342]), 9, "Should return 9");
+
+// Vowel Count (7 kyu)
+
+/* 
+Return the number (count) of vowels in the given string.
+
+We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+The input string will only consist of lower case letters and/or spaces.
+*/
+
+function getCount(str) {
+	const arr = str.split('');
+	let count = 0;
+	const vowelLetters = {
+		'a': 'a',
+		'e': 'e',
+		'i': 'i',
+		'o': 'o',
+		'u': 'u'
+	}
+	arr.forEach(item => {
+		if (item in vowelLetters) {
+			count++;
+		}
+	})
+	return count;
+}
+
+console.log(getCount("aberacadabra"), 6);
