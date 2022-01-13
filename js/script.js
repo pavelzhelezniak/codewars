@@ -2199,3 +2199,69 @@ function getCount(str) {
 }
 
 console.log(getCount("aberacadabra"), 6);
+
+// Sort the number sequence (6 kyu)
+
+/* 
+Description:
+You are given a number sequence(an array) that contains some positive integer and zero.
+
+[3,2,1,0,5,6,4,0,1,5,3,0,4,2,8,0]
+It can be split to some zero-terminated sub sequence, such as [3,2,1,0],[5,6,4,0]...
+
+Your task is: First, sort each sub sequence according to the ascending order(don't sort the zero, it always at the end); Second, sort all sub sequence according to their sum value(ascending order too).
+
+Arguments:
+sequence: The number sequence.
+Results & Note:
+The result is the sorted number sequence.
+If some sub sequences have the same sum value, sort them according to their original order.
+*/
+
+function sortSequence(sequence) {
+	//coding and coding..
+	const arr = sequence.join('')
+		.match(/[1-9]+/g)
+		.map(item => item
+			.split('')
+			.sort((a, b) => a - b))
+		.sort((a, b) => (a.
+			reduce((acc, item) => parseInt(acc, 10) + parseInt(item, 10), 0)) - (b.
+				reduce((acc, item) => parseInt(acc, 10) + parseInt(item, 10), 0)))
+
+	const newArr = arr.map(item => item.join('')).join('0').split('').map(Number);
+	newArr.push(0);
+	return newArr;
+
+	//.split('')
+}
+
+console.log(sortSequence([3, 2, 1, 0, 5, 6, 4, 0, 1, 5, 3, 0, 4, 2, 8, 0]),
+	[1, 2, 3, 0, 1, 3, 5, 0, 2, 4, 8, 0, 4, 5, 6, 0])
+
+console.log(sortSequence([3, 2, 1, 0, 5, 6, 4, 0, 1, 5, 3, 0, 2, 2, 2, 0]),
+	[1, 2, 3, 0, 2, 2, 2, 0, 1, 3, 5, 0, 4, 5, 6, 0])
+
+console.log(sortSequence([2, 2, 2, 0, 5, 6, 4, 0, 1, 5, 3, 0, 3, 2, 1, 0]),
+	[2, 2, 2, 0, 1, 2, 3, 0, 1, 3, 5, 0, 4, 5, 6, 0])
+
+// Exes and Ohs (7 kyu)
+
+/* 
+Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+*/
+
+
+//code here
+function XO(str) {
+	const arr = str.toLowerCase().split('');
+
+	return arr.filter(item => item === 'x').length === arr.filter(element => element === 'o').length;
+}
+
+
+console.log(XO('xo'), true);
+console.log(XO("xxOo"), true);
+console.log(XO("xxxm"), false);
+console.log(XO("Oo"), false);
+console.log(XO("ooom"), false);
