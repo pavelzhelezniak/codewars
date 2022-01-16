@@ -2289,3 +2289,19 @@ console.log(friend(["Ryan", "Kieran", "Mark"]), ["Ryan", "Mark"])
 console.log(friend(["Ryan", "Jimmy", "123", "4", "Cool Man"]), ["Ryan"])
 console.log(friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]), ["Jimm", "Cari", "aret"])
 console.log(friend(["Love", "Your", "Face", "1"]), ["Love", "Your", "Face"])
+
+// Reverse words (7 kyu)
+
+/* 
+Complete the function that accepts a string parameter, and reverses each word in the string. 
+All spaces in the string should be retained.
+*/
+
+function reverseWords(str) {
+	return str.split(' ').map(item => item.split('').reverse().join('')).join(' ');
+}
+
+console.log(reverseWords('The quick brown fox jumps over the lazy dog.'), 'ehT kciuq nworb xof spmuj revo eht yzal .god');
+console.log(reverseWords('apple'), 'elppa');
+console.log(reverseWords('a b c d'), 'a b c d');
+console.log(reverseWords('double  spaced  words'), 'elbuod  decaps  sdrow');
