@@ -2340,3 +2340,32 @@ function solution(str, ending) {
 
 console.log(solution('abcde', 'cde'), true);
 console.log(solution('abcde', 'abc'), false);
+
+// Arabian String (6 kyu)
+
+/* 
+You must create a method that can convert a string from any format into PascalCase. This must support symbols too.
+
+Don't presume the separators too much or you could be surprised.
+
+For example: (Input --> Output)
+
+"example name" --> "ExampleName"
+"your-NaMe-here" --> "YourNameHere"
+"testing ABC" --> "TestingAbc"
+*/
+
+function camelize(str) {
+	if (str === '') {
+		return '';
+	}
+
+	const regExp = /[a-z0-9]+/gi;
+	return str.match(regExp).map(i => i[0].toUpperCase() + i.substring(1).toLowerCase()).join('');
+}
+
+console.log(camelize("java script"), "JavaScript");
+console.log(camelize("cODE warS"), "CodeWars");
+console.log(camelize("example name"), "ExampleName");
+console.log(camelize("your-NaMe-here"), "YourNameHere");
+console.log(camelize("testing ABC"), "TestingAbc");
