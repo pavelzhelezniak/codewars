@@ -2321,4 +2321,22 @@ const number = function (array) {
 }
 
 console.log(number([]), [], 'Empty array should return empty array');
-console.log(number(["a", "b", "c"]), ["1: a", "2: b", "3: c"], 'Return the correct line numbers');  
+console.log(number(["a", "b", "c"]), ["1: a", "2: b", "3: c"], 'Return the correct line numbers');
+
+// String ends with? (7 kyu)
+
+/* 
+Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+
+Examples:
+
+solution('abc', 'bc') // returns true
+solution('abc', 'd') // returns false
+*/
+
+function solution(str, ending) {
+	return str.endsWith(ending);
+}
+
+console.log(solution('abcde', 'cde'), true);
+console.log(solution('abcde', 'abc'), false);
