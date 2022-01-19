@@ -2396,3 +2396,26 @@ function dontGiveMeFive(start, end) {
 
 console.log(dontGiveMeFive(1, 9), 8);
 console.log(dontGiveMeFive(4, 17), 12);
+
+// Remove duplicate words (7 kyu)
+
+/* 
+Your task is to remove all duplicate words from a string, leaving only single (first) words entries.
+
+Example:
+
+Input:
+
+'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
+
+Output:
+
+'alpha beta gamma delta'
+*/
+
+function removeDuplicateWords(s) {
+	const array = s.split(' ');
+	return [...new Set(array)].join(' ');
+}
+
+console.log(removeDuplicateWords('alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'), 'alpha beta gamma delta');
