@@ -2465,15 +2465,54 @@ solution([1, 2, 10, 50, 5]); // should return [1,2,5,10,50]
 solution(null); // should return []
 */
 
-function solution(nums) {
-	if (nyms === null || nums.length === 0) {
-		return []
+function solutions(nums) {
+	if (nums === null || nums.length === 0) {
+		return [];
 	}
 	return nums.sort((a, b) => a - b);
 }
 
-console.log(solution([1, 2, 3, 10, 5]), [1, 2, 3, 5, 10]);
-console.log(solution(null), []);
-console.log(solution([]), []);
-console.log(solution([20, 2, 10]), [2, 10, 20]);
-console.log(solution([2, 20, 10]), [2, 10, 20]);
+console.log(solutions([1, 2, 3, 10, 5]), [1, 2, 3, 5, 10]);
+console.log(solutions(null), []);
+console.log(solutions([]), []);
+console.log(solutions([20, 2, 10]), [2, 10, 20]);
+console.log(solutions([2, 20, 10]), [2, 10, 20]);
+
+// Pair of gloves (6 kyu)
+
+/* 
+Pair of gloves
+Winter is coming, you must prepare your ski holidays. 
+The objective of this kata is to determine the number of pair of gloves you can constitute from the gloves you have in your drawer.
+
+Given an array describing the color of each glove, 
+return the number of pairs you can constitute, assuming that only gloves of the same color can form pairs.
+
+Examples:
+input = ["red", "green", "red", "blue", "blue"]
+result = 2 (1 red pair + 1 blue pair)
+
+input = ["red", "red", "red", "red", "red", "red"]
+result = 3 (3 red pairs)
+*/
+
+function numberOfPairs(gloves) {
+	const obj = {};
+	let count = 0;
+	gloves.forEach(item => {
+		if (obj.hasOwnProperty(item)) {
+			obj[item]++;
+		} else {
+			obj[item] = 1;
+		}
+	})
+	for (let color in obj) {
+		const numberOfPairsColor = obj[color] / 2;
+		count += Math.floor(numberOfPairsColor);
+	}
+	return count;
+}
+
+console.log(numberOfPairs(['red', 'red']), 1);
+console.log(numberOfPairs(['red', 'green', 'blue']), 0);
+console.log(numberOfPairs(['gray', 'black', 'purple', 'purple', 'gray', 'black']), 3);
