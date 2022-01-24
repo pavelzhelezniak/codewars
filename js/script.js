@@ -2540,3 +2540,25 @@ function sumOfMinimums(arr) {
 
 console.log(sumOfMinimums([[7, 9, 8, 6, 2], [6, 3, 5, 4, 3], [5, 8, 7, 4, 5]]), 9);
 console.log(sumOfMinimums([[11, 12, 14, 54], [67, 89, 90, 56], [7, 9, 4, 3], [9, 8, 6, 7]]), 76);
+
+// Flatten and sort an array (7 kyu)
+
+/* 
+Challenge:
+
+Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order.
+
+Example:
+
+Given [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]], your function should return [1, 2, 3, 4, 5, 6, 7, 8, 9].
+*/
+
+function flattenAndSort(array) {
+	return array.flat().sort((a, b) => a - b);
+}
+
+console.log(flattenAndSort([]), []);
+console.log(flattenAndSort([[], []]), []);
+console.log(flattenAndSort([[], [1]]), [1]);
+console.log(flattenAndSort([[3, 2, 1], [7, 9, 8], [6, 4, 5]]), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+console.log(flattenAndSort([[1, 3, 5], [100], [2, 4, 6]]), [1, 2, 3, 4, 5, 6, 100]);
