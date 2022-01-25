@@ -2562,3 +2562,18 @@ console.log(flattenAndSort([[], []]), []);
 console.log(flattenAndSort([[], [1]]), [1]);
 console.log(flattenAndSort([[3, 2, 1], [7, 9, 8], [6, 4, 5]]), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 console.log(flattenAndSort([[1, 3, 5], [100], [2, 4, 6]]), [1, 2, 3, 4, 5, 6, 100]);
+
+// No oddities here (7kyu)
+
+/* 
+Write a small function that returns the values of an array that are not odd.
+
+All values in the array will be integers. Return the good values in the order they are given.
+*/
+
+function noOdds(values) {
+	return values.filter(item => item % 2 === 0);
+}
+
+console.log(noOdds([0, 1]), [0]);
+console.log(noOdds([0, 1, 2, 3]), [0, 2]);
