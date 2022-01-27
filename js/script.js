@@ -2630,3 +2630,22 @@ console.log(wordsToMarks("friends"), 75);
 console.log(wordsToMarks("family"), 66);
 console.log(wordsToMarks("selfness"), 99);
 console.log(wordsToMarks("knowledge"), 96);
+
+// Greet Me (7kyu)
+
+/* 
+Write a method that takes one argument as name and then greets that name, capitalized and ends with an exclamation point.
+
+Example:
+
+"riley" --> "Hello Riley!"
+"JACK"  --> "Hello Jack!"
+*/
+
+const greet = function (name) {
+	const newName = name[0].toUpperCase() + name.slice(1).toLowerCase();
+	return `Hello ${newName}!`;
+};
+
+console.log(greet('riley'), 'Hello Riley!');
+console.log(greet('JACK'), 'Hello Jack!');
