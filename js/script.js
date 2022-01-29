@@ -2673,3 +2673,26 @@ console.log(isLeapYear(1984), true, 'Year 1984');
 console.log(isLeapYear(2000), true, 'Year 2000');
 console.log(isLeapYear(2010), false, 'Year 2010');
 console.log(isLeapYear(2013), false, 'Year 2013');
+
+// Counting Array Elements (7 kyu)
+
+/* 
+Write a function that takes an array and counts the number of each unique element present.
+
+count(['james', 'james', 'john']) 
+#=> { 'james': 2, 'john': 1}
+*/
+
+function count(array) {
+	const obj = {};
+	for (let i = 0; i < array.length; i++) {
+		if (obj.hasOwnProperty(array[i])) {
+			obj[array[i]]++;
+		} else {
+			obj[array[i]] = 1;
+		}
+	}
+	return obj;
+}
+
+console.log(count(['a', 'a', 'b', 'b', 'b']), { 'a': 2, 'b': 3 });
