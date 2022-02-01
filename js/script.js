@@ -2791,3 +2791,25 @@ console.log(solve([-3, 1, 2, 3, -1, -4, -2]), -4);
 console.log(solve([1, -1, 2, -2, 3, 3]), 3);
 console.log(solve([-110, 110, -38, -38, -62, 62, -38, -38, -38]), -38);
 console.log(solve([-9, -105, -9, -9, -9, -9, 105]), -9);
+
+// Functional Addition (7 kyu)
+
+/* 
+Create a function add(n)/Add(n) which returns a function that always adds n to any number
+
+Note for Java: the return type and methods have not been provided to make it a bit more challenging.
+
+var addOne = add(1);
+addOne(3); // 4
+
+var addThree = add(3);
+addThree(3); // 6
+*/
+
+function add(n) {
+	return function (i) {
+		return n + i;
+	}
+}
+
+console.log(add(1)(3), 4, 'add one to three equals four')
