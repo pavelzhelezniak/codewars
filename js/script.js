@@ -2320,8 +2320,8 @@ const number = function (array) {
 	return array.map((item, index) => `${index + 1}: ${item}`);
 }
 
-console.log(number([]), [], 'Empty array should return empty array');
-console.log(number(["a", "b", "c"]), ["1: a", "2: b", "3: c"], 'Return the correct line numbers');
+console.log(numberSum([]), [], 'Empty array should return empty array');
+console.log(numberSum(["a", "b", "c"]), ["1: a", "2: b", "3: c"], 'Return the correct line numbers');
 
 // String ends with? (7 kyu)
 
@@ -2813,3 +2813,59 @@ function add(n) {
 }
 
 console.log(add(1)(3), 4, 'add one to three equals four')
+
+// Going backwards: Number from every possible sum of two digits (6 kyu)
+
+/* 
+Every possible sum of two digits
+Given a long number, return all the possible sum of two digits of it.
+
+For example, 12345: all possible sum of two digits from that number are:
+
+[ 1 + 2, 1 + 3, 1 + 4, 1 + 5, 2 + 3, 2 + 4, 2 + 5, 3 + 4, 3 + 5, 4 + 5 ]
+Therefore the result must be:
+
+[ 3, 4, 5, 6, 5, 6, 7, 7, 8, 9 ]
+*/
+
+function numberSum(sums) {
+
+	const arr = [];
+	sums = sums.toString();
+	for (let i = 0; i < sums.length; i++) {
+		for (let k = i + 1; k < sums.length; k++) {
+			arr.push(parseInt(sums[i]) + parseInt(sums[k]));
+		}
+	}
+	return arr;
+}
+
+console.log(number([6, 7, 11]), 156);
+console.log(number([9, 13, 17, 14, 6, 10, 7, 14, 11, 15]), 81596);
+console.log(number([11, 8, 5, 13, 10, 7]), 3852);
+console.log(number([5, 9, 7, 4, 5, 11, 8, 6, 3, 4, 10, 10, 7, 8, 14, 5, 6, 12, 3, 9, 10]), 3264128);
+console.log(number([18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18]), 999999);
+
+// Currying functions: multiply all elements in an array (7 kyu)
+
+/* 
+To complete this Kata you need to make a function multiplyAll/multiply_all which takes an array of integers as an argument. This function must return another function, which takes a single integer as an argument and returns a new array.
+
+The returned array should consist of each of the elements from the first array multiplied by the integer.
+
+Example:
+
+multiplyAll([1, 2, 3])(2) = [2, 4, 6];
+You must not mutate the original array.
+*/
+
+function multiplyAll(arr) {
+	return function (n) {
+		return arr.map(item => item * n);
+	}
+}
+
+console.log(multiplyAll([1, 2, 3])(2), [2, 4, 6]);
+console.log(multiplyAll([1, 2, 3])(0), [0, 0, 0]);
+console.log(multiplyAll([1, 2, 3])(1), [1, 2, 3]);
+console.log(multiplyAll([])(10), [], "should return an empty array");
