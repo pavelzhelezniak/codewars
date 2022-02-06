@@ -2956,3 +2956,45 @@ console.log(accum("NyffsGeyylB"), "N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Y
 console.log(accum("MjtkuBovqrU"), "M-Jj-Ttt-Kkkk-Uuuuu-Bbbbbb-Ooooooo-Vvvvvvvv-Qqqqqqqqq-Rrrrrrrrrr-Uuuuuuuuuuu");
 console.log(accum("EvidjUnokmM"), "E-Vv-Iii-Dddd-Jjjjj-Uuuuuu-Nnnnnnn-Oooooooo-Kkkkkkkkk-Mmmmmmmmmm-Mmmmmmmmmmm");
 console.log(accum("HbideVbxncC"), "H-Bb-Iii-Dddd-Eeeee-Vvvvvv-Bbbbbbb-Xxxxxxxx-Nnnnnnnnn-Cccccccccc-Ccccccccccc");
+
+// Change it up (6 kyu)
+
+/* 
+Create a function that takes a string as a parameter and does the following, in this order:
+
+Replaces every letter with the letter following it in the alphabet (see note below)
+Makes any vowels capital
+Makes any consonants lower case
+Note: the alphabet should wrap around, so Z becomes A
+
+So, for example the string "Cat30" would return "dbU30" (Cat30 --> Dbu30 --> dbU30)
+*/
+
+function changer(str) {
+	str = str.toLowerCase();
+
+	return str.split(' ').map(word =>
+
+		word.split('').map(letter => {
+			switch (letter) {
+				case 'z':
+					return 'A';
+				case '0':
+					return '0';
+			}
+			let x = parseInt(letter) ? letter : String.fromCharCode(letter.charCodeAt(letter.length - 1) + 1);
+			const regExp = /([aeiou])/g;
+			if (regExp.test(x)) {
+				return x.toUpperCase();
+			}
+			return x;
+		}).join('')
+	).join(' ');
+}
+
+console.log(changer('Cat30'), 'dbU30');
+console.log(changer('Alice'), 'bmjdf');
+console.log(changer('sponge1'), 'tqpOhf1');
+console.log(changer('Hello World'), 'Ifmmp xpsmE');
+console.log(changer('dogs'), 'Epht');
+console.log(changer('z'), 'A');
