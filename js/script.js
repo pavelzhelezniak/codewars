@@ -3165,3 +3165,21 @@ a1 = ["live", "strong", "arp"];
 console.log(inArray(a1, a2), ["arp", "live", "strong"]);
 a1 = ["tarp", "mice", "bull"];
 console.log(inArray(a1, a2), []);
+
+// Is this a triangle? (7 kyu)
+
+/* 
+Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
+
+(In this case, all triangles must have surface greater than 0 to be accepted).
+*/
+
+function isTriangle(a, b, c) {
+	if (a + b > c && a + c > b && c + b > a) {
+		return true;
+	}
+	return false;
+}
+
+console.log(isTriangle(1, 2, 2), true);
+console.log(isTriangle(7, 2, 2), false);
