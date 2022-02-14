@@ -3337,3 +3337,22 @@ function longest(s1, s2) {
 console.log(longest("aretheyhere", "yestheyarehere"), "aehrsty")
 console.log(longest("loopingisfunbutdangerous", "lessdangerousthancoding"), "abcdefghilnoprstu")
 console.log(longest("inmanylanguages", "theresapairoffunctions"), "acefghilmnoprstuy")
+
+// Binary Addition (7 kyu)
+
+/* Implement a function that adds two numbers together and returns their sum in binary.The conversion can be done before, or after the addition.
+
+The binary number returned should be a string.
+
+	Examples: (Input1, Input2-- > Output(explanation)))
+
+1, 1 -- > "10"(1 + 1 = 2 in decimal or 10 in binary)
+5, 9 -- > "1110"(5 + 9 = 14 in decimal or 1110 in binary) */
+
+function addBinary(a, b) {
+	return (a + b).toString(2)
+}
+
+console.log(addBinary(1, 2))
+console.log(addBinary(2, 3))
+console.log(addBinary(3, 4))
