@@ -3372,7 +3372,7 @@ Examples
 1,5,1 --> 15 (1 + 2 + 3 + 4 + 5)
 1,5,3  --> 5 (1 + 4)*/
 
-const sequenceSum = (begin, end, step) => {
+const sequenceSumm = (begin, end, step) => {
 	let count = 0;
 	if (end < begin) {
 		return 0;
@@ -3383,9 +3383,9 @@ const sequenceSum = (begin, end, step) => {
 	return count;
 };
 
-console.log(sequenceSum(2, 6, 2), 12)
-console.log(sequenceSum(1, 5, 1), 15)
-console.log(sequenceSum(1, 5, 3), 5)
+console.log(sequenceSumm(2, 6, 2), 12)
+console.log(sequenceSumm(1, 5, 1), 15)
+console.log(sequenceSumm(1, 5, 3), 5)
 
 // Make a function that does arithmetic! (7 kyu)
 
@@ -3446,3 +3446,45 @@ function sortByLength(array) {
 console.log(sortByLength(["Beg", "Life", "I", "To"]), ["I", "To", "Beg", "Life"]);
 console.log(sortByLength(["", "Moderately", "Brains", "Pizza"]), ["", "Pizza", "Brains", "Moderately"]);
 console.log(sortByLength(["Longer", "Longest", "Short"]), ["Short", "Longer", "Longest"]);
+
+// Counting Duplicates (6 kyu)
+
+/* 
+Count the number of Duplicates
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+Example
+"abcde" -> 0 # no characters repeats more than once
+"aabbcde" -> 2 # 'a' and 'b'
+"aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+"indivisibility" -> 1 # 'i' occurs six times
+"Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+"aA11" -> 2 # 'a' and '1'
+"ABBA" -> 2 # 'A' and 'B' each occur twice
+*/
+
+function duplicateCount(text) {
+	const str = text.toLowerCase();
+	const obj = {};
+	let count = 0;
+	for (let i = 0; i < str.length; i++) {
+		if (obj.hasOwnProperty(str[i])) {
+			obj[str[i]]++;
+		} else {
+			obj[str[i]] = 1;
+		}
+	}
+	for (let key in obj) {
+		if (obj[key] > 1) {
+			count++;
+		}
+	}
+	return count;
+}
+
+console.log(duplicateCount(""), 0);
+console.log(duplicateCount("abcde"), 0);
+console.log(duplicateCount("aabbcde"), 2);
+console.log(duplicateCount("aabBcde"), 2, "should ignore case");
+console.log(duplicateCount("Indivisibility"), 1)
+console.log(duplicateCount("Indivisibilities"), 2, "characters may not be adjacent")
