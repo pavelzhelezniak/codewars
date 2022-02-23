@@ -3568,3 +3568,24 @@ console.log(isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's']), 'sh
 console.log(!isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e']), 'should return false');
 console.log(!isValidWalk(['w']), 'should return false');
 console.log(!isValidWalk(['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's']), 'should return false');
+
+// Unique In Order (6 kyu)
+
+/* 
+Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+
+For example:
+
+uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
+uniqueInOrder([1,2,2,3,3])       == [1,2,3]
+*/
+
+const uniqueInOrder = function (iterable) {
+	const newArr = [...iterable];
+	return newArr.filter((item, index) => item !== newArr[index + 1]);
+}
+
+console.log(uniqueInOrder('AAAABBBCCDAABBB'), ['A', 'B', 'C', 'D', 'A', 'B']);
+console.log(uniqueInOrder('ABBCcAD'), ['A', 'B', 'C', 'c', 'A', 'D']);
+console.log(uniqueInOrder([1, 2, 2, 3, 3]), [1, 2, 3]);
