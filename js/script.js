@@ -3652,3 +3652,33 @@ let number123 = "731671765313306249192251196744265747423553491949349698352036854
 console.log(solution123(number123), 99890, 'solution did not return correct value')
 console.log(solution123('1234567898765'), 98765, 'Failed when max 5 digits is at end of number')
 console.log(solution123("731674765"), 74765, 'Failed in overlapping test')
+
+// Factorial (7 kyu)
+
+/* 
+In mathematics, the factorial of a non-negative integer n, denoted by n!, 
+is the product of all positive integers less than or equal to n. 
+For example: 5! = 5 * 4 * 3 * 2 * 1 = 120. By convention the value of 0! is 1.
+
+Write a function to calculate factorial for a given input. 
+If input is below 0 or above 12 throw an exception of type ArgumentOutOfRangeException (C#)
+or IllegalArgumentException (Java) or RangeException (PHP) or throw a RangeError (JavaScript)
+or ValueError (Python) or return -1 (C).
+
+More details about factorial can be found here.
+*/
+
+function factorial123(n) {
+	if (n === 0 || n === 1) {
+		return 1;
+	} else if (n < 0 || n > 12) {
+		throw new RangeError('Параметр должен быть между ' + 0 + ' и ' + 12);
+	} else {
+		return n * factorial(n - 1);
+	}
+}
+
+console.log(factorial123(0), 1, "factorial for 0 is 1");
+console.log(factorial123(1), 1, "factorial for 1 is 1");
+console.log(factorial123(2), 2, "factorial for 2 is 2");
+console.log(factorial123(3), 6, "factorial for 3 is 6");
