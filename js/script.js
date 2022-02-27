@@ -3682,3 +3682,30 @@ console.log(factorial123(0), 1, "factorial for 0 is 1");
 console.log(factorial123(1), 1, "factorial for 1 is 1");
 console.log(factorial123(2), 2, "factorial for 2 is 2");
 console.log(factorial123(3), 6, "factorial for 3 is 6");
+
+// Anagram Detection (7 kyu)
+
+/* 
+An anagram is the result of rearranging the letters of a word to produce a new word (see wikipedia).
+
+Note: anagrams are case insensitive
+
+Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
+
+Examples
+"foefet" is an anagram of "toffee"
+
+"Buckethead" is an anagram of "DeathCubeK"
+*/
+
+const isAnagram = (test, original) => {
+	const transformation = (word) => word.toLowerCase().split('').sort().join('');
+	return transformation(original) === transformation(test);
+}
+
+console.log(isAnagram("foefet", "toffee"), true, 'The word foefet is an anagram of toffee');
+console.log(isAnagram("Buckethead", "DeathCubeK"), true, 'The word Buckethead is an anagram of DeathCubeK');
+console.log(isAnagram("Twoo", "WooT"), true, 'The word Twoo is an aconsole.log');
+console.log(isAnagram("dumble", "bumble"), false, 'Characters do not match for test case dumble, bumble');
+console.log(isAnagram("ound", "round"), false, 'Missing characters for test case ound, round');
+console.log(isAnagram("apple", "pale"), false, 'Same letters, but different count');
