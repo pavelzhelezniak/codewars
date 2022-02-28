@@ -3709,3 +3709,40 @@ console.log(isAnagram("Twoo", "WooT"), true, 'The word Twoo is an aconsole.log')
 console.log(isAnagram("dumble", "bumble"), false, 'Characters do not match for test case dumble, bumble');
 console.log(isAnagram("ound", "round"), false, 'Missing characters for test case ound, round');
 console.log(isAnagram("apple", "pale"), false, 'Same letters, but different count');
+
+// Find the missing letter (6 kyu)
+
+/* 
+#Find the missing letter
+
+Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+
+You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+The array will always contain letters in only one case.
+
+Example:
+
+['a','b','c','d','f'] -> 'e' ['O','Q','R','S'] -> 'P'
+
+["a","b","c","d","f"] -> "e"
+["O","Q","R","S"] -> "P"
+(Use the English alphabet with 26 letters!)
+
+Have fun coding it and please don't forget to vote and rank this kata! :-)
+
+I have also created other katas. Take a look if you enjoyed this kata!
+*/
+
+function findMissingLetter(array) {
+	for (let i = 1; i < array.length; i++) {
+		const prevLetterCode = array[i - 1].charCodeAt();
+		const nextLetterCode = array[i].charCodeAt();
+
+		if (nextLetterCode - prevLetterCode !== 1) {
+			return String.fromCharCode(prevLetterCode + 1);
+		}
+	}
+}
+
+console.log(findMissingLetter(['a', 'b', 'c', 'd', 'f']), 'e');
+console.log(findMissingLetter(['O', 'Q', 'R', 'S']), 'P');
