@@ -3774,3 +3774,33 @@ console.log(sortArray([5, 3, 2, 8, 1, 4]), [1, 3, 2, 8, 5, 4]);
 console.log(sortArray([5, 3, 1, 8, 0]), [1, 3, 5, 8, 0]);
 console.log(sortArray([]), []);
 console.log(sortArray([7, 1]), [1, 7]);
+
+// Simple Fun #176: Reverse Letter (7 kyu)
+
+/* 
+Task
+Given a string str, reverse it omitting all non-alphabetic characters.
+
+Example
+For str = "krishan", the output should be "nahsirk".
+
+For str = "ultr53o?n", the output should be "nortlu".
+
+Input/Output
+[input] string str
+A string consists of lowercase latin letters, digits and symbols.
+
+[output] a string
+*/
+
+function reverseLetter(str) {
+	const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+	return str.split('').reverse().filter(item => alphabet.indexOf(item) !== -1).join('')
+
+}
+
+console.log(reverseLetter("krishan"), "nahsirk")
+console.log(reverseLetter("ultr53o?n"), "nortlu")
+console.log(reverseLetter("ab23c"), "cba")
+console.log(reverseLetter("krish21an"), "nahsirk")
