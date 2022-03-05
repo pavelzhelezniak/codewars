@@ -3865,3 +3865,18 @@ const towerBuilder = (nFloors) => {
 console.log(towerBuilder(1), ["*"]);
 console.log(towerBuilder(2), [" * ", "***"]);
 console.log(towerBuilder(3), ["  *  ", " *** ", "*****"]);
+
+// Thinkful - String Drills: Repeater (7 kyu)
+
+/* 
+Write a function named repeater() that takes two arguments (a string and a number),
+and returns a new string where the input string is repeated that many times.
+*/
+
+const repeater = (string, n) => {
+	return string.repeat(n);
+}
+
+console.log(repeater('a', 5), 'aaaaa')
+console.log(repeater('Na', 16), 'NaNaNaNaNaNaNaNaNaNaNaNaNaNaNaNa')
+console.log(repeater('Wub ', 6), 'Wub Wub Wub Wub Wub Wub ')
