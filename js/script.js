@@ -3974,3 +3974,33 @@ console.log(smallEnough([66, 101], 200), true);
 console.log(smallEnough([78, 117, 110, 99, 104, 117, 107, 115], 100), false);
 console.log(smallEnough([101, 45, 75, 105, 99, 107], 107), true);
 console.log(smallEnough([80, 117, 115, 104, 45, 85, 112, 115], 120), true);
+
+// Form The Minimum (7 kyu)
+
+/* 
+Task
+Given a list of digits, return the smallest number that could be formed from these digits, using the digits only once (ignore duplicates).
+
+Notes:
+Only positive integers will be passed to the function (> 0 ), no negatives or zeros.
+Input >> Output Examples
+minValue ({1, 3, 1})  ==> return (13)
+Explanation:
+(13) is the minimum number could be formed from {1, 3, 1} , Without duplications
+
+minValue({5, 7, 5, 9, 7})  ==> return (579)
+*/
+
+const minValue = (values) => {
+	return parseInt([...new Set(values)].sort((a, b) => a - b).join(''), 10);
+}
+
+console.log(minValue([1, 3, 1]), 13);
+console.log(minValue([4, 7, 5, 7]), 457);
+console.log(minValue([4, 8, 1, 4]), 148);
+console.log(minValue([5, 7, 9, 5, 7]), 579);
+console.log(minValue([6, 7, 8, 7, 6, 6]), 678);
+console.log(minValue([5, 6, 9, 9, 7, 6, 4]), 45679);
+console.log(minValue([1, 9, 1, 3, 7, 4, 6, 6, 7]), 134679);
+console.log(minValue([3, 6, 5, 5, 9, 8, 7, 6, 3, 5, 9]), 356789);
+console.log(minValue([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]), 1);
