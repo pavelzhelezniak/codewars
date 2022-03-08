@@ -4004,3 +4004,34 @@ console.log(minValue([5, 6, 9, 9, 7, 6, 4]), 45679);
 console.log(minValue([1, 9, 1, 3, 7, 4, 6, 6, 7]), 134679);
 console.log(minValue([3, 6, 5, 5, 9, 8, 7, 6, 3, 5, 9]), 356789);
 console.log(minValue([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]), 1);
+
+// Alternate capitalization (7 kyu)
+
+/* 
+Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
+
+For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+
+The input will be a lowercase string with no spaces.
+
+Good luck!
+*/
+
+const capitalize = (s) => {
+	const evenLettersUppercase = s.split('')
+		.map((item, index) => {
+			return index % 2 === 0 ? item.toUpperCase() : item;
+		})
+		.join('');
+	const oddLettersUppercase = s.split('')
+		.map((item, index) => {
+			return index % 2 !== 0 ? item.toUpperCase() : item;
+		})
+		.join('');
+	return [evenLettersUppercase, oddLettersUppercase];
+};
+
+console.log(capitalize("abcdef"), ['AbCdEf', 'aBcDeF']);
+console.log(capitalize("codewars"), ['CoDeWaRs', 'cOdEwArS']);
+console.log(capitalize("abracadabra"), ['AbRaCaDaBrA', 'aBrAcAdAbRa']);
+console.log(capitalize("codewarriors"), ['CoDeWaRrIoRs', 'cOdEwArRiOrS']);
