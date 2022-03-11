@@ -4103,3 +4103,21 @@ console.log(inAscOrder([1, 2, 4, 7, 19]), 'The list of numbers "1, 2, 4, 7, 19" 
 console.log(inAscOrder([1, 2, 3, 4, 5]), 'The list of numbers "1, 2, 3, 4, 5" is in ascending order');
 console.log(!inAscOrder([1, 6, 10, 18, 2, 4, 20]), 'The list of numbers "1, 6, 10, 18, 2, 4, 20" is not in ascending order');
 console.log(!inAscOrder([9, 8, 7, 6, 5, 4, 3, 2, 1]), 'The list of numbers "9, 8, 7, 6, 5, 4, 3, 2, 1" is in DESCENDING order not ascending order');
+
+// Find the capitals (7 kyu)
+
+/* 
+Instructions
+Write a function that takes a single string (word) as argument. The function must return an ordered list containing the indexes of all capital letters in the string.
+
+Example
+Test.assertSimilar( capitals('CodEWaRs'), [0,3,4,6] );
+*/
+
+const capitals = (word) => {
+	return word.split('')
+		.map((letter, index) => letter === letter.toUpperCase() ? index : null)
+		.filter(indexLetter => indexLetter !== null);
+};
+
+console.log(capitals('AodEWaRs'), [0, 3, 4, 6]);
