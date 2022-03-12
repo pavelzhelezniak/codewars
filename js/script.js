@@ -4121,3 +4121,60 @@ const capitals = (word) => {
 };
 
 console.log(capitals('AodEWaRs'), [0, 3, 4, 6]);
+
+// Valid Braces (6 kyu)
+
+/* 
+Write a function that takes a string of braces, and determines if the order of the braces is valid. 
+It should return true if the string is valid, and false if it's invalid.
+
+This Kata is similar to the Valid Parentheses Kata, 
+but introduces new characters: brackets [], and curly braces {}. 
+Thanks to @arnedag for the idea!
+
+All input strings will be nonempty, and will only consist of parentheses, brackets and curly braces: ()[]{}.
+
+What is considered Valid?
+A string of braces is considered valid if all braces are matched with the correct brace.
+
+Examples
+"(){}[]"   =>  True
+"([{}])"   =>  True
+"(}"       =>  False
+"[(])"     =>  False
+"[({})](]" =>  False
+*/
+
+const validBraces = (braces) => {
+	const arrayStack = [];
+
+	for (let i = 0; i < braces.length; i += 1) {
+		const first = arrayStack[arrayStack.length - 1];
+		if (braces[i] === '(' || braces[i] === '{' || braces[i] === '[') {
+			arrayStack.push(braces[i]);
+		} else if (braces[i] === ')' && first === '(' && arrayStack.length !== 0 || braces[i] === ']' && first === '[' && arrayStack.length !== 0 || braces[i] === '}' && first === '{' && arrayStack.length !== 0) {
+			arrayStack.pop();
+		} else {
+			return false;
+		}
+	}
+
+	return arrayStack.length === 0;
+}
+
+console.log(validBraces("()))", false));
+console.log(validBraces("()", true));
+console.log(validBraces("[]", true));
+console.log(validBraces("{}", true));
+console.log(validBraces("(){}[]", true));
+console.log(validBraces("([{}])", true));
+console.log(validBraces("(}", false));
+console.log(validBraces("[(])", false));
+console.log(validBraces("({})[({})]", true));
+console.log(validBraces("(})", false));
+console.log(validBraces("(({{[[]]}}))", true));
+console.log(validBraces("{}({})[]", true));
+console.log(validBraces(")(}{][", false));
+console.log(validBraces("())({}}{()][][", false));
+console.log(validBraces("(((({{", false));
+console.log(validBraces("}}]]))}])", false));
