@@ -4344,3 +4344,38 @@ console.log(findEvenIndex([1, 2, 3, 4, 3, 2, 1]), 3, "The array was: [1,2,3,4,3,
 console.log(findEvenIndex([1, 100, 50, -51, 1, 1]), 1, "The array was: [1,100,50,-51,1,1] \n");
 console.log(findEvenIndex([1, 2, 3, 4, 5, 6]), -1, "The array was: [1,2,3,4,5,6] \n");
 console.log(findEvenIndex([20, 10, 30, 10, 10, 15, 35]), 3, "The array was: [20,10,30,10,10,15,35] \n");
+
+// Where my anagrams at? (5 kyu)
+
+/* 
+What is an anagram? Well, two words are anagrams of each other if they both contain the same letters. For example:
+
+'abba' & 'baab' == true
+
+'abba' & 'bbaa' == true
+
+'abba' & 'abbba' == false
+
+'abba' & 'abca' == false
+Write a function that will find all the anagrams of a word from a list. 
+You will be given two inputs a word and an array with words. 
+You should return an array of all the anagrams or an empty array if there are none.
+*/
+
+const anagrams = (word, words) => {
+	const wordSort = word.split('').sort().join('');
+	const newWords = [];
+	for (let i = 0; i < words.length; i++) {
+		if (words[i].length === wordSort.length) {
+			const itemWordsSort = words[i].split('').sort().join('');
+			if (wordSort === itemWordsSort) {
+				newWords.push(words[i]);
+			}
+		}
+	}
+	return newWords;
+}
+
+console.log(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']), ['aabb', 'bbaa']);
+console.log(anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']), ['carer', 'racer']);
+console.log(anagrams('laser', ['lazing', 'lazy', 'lacer']), []);
