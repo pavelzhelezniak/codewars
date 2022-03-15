@@ -4379,3 +4379,49 @@ const anagrams = (word, words) => {
 console.log(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']), ['aabb', 'bbaa']);
 console.log(anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']), ['carer', 'racer']);
 console.log(anagrams('laser', ['lazing', 'lazy', 'lacer']), []);
+
+// Calculating with Functions (5 kyu)
+
+/* 
+This time we want to write calculations using functions and get the results. Let's have a look at some examples:
+
+seven(times(five())); // must return 35
+four(plus(nine())); // must return 13
+eight(minus(three())); // must return 5
+six(dividedBy(two())); // must return 3
+Requirements:
+
+There must be a function for each number from 0 ("zero") to 9 ("nine")
+There must be a function for each of the following mathematical operations: plus, minus, times, dividedBy
+Each calculation consist of exactly one operation and two numbers
+The most outer function represents the left operand, the most inner function represents the right operand
+Division should be integer division. For example, this should return 2, not 2.666666...:
+eight(dividedBy(three()));
+*/
+
+const expressions = (number, operation) => {
+	if (!operation)
+		return number;
+	return operation(number);
+}
+
+const zero = (operation) => expressions(0, operation);
+const one = (operation) => expressions(1, operation);
+const two = (operation) => expressions(2, operation);
+const three = (operation) => expressions(3, operation);
+const four = (operation) => expressions(4, operation);
+const five = (operation) => expressions(5, operation);
+const six = (operation) => expressions(6, operation);
+const seven = (operation) => expressions(7, operation);
+const eight = (operation) => expressions(8, operation);
+const nine = (operation) => expressions(9, operation);
+
+const plus = (x) => (y) => y + x;
+const minus = (x) => (y) => y - x;
+const times = (x) => (y) => y * x;
+const dividedBy = (x) => (y) => Math.floor(y / x);
+
+console.log(seven(times(five())), 35);
+console.log(four(plus(nine())), 13);
+console.log(eight(minus(three())), 5);
+console.log(six(dividedBy(two())), 3);
