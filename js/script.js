@@ -4425,3 +4425,29 @@ console.log(seven(times(five())), 35);
 console.log(four(plus(nine())), 13);
 console.log(eight(minus(three())), 5);
 console.log(six(dividedBy(two())), 3);
+
+// Rot13 (5 kyu)
+
+/* 
+ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. 
+ROT13 is an example of the Caesar cipher.
+
+Create a function that takes a string and returns the string ciphered with Rot13. 
+If there are numbers or special characters included in the string, they should be returned as they are. 
+Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".
+*/
+
+const rot13 = (message) => {
+	const originalAlpha = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	const cypher = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+
+	const newArrayMessage = [];
+	message.split('').forEach(item => {
+		const indexItem = originalAlpha.indexOf(item);
+		indexItem !== -1 ? newArrayMessage.push(cypher[indexItem]) : newArrayMessage.push(item)
+	})
+	return newArrayMessage.join('');
+}
+
+console.log(rot13('grfg'));
+console.log(rot13('Grfg'));
