@@ -4467,14 +4467,20 @@ For example, the input 'sTreSS' should return 'T'.
 */
 
 const firstNonRepeatingLetter = (s) => {
-	for (let i = 0; i < s.length; i++) {
-		let strLower = s.toLowerCase();
-		let letter = strLower.charAt(i);
-		if (s.indexOf(letter) === i && s.indexOf(letter, i + 1) === -1) {
-			return s[strLower.indexOf(letter)]
+	for (let item of s) {
+		if (s.match(new RegExp(item, "gi")).length === 1) {
+			return item;
 		}
 	}
 	return '';
+
+	/* 
+		let strLowerCase = s.toLowerCase();
+		for (let i = 0; i < t.length; i++)
+			if (strLowerCase.indexOf(strLowerCase[i]) === strLowerCase.lastIndexOf(strLowerCase[i]))
+				return s[i];
+		return '';
+	 */
 }
 
 console.log(firstNonRepeatingLetter('a'), 'a');
