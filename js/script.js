@@ -4486,3 +4486,24 @@ const firstNonRepeatingLetter = (s) => {
 console.log(firstNonRepeatingLetter('a'), 'a');
 console.log(firstNonRepeatingLetter('stress'), 't');
 console.log(firstNonRepeatingLetter('moonmen'), 'e');
+
+// Find the capitals (7 kyu)
+
+/* 
+Instructions
+Write a function that takes a single string (word) as argument. The function must return an ordered list containing the indexes of all capital letters in the string.
+
+Example
+Test.assertSimilar( capitals('CodEWaRs'), [0,3,4,6] );
+*/
+
+const capitalss = (word) => {
+	return word.split('').map((item, index) => {
+		if (item === item.toUpperCase()) {
+			return index;
+		}
+	})
+		.filter(item => typeof (item) === 'number')
+};
+
+console.log(capitalss('CodEWaRs'), [0, 3, 4, 6]);
