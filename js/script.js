@@ -4555,3 +4555,25 @@ const string1 = "two words"
 const string2 = "Hello words"
 console.log(wave(string1));
 console.log(wave(string2));
+
+// Break camelCase (6 kyu)
+
+/* 
+Complete the solution so that the function will break up camel casing, using a space between words.
+
+Example
+"camelCasing"  =>  "camel Casing"
+"identifier"   =>  "identifier"
+""             =>  ""
+*/
+
+const solutionss = (string) => {
+	const newString = [];
+	string.split('').forEach(item => {
+		item === item.toUpperCase() ? newString.push(` ${item}`) : newString.push(item);
+	});
+	return newString.join('')
+}
+
+console.log(solutionss('camelCasing'), 'camel Casing', 'Unexpected result');
+console.log(solutionss('camelCasingTest'), 'camel Casing Test', 'Unexpected result');
