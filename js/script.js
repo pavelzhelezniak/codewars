@@ -4761,3 +4761,55 @@ console.log("camel case method".camelCase(), "CamelCaseMethod");
 console.log("say hello ".camelCase(), "SayHello");
 console.log(" camel case word".camelCase(), "CamelCaseWord");
 console.log("".camelCase(), "");
+
+// Give me a Diamond (6 kyu)
+
+/* 
+Task
+You need to return a string that looks like a diamond shape when printed on the screen, using asterisk (*) characters. 
+Trailing spaces should be removed, and every line must be terminated with a newline character (\n).
+
+Return null/nil/None/... if the input is an even number or negative, 
+as it is not possible to print a diamond of even or negative size.
+
+Examples
+A size 3 diamond:
+
+ *
+***
+ *
+...which would appear as a string of " *\n***\n *\n"
+
+A size 5 diamond:
+
+  *
+ ***
+*****
+ ***
+  *
+...that is:
+
+"  *\n ***\n*****\n ***\n  *\n"
+*/
+
+const diamond = (n) => {
+	if (n % 2 === 0 || n <= 0) {
+		return null;
+	}
+
+	let numSpace = 0;
+	let diam = '*'.repeat(n) + '\n';
+
+	for (let i = n - 2; i >= 1; i -= 2) {
+		let nextRow = ' '.repeat(++numSpace) + '*'.repeat(i) + `\n`;
+		diam = nextRow + diam + nextRow;
+	}
+	return diam;
+}
+
+console.log(diamond(1), "*\n");
+console.log(diamond(3), " *\n***\n *\n");
+console.log(diamond(5), "  *\n ***\n*****\n ***\n  *\n");
+console.log(diamond(2), null);
+console.log(diamond(-3), null);
+console.log(diamond(0), null);
