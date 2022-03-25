@@ -4735,3 +4735,29 @@ let helper = new PaginationHelper(['a', 'b', 'c', 'd', 'e', 'f'], 4);
 
 console.log(helper.pageCount());
 console.log(helper.pageIndex());
+
+// CamelCase Method (6 kyu)
+
+/* 
+Write simple .camelCase method (camel_case function in PHP, CamelCase in C# or camelCase in Java) for strings. All words must have their first letter capitalized without spaces.
+
+For instance:
+
+"hello case".camelCase() => HelloCase
+"camel case word".camelCase() => CamelCaseWord
+*/
+
+String.prototype.camelCase = function () {
+	return this.trim()
+		.split(' ')
+		.map(item => {
+			return item !== '' ? item[0].toUpperCase() + item.slice(1) : '';
+		})
+		.join('');
+}
+
+console.log("test case".camelCase(), "TestCase");
+console.log("camel case method".camelCase(), "CamelCaseMethod");
+console.log("say hello ".camelCase(), "SayHello");
+console.log(" camel case word".camelCase(), "CamelCaseWord");
+console.log("".camelCase(), "");
