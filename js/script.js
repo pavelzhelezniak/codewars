@@ -4813,3 +4813,30 @@ console.log(diamond(5), "  *\n ***\n*****\n ***\n  *\n");
 console.log(diamond(2), null);
 console.log(diamond(-3), null);
 console.log(diamond(0), null);
+
+// Remove anchor from URL (7 kyu)
+
+/* 
+Complete the function/method so that it returns the url with anything after the anchor (#) removed.
+
+Examples
+"www.codewars.com#about" --> "www.codewars.com"
+"www.codewars.com?page=1" -->"www.codewars.com?page=1"
+*/
+
+const removeUrlAnchor = (url) => {
+	const arrUrl = url.split('');
+	let newUrl = '';
+	for (let i = 0; i < arrUrl.length; i++) {
+		if (arrUrl[i] === '#') {
+			break;
+		}
+		newUrl += arrUrl[i];
+	}
+	return newUrl;
+	// return url.split('#')[0];
+}
+
+console.log(removeUrlAnchor('www.codewars.com#about'), 'www.codewars.com');
+console.log(removeUrlAnchor('www.codewars.com/katas/?page=1#about'), 'www.codewars.com/katas/?page=1');
+console.log(removeUrlAnchor('www.codewars.com/katas/'), 'www.codewars.com/katas/');
