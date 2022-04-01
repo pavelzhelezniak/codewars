@@ -5133,3 +5133,47 @@ console.log(goodVsEvil('1 1 1 1 1 1', '1 1 1 1 1 1 1'), 'Battle Result: Evil era
 console.log(goodVsEvil('0 0 0 0 0 10', '0 1 1 1 1 0 0'), 'Battle Result: Good triumphs over Evil');
 console.log(goodVsEvil('1 0 0 0 0 0', '1 0 0 0 0 0 0'), 'Battle Result: No victor on this battle field');
 
+// Make the Deadfish Swim (6 kyu)
+
+/* 
+Write a simple parser that will parse and run Deadfish.
+
+Deadfish has 4 commands, each 1 character long:
+
+i increments the value (initially 0)
+d decrements the value
+s squares the value
+o outputs the value into the return array
+Invalid characters should be ignored.
+
+parse("iiisdoso") => [ 8, 64 ] */
+
+const parse = (data) => {
+	let value = 0;
+	const result = [];
+	for (let i = 0; i < data.length; i++) {
+		const letter = data[i];
+
+		switch (letter) {
+			case 'i':
+				value++;
+				break;
+			case 'd':
+				value--;
+				break;
+			case 's':
+				value = value ** 2;
+				break;
+			case 'o':
+				result.push(value);
+				break;
+
+			default:
+				break;
+		}
+	}
+	return result;
+}
+
+console.log(parse("iiisdoso"), [8, 64]);
+console.log(parse("iiisxxxdoso"), [8, 64]);
