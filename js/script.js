@@ -5260,3 +5260,32 @@ console.log(dataReverse(data1), data2);
 const data3 = [0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1];
 const data4 = [0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0];
 console.log(dataReverse(data3), data4);
+
+// Backspaces in string (6 kyu)
+
+/* 
+Assume "#" is like a backspace in string. This means that string "a#bc#d" actually is "bd"
+
+Your task is to process a string with "#" symbols.
+
+Examples
+"abc#d##c"      ==>  "ac"
+"abc##d######"  ==>  ""
+"#######"       ==>  ""
+""              ==>  ""
+*/
+
+const cleanString = (s) => {
+	const result = [];
+	for (const symbol of s) {
+		if (symbol === "#") {
+			result.pop();
+		} else {
+			result.push(symbol);
+		}
+	}
+	return result.join("");
+}
+
+console.log(cleanString('abc#d##c'), 'ac');
+console.log(cleanString('abc####d##c#'), '');
