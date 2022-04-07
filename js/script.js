@@ -5362,3 +5362,30 @@ const validPhoneNumber = (phoneNumber) => {
 console.log(validPhoneNumber("(123) 456-7890"), true);
 console.log(validPhoneNumber("(1111)555 2345"), false);
 console.log(validPhoneNumber("(098) 123 4567"), false);
+
+// Fix string case (7 kyu)
+
+/* 
+In this Kata, you will be given a string that may have mixed uppercase and 
+lowercase letters and your task is to convert that string to either lowercase only or uppercase only based on:
+
+make as few changes as possible.
+if the string contains equal number of uppercase and lowercase letters, convert the string to lowercase.
+For example:
+
+solve("coDe") = "code". Lowercase characters > uppercase. Change only the "D" to lowercase.
+solve("CODe") = "CODE". Uppercase characters > lowecase. Change only the "e" to uppercase.
+solve("coDE") = "code". Upper == lowercase. Change all to lowercase.
+*/
+
+const solve1 = (s) => {
+	const upper = s.split('').filter(item => item.match(/[A-Z]/)).length;
+	const lower = s.split('').filter(item => item.match(/[a-z]/)).length;
+
+	return lower >= upper ? s.toLowerCase() : s.toUpperCase();
+}
+
+console.log(solve1("code"), "code");
+console.log(solve1("CODe"), "CODE");
+console.log(solve1("COde"), "code");
+console.log(solve1("Code"), "code");
