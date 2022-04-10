@@ -5523,3 +5523,21 @@ const foldArray = (array, runs) => {
 
 console.log(foldArray([1, 2, 3, 4, 5], 3), [15]);
 console.log(foldArray([-9, 9, -8, 8, 66, 23], 1), [14, 75, 0]);
+
+// Flatten and sort an array (7 kyu)
+
+/* 
+Challenge:
+Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order.
+
+Example:
+Given [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]], your function should return [1, 2, 3, 4, 5, 6, 7, 8, 9].
+*/
+
+const flattenAndSorts = (array) => [].concat(...array).sort((a, b) => a - b)
+
+console.log(flattenAndSorts([]), []);
+console.log(flattenAndSorts([[], []]), []);
+console.log(flattenAndSorts([[], [1]]), [1]);
+console.log(flattenAndSorts([[3, 2, 1], [7, 9, 8], [6, 4, 5]]), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+console.log(flattenAndSorts([[1, 3, 5], [100], [2, 4, 6]]), [1, 2, 3, 4, 5, 6, 100]);
