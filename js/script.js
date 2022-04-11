@@ -5541,3 +5541,16 @@ console.log(flattenAndSorts([[], []]), []);
 console.log(flattenAndSorts([[], [1]]), [1]);
 console.log(flattenAndSorts([[3, 2, 1], [7, 9, 8], [6, 4, 5]]), [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 console.log(flattenAndSorts([[1, 3, 5], [100], [2, 4, 6]]), [1, 2, 3, 4, 5, 6, 100]);
+
+// Sum of angles (7 kyu)
+
+/* 
+Find the total sum of internal angles (in degrees) in an n-sided simple polygon. N will be greater than 2.
+*/
+
+const angle = (n) => {
+	return (n - 2) * 180;
+}
+
+console.log(angle(3), 180);
+console.log(angle(4), 360);
