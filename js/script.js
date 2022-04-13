@@ -5596,3 +5596,46 @@ const upArray = (arr) => {
 console.log(upArray([2, 3, 9]), [2, 4, 0]);
 console.log(upArray([4, 3, 2, 5]), [4, 3, 2, 6]);
 console.log(upArray([1, -9]), null);
+
+// Highest Rank Number in an Array (6 kyu)
+
+/* 
+Complete the method which returns the number which is most frequent in the given input array. 
+If there is a tie for most frequent number, return the largest number among them.
+
+Note: no empty arrays will be given.
+
+Examples
+[12, 10, 8, 12, 7, 6, 4, 10, 12]              -->  12
+[12, 10, 8, 12, 7, 6, 4, 10, 12, 10]          -->  12
+[12, 10, 8, 8, 3, 3, 3, 3, 2, 4, 10, 12, 10]  -->   3
+*/
+
+const highestRank = (arr) => {
+	const obj = {};
+
+	for (let i = 0; i < arr.length; i++) {
+		obj[arr[i]] ? obj[arr[i]]++ : obj[arr[i]] = 1;
+	}
+
+	let countMax = 0;
+	let valueMax = 0;
+
+	for (elem in obj) {
+		if (countMax <= obj[elem]) {
+			valueMax = Math.max(elem, valueMax)
+			countMax = Math.max(obj[elem], countMax);
+		}
+	}
+
+	return valueMax;
+}
+
+const arr123 = [12, 10, 8, 12, 7, 6, 4, 10, 12];
+const arr234 = [12, 10, 8, 12, 7, 6, 4, 10, 12, 10];
+const arr345 = [12, 10, 8, 8, 3, 3, 3, 3, 2, 4, 10, 12, 10];
+const arr456 = [12, 10, 8, 8, 3, 3, 3, 3, 2, 4, 10, 12, 10];
+console.log(highestRank(arr123), 12);
+console.log(highestRank(arr234), 12);
+console.log(highestRank(arr345), 3);
+console.log(highestRank(arr456), 3);
