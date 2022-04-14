@@ -5744,3 +5744,21 @@ console.log(numbers.sum(), 15, 'Wrong sum');
 console.log(numbers.average(), 3, 'Wrong average');
 console.log(numbers.even(), [2, 4], 'Wrong result for even()');
 console.log(numbers.odd(), [1, 3, 5], 'Wrong result for odd()');
+
+// Reverse every other word in the string (6 kyu)
+
+/* 
+Reverse every other word in a given string, then return the string. 
+Throw away any leading or trailing whitespace, while ensuring there is exactly one space between each word. 
+Punctuation marks should be treated as if they are a part of the word in this kata.
+*/
+
+const reverse = (str) => {
+	return str.trim()
+		.split(' ')
+		.map((item, index) => index % 2 === 0 ? item : item.split('').reverse().join(''))
+		.join(' ');
+}
+
+console.log(reverse("Reverse this string, please!"), "Reverse siht string, !esaelp");
+console.log(reverse("I really don't like reversing strings!"), "I yllaer don't ekil reversing !sgnirts");
