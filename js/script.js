@@ -5841,3 +5841,28 @@ console.log(gimme([-2, -3, -1]), 0);
 console.log(gimme([-5, -10, -14]), 1);
 console.log(gimme([-2, -3.2, 1]), 0);
 console.log(gimme([-5.2, -10.6, 14]), 0);
+
+// Sorted? yes? no? how? (7 kyu)
+
+/* 
+Complete the method which accepts an array of integers, and returns one of the following:
+
+"yes, ascending" - if the numbers in the array are sorted in an ascending order
+"yes, descending" - if the numbers in the array are sorted in a descending order
+"no" - otherwise
+You can assume the array will always be valid, and there will always be one correct answer.
+*/
+
+const isSortedAndHow = (array) => {
+	const arrSortAscending = [...array].sort((a, b) => a - b).toString();
+	const arrSortDescending = [...array].sort((a, b) => b - a).toString();
+
+	return array.toString() === arrSortAscending ? 'yes, ascending' :
+		array.toString() === arrSortDescending ?
+			'yes, descending' : 'no'
+
+}
+
+console.log(isSortedAndHow([1, 2]), 'yes, ascending');
+console.log(isSortedAndHow([15, 7, 3, -8]), 'yes, descending');
+console.log(isSortedAndHow([4, 2, 30]), 'no');
