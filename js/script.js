@@ -5866,3 +5866,19 @@ const isSortedAndHow = (array) => {
 console.log(isSortedAndHow([1, 2]), 'yes, ascending');
 console.log(isSortedAndHow([15, 7, 3, -8]), 'yes, descending');
 console.log(isSortedAndHow([4, 2, 30]), 'no');
+
+// Thinkful - String Drills: Repeater (7 kyu)
+
+/* 
+Write a function named repeater() that takes two arguments (a string and a number), 
+and returns a new string where the input string is repeated that many times.
+
+Example: (Input1, Input2 --> Output)
+"a", 5 --> "aaaaa"
+*/
+
+const repeater1 = (string, n) => string.repeat(n);
+
+console.log(repeater1('a', 5), 'aaaaa');
+console.log(repeater1('Na', 16), 'NaNaNaNaNaNaNaNaNaNaNaNaNaNaNaNa');
+console.log(repeater1('Wub ', 6), 'Wub Wub Wub Wub Wub Wub ');
