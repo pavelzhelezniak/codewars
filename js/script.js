@@ -5906,4 +5906,33 @@ const predictAge = (age1, age2, age3, age4, age5, age6, age7, age8) => {
 	return Math.floor(Math.sqrt(age1 ** 2 + age2 ** 2 + age3 ** 2 + age4 ** 2 + age5 ** 2 + age6 ** 2 + age7 ** 2 + age8 ** 2) / 2)
 }
 
-console.log(predictAge(65, 60, 75, 55, 60, 63, 64, 45), 86);   
+console.log(predictAge(65, 60, 75, 55, 60, 63, 64, 45), 86);
+
+// Grouped by commas (6 kyu)
+
+/* 
+Finish the solution so that it takes an input n (integer) and returns a string that is the decimal
+representation of the number grouped by commas after every 3 digits.
+
+Assume: 0 <= n < 2147483647
+*/
+
+const groupByCommas = (n) => {
+	let str = '';
+	const arr = n.toString().split('').reverse().forEach((item, index) => {
+		(index === 2 && n > 999) || (index === 5 && n > 999999) || (index === 8 && n > 999999999) ?
+			str += item + ',' :
+			str += item;
+	})
+
+	return str.split('').reverse().join('');
+}
+
+console.log(groupByCommas(1), '1');
+console.log(groupByCommas(10), '10');
+console.log(groupByCommas(100), '100');
+console.log(groupByCommas(1000), '1,000');
+console.log(groupByCommas(10000), '10,000');
+console.log(groupByCommas(100000), '100,000');
+console.log(groupByCommas(1000000), '1,000,000');
+console.log(groupByCommas(35235235), '35,235,235');
