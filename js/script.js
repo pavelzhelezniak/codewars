@@ -5936,3 +5936,60 @@ console.log(groupByCommas(10000), '10,000');
 console.log(groupByCommas(100000), '100,000');
 console.log(groupByCommas(1000000), '1,000,000');
 console.log(groupByCommas(35235235), '35,235,235');
+
+// New Cashier Does Not Know About Space or Shift (6 kyu)
+
+/* 
+All the orders they create look something like this:
+
+"milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza"
+
+The kitchen staff are threatening to quit, because of how difficult it is to read the orders.
+
+Their preference is to get the orders as a nice clean string with spaces and capitals like so:
+
+"Burger Fries Chicken Pizza Pizza Pizza Sandwich Milkshake Milkshake Coke"
+
+The kitchen staff expect the items to be in the same order as they appear in the menu.
+
+The menu items are fairly simple, there is no overlap in the names of the items:
+
+1. Burger
+2. Fries
+3. Chicken
+4. Pizza
+5. Sandwich
+6. Onionrings
+7. Milkshake
+8. Coke
+*/
+
+const getOrder = (input) => {
+	const menuItems = {
+		1: 'Burger',
+		2: 'Fries',
+		3: 'Chicken',
+		4: 'Pizza',
+		5: 'Sandwich',
+		6: 'Onionrings',
+		7: 'Milkshake',
+		8: 'Coke'
+	}
+	let resultMenu = '';
+
+	for (let item in menuItems) {
+		const regExp = new RegExp(menuItems[item], 'gi');
+		const arrayItems = input.match(regExp);
+		if (arrayItems !== null) {
+			const resultSubstr = arrayItems.map(item => item[0].toUpperCase() + item.slice(1)).join(' ');
+			resultMenu += `${resultSubstr} `;
+		}
+	}
+
+	return resultMenu.trim();
+}
+
+console.log(getOrder("milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza"),
+	"Burger Fries Chicken Pizza Pizza Pizza Sandwich Milkshake Milkshake Coke");
+console.log(getOrder("pizzachickenfriesburgercokemilkshakefriessandwich"),
+	"Burger Fries Fries Chicken Pizza Sandwich Milkshake Coke");
