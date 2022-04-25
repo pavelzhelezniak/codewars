@@ -6087,3 +6087,41 @@ console.log(chained([f1, f2, f3])(0), 4);
 console.log(chained([f1, f2, f3])(2), 36);
 console.log(chained([f3, f2, f1])(2), 12);
 console.log(chained([f4, f5, f6])("lorem ipsum"), "merol_muspi");
+
+// Srot the inner ctonnet in dsnnieedcg oredr (6 kyu)
+
+/* 
+You have to sort the inner content of every word of a string in descending order.
+
+The inner content is the content of a word without first and the last char.
+
+Some examples:
+
+"sort the inner content in descending order"  -->  "srot the inner ctonnet in dsnnieedcg oredr"
+"wait for me"        -->  "wiat for me"
+"this kata is easy"  -->  "tihs ktaa is esay"
+Words are made up of lowercase letters.
+
+The string will never be null and will never be empty. In C/C++ the string is always nul-terminated.
+
+Have fun coding it and please don't forget to vote and rank this kata! :-)
+
+I have also created other katas. Take a look if you enjoyed this kata!
+*/
+
+const sortTheInnerContent = (words) => words.split(' ')
+	.map(item =>
+		item.length !== 1 ?
+			item[0] +
+			item.slice(1, -1)
+				.split('')
+				.sort()
+				.reverse()
+				.join('') +
+			item[item.length - 1] :
+			item)
+	.join(' ')
+
+console.log(sortTheInnerContent("sort o the inner content in descending order"), "srot the inner ctonnet in dsnnieedcg oredr");
+console.log(sortTheInnerContent("wait for me"), "wiat for me");
+console.log(sortTheInnerContent("this kata is easy"), "tihs ktaa is esay");
