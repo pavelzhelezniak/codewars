@@ -6060,3 +6060,30 @@ const nbrOfLaps = (x, y) => {
 console.log(nbrOfLaps(5, 3), [3, 5]);
 console.log(nbrOfLaps(4, 6), [3, 2]);
 console.log(nbrOfLaps(5, 5), [1, 1]);
+
+// Unary function chainer (6 kyu)
+
+/* 
+Your task is to write a higher order function for chaining together a list of unary functions. 
+In other words, it should return a function that does a left fold on the given functions.
+
+chained([a,b,c,d])(input)
+Should yield the same result as
+
+d(c(b(a(input))))
+*/
+
+const chained = (functions) => (x) => functions.reduce((acc, item) => item(acc), x)
+
+const f1 = (x) => x * 2;
+const f2 = (x) => x + 2;
+const f3 = (x) => Math.pow(x, 2);
+
+const f4 = (x) => x.split("").concat().reverse().join("").split(" ");
+const f5 = (xs) => xs.concat().reverse();
+const f6 = (xs) => xs.join("_");
+
+console.log(chained([f1, f2, f3])(0), 4);
+console.log(chained([f1, f2, f3])(2), 36);
+console.log(chained([f3, f2, f1])(2), 12);
+console.log(chained([f4, f5, f6])("lorem ipsum"), "merol_muspi");
