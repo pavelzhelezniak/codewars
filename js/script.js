@@ -6125,3 +6125,54 @@ const sortTheInnerContent = (words) => words.split(' ')
 console.log(sortTheInnerContent("sort o the inner content in descending order"), "srot the inner ctonnet in dsnnieedcg oredr");
 console.log(sortTheInnerContent("wait for me"), "wiat for me");
 console.log(sortTheInnerContent("this kata is easy"), "tihs ktaa is esay");
+
+// String array duplicates (6 kyu)
+
+/* 
+In this Kata, you will be given an array of strings and your task is to remove 
+all consecutive duplicate letters from each string in the array.
+
+For example:
+
+dup(["abracadabra","allottee","assessee"]) = ["abracadabra","alote","asese"].
+
+dup(["kelless","keenness"]) = ["keles","kenes"].
+
+Strings will be lowercase only, no spaces. See test cases for more examples.
+
+Good luck!
+
+If you like this Kata, please try:
+*/
+
+const dup = (s) => {
+	const word = [];
+	const resultArr = [];
+
+	s.map((item) => {
+		item.split('')
+			.map((value, index, arr) => {
+				if (arr[index] !== arr[index + 1]) {
+					word.push(arr[index]);
+				}
+
+				if (index === arr.length - 1) {
+					resultArr.push(word.join(''));
+					word.length = 0;
+				}
+			});
+	});
+
+	return resultArr;
+};
+
+// const dup = s => s.map(w => w.split('').filter((c, i, arr) => c !== arr[i - 1]).join(''));
+
+console.log(dup(["ccooddddddewwwaaaaarrrrsssss", "piccaninny", "hubbubbubboo"]), ['codewars', 'picaniny', 'hubububo']);
+console.log(dup(["abracadabra", "allottee", "assessee"]), ['abracadabra', 'alote', 'asese']);
+console.log(dup(["kelless", "keenness"]), ['keles', 'kenes']);
+console.log(dup(["Woolloomooloo", "flooddoorroommoonlighters", "chuchchi"]), ['Wolomolo', 'flodoromonlighters', 'chuchchi']);
+console.log(dup(["adanac", "soonness", "toolless", "ppellee"]), ['adanac', 'sones', 'toles', 'pele']);
+console.log(dup(["callalloo", "feelless", "heelless"]), ['calalo', 'feles', 'heles']);
+console.log(dup(["putteellinen", "keenness"]), ['putelinen', 'kenes']);
+console.log(dup(["kelless", "voorraaddoosspullen", "achcha"]), ['keles', 'voradospulen', 'achcha']);
