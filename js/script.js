@@ -6274,3 +6274,74 @@ const answer3 = [
 console.log(findSenior(list1), answer1);
 console.log(findSenior(list2), answer2);
 console.log(findSenior(list3), answer3);
+
+// Kebabize (6 kyu)
+
+/* 
+Modify the kebabize function so that it converts a camel case string into a kebab case.
+
+kebabize('camelsHaveThreeHumps') // camels-have-three-humps
+kebabize('camelsHave3Humps') // camels-have-humps
+Notes:
+
+the returned string should only contain lowercase letters
+*/
+
+const kebabize = (str) => {
+	let newStr = '';
+
+	for (let i = 0; i < str.length; i++) {
+		const elem = str[i];
+		if (str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122) {
+			newStr += elem;
+		}
+		if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90 && i === 0) {
+			newStr += elem.toLowerCase();
+		} else if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
+			newStr += '-' + elem.toLowerCase();
+		}
+	}
+
+	return newStr;
+}
+
+console.log(kebabize('myCamelCasedString'), 'my-camel-cased-string');
+console.log(kebabize('myCamelHas3Humps'), 'my-camel-has-humps');
+
+// Autocomplete! Yay! (6 kyu)
+
+/* 
+It's time to create an autocomplete function! Yay!
+
+The autocomplete function will take in an input string and a dictionary array and 
+return the values from the dictionary that start with the input string. 
+If there are more than 5 matches, restrict your output to the first 5 results. 
+If there are no matches, return an empty array.
+
+Example:
+
+autocomplete('ai', ['airplane','airport','apple','ball']) = ['airplane','airport']
+For this kata, the dictionary will always be a valid array of strings. 
+Please return all results in the order given in the dictionary, even if they're not always alphabetical. 
+The search should NOT be case sensitive, but the case of the word should be preserved when it's returned.
+
+For example, "Apple" and "airport" would both return for an input of 'a'. 
+However, they should return as "Apple" and "airport" in their original cases.
+*/
+
+const autocomplete = (input, dictionary) => {
+	const newDictionary = [];
+	const resultInput = input.match(/[a-zA-Z]/g).join('');
+	for (let i = 0; i < dictionary.length; i++) {
+		const elem = dictionary[i];
+		if (elem.toLowerCase().indexOf(resultInput.toLowerCase()) === 0) {
+			if (newDictionary.length < 5)
+				newDictionary.push(elem);
+		}
+	}
+
+	return newDictionary;
+}
+
+console.log(autocomplete('ai', ['airplane', 'airport', 'apple', 'ball']), ['airplane', 'airport'])
+console.log(autocomplete('n~!@#$%^&*()_+1234567890ope', ['Nopesville', 'Green', 'Narnia']), ['Nopesville'])
