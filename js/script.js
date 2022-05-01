@@ -6345,3 +6345,45 @@ const autocomplete = (input, dictionary) => {
 
 console.log(autocomplete('ai', ['airplane', 'airport', 'apple', 'ball']), ['airplane', 'airport'])
 console.log(autocomplete('n~!@#$%^&*()_+1234567890ope', ['Nopesville', 'Green', 'Narnia']), ['Nopesville'])
+
+// Format words into a sentence (6 kyu)
+
+/* 
+Complete the method so that it formats the words into a single comma separated value. 
+The last word should be separated by the word 'and' instead of a comma. 
+The method takes in an array of strings and returns a single formatted string.
+
+Note:
+
+Empty string values should be ignored.
+Empty arrays or null/nil/None values being passed into the method should result in an empty string being returned.
+Example: (Input --> output)
+
+['ninja', 'samurai', 'ronin'] --> "ninja, samurai and ronin"
+['ninja', '', 'ronin'] --> "ninja and ronin"
+[] -->""
+*/
+
+const formatWords = (words) => {
+	if (!words) return '';
+	words = words.filter((word) => word.length);
+	let stringWords = '';
+	for (let i = 0; i < words.length; i++) {
+		if (i === words.length - 1 && i > 0) {
+			stringWords += ` and `;
+		} else if (i > 0) {
+			stringWords += `, `;
+		}
+		stringWords += words[i];
+	}
+	return stringWords;
+}
+
+console.log(formatWords(['one', 'two', 'three', 'four']), 'one, two, three and four', "formatWords(['one', 'two', 'three', 'four'] should return 'one, two, three and four'");
+console.log(formatWords(['one']), 'one', "formatWords(['one']) should return 'one'");
+console.log(formatWords(['one', '', 'three']), 'one and three', "formatWords(['one', '', 'three']) should return 'one and three'");
+console.log(formatWords(['', '', 'three']), 'three', "formatWords(['', '', 'three']) should return 'three'");
+console.log(formatWords(['one', 'two', '']), 'one and two', "formatWords(['one', 'two', '']) should return 'one and two'");
+console.log(formatWords([]), '', 'formatWords([]) should return ""');
+console.log(formatWords(null), '', 'formatWords(null) should return ""');
+console.log(formatWords(['']), '', 'formatWords([""]) should return ""');
