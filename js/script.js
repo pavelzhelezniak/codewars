@@ -6490,6 +6490,9 @@ const prefill = (n, v) => {
 	}
 
 	return new Array(n).fill(v);
+
+	// if (parseInt(n) !== Math.abs(n)) throw new TypeError(`${n} is invalid`);
+	// return +n ? Array(n).fill(v) : [];
 }
 
 console.log(prefill(3, 1), [1, 1, 1]);
