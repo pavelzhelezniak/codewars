@@ -6530,3 +6530,37 @@ console.log(twistedSum(3), 6, "n = 3");
 console.log(twistedSum(10), 46, "n = 10");
 console.log(twistedSum(11), 48, "n = 11");
 console.log(twistedSum(12), 51, "n = 12");
+
+// Where is my parent!?(cry) (6 kyu)
+
+/* 
+Mothers arranged a dance party for the children in school. 
+At that party, there are only mothers and their children. 
+All are having great fun on the dance floor when suddenly all the lights went out. 
+It's a dark night and no one can see each other. 
+But you were flying nearby and you can see in the dark and have ability to teleport people anywhere you want.
+
+Legend:
+-Uppercase letters stands for mothers, lowercase stand for their children, i.e. 
+"A" mother's children are "aaaa".
+-Function input: String contains only letters, uppercase letters are unique.
+Task:
+Place all people in alphabetical order where Mothers are followed by their children, 
+i.e. "aAbaBb" => "AaaBbb".
+*/
+
+const findChildren = (dancingBrigade) => {
+	let newString = '';
+	dancingBrigade = dancingBrigade.split('')
+		.sort()
+		.join('')
+		.match(/[A-Z]/g)
+		.forEach(item => {
+			let regExp = new RegExp(item.toLowerCase(), 'g');
+			newString += item + dancingBrigade.match(regExp).join('');
+		})
+	return newString;
+};
+
+console.log(findChildren("beeeEBb"), "BbbEeee");
+console.log(findChildren("uwwWUueEe"), "EeeUuuWww");
