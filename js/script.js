@@ -6637,11 +6637,35 @@ const zipWith = (fn, a0, a1) => {
 	return result;
 }
 
-const plus = (a, b) => a + b;
-console.log(zipWith(plus, [0, 1, 2, 3, 4], [6, 5, 4, 3, 2, 1]), [6, 6, 6, 6, 6]);
-console.log(zipWith(plus, [0, 1, 2, 3, 4, 5], [6, 5, 4, 3, 2, 1]), [6, 6, 6, 6, 6, 6]);
-console.log(zipWith(plus, [0, 1, 2, 3, 4, 5], [6, 5, 4, 3, 2]), [6, 6, 6, 6, 6]);
+const pluss = (a, b) => a + b;
+console.log(zipWith(pluss, [0, 1, 2, 3, 4], [6, 5, 4, 3, 2, 1]), [6, 6, 6, 6, 6]);
+console.log(zipWith(pluss, [0, 1, 2, 3, 4, 5], [6, 5, 4, 3, 2, 1]), [6, 6, 6, 6, 6, 6]);
+console.log(zipWith(pluss, [0, 1, 2, 3, 4, 5], [6, 5, 4, 3, 2]), [6, 6, 6, 6, 6]);
 console.log(zipWith(Math.pow, [10, 10, 10, 10], [0, 1, 2, 3]), [1, 10, 100, 1000]);
 console.log(zipWith(Math.max, [1, 4, 7, 1, 4, 7], [4, 7, 1, 4, 7, 1]), [4, 7, 7, 4, 7, 7]);
 console.log(zipWith(function (a, b) { return a + b; }, [0, 1, 2, 3], [0, 1, 2, 3]), [0, 2, 4, 6]);
 console.log(zipWith((a, b) => a + b, [0, 1, 2, 3], [0, 1, 2, 3]), [0, 2, 4, 6]);
+
+// Sort Arrays (Ignoring Case) (6 kyu)
+
+/* 
+Sort the given array of strings in alphabetical order, case insensitive. For example:
+
+["Hello", "there", "I'm", "fine"]  -->  ["fine", "Hello", "I'm", "there"]
+["C", "d", "a", "B"])              -->  ["a", "B", "C", "d"]
+*/
+
+const sortme = (names) => {
+	names.sort(function (s1, s2) {
+		const a = s1.toLowerCase();
+		const b = s2.toLowerCase();
+		return a === b ? 0 : a > b ? 1 : -1;
+	})
+
+	return names;
+}
+
+console.log(sortme(["Hello", "there", "I'm", "fine"]), ["fine", "Hello", "I'm", "there"]);
+console.log(sortme(["C", "d", "a", "B"]), ["a", "B", "C", "d"]);
+console.log(sortme(["CodeWars"]), ["CodeWars"]);
+console.log(sortme([]), []);
