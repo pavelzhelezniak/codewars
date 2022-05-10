@@ -6703,4 +6703,43 @@ console.log(lowestProduct("123456789"), 24);
 console.log(lowestProduct("234567899"), 120);
 console.log(lowestProduct("2345611117899"), 1);
 console.log(lowestProduct("333"), "Number is too small");
-console.log(lowestProduct("1234111"), 4, "Numbers should be consecutives");   
+console.log(lowestProduct("1234111"), 4, "Numbers should be consecutives");
+
+// A Chain adding function (5 kyu)
+
+/* 
+We want to create a function that will add numbers together when called in succession.
+
+add(1)(2); // == 3
+We also want to be able to continue to add numbers to our chain.
+
+add(1)(2)(3); // == 6
+add(1)(2)(3)(4); //  == 10
+add(1)(2)(3)(4)(5); // == 15
+and so on.
+
+A single call should be equal to the number passed in.
+
+add(1); // == 1
+We should be able to store the returned values and reuse them.
+
+var addTwo = add(2);
+addTwo; // == 2
+addTwo + 5; // == 7
+addTwo(3); // == 5
+addTwo(3)(5); // == 10
+We can assume any number being passed in will be valid whole number.
+*/
+
+const add123 = (n) => {
+	const func = (x) => add123(n + x);
+	func.valueOf = () => n;
+
+	return func;
+}
+
+console.log(add123(1)(2), 3);
+console.log(add123(1)(2)(3), 6);
+console.log(add123(1)(2)(3)(4), 10);
+console.log(add123(1)(2)(3)(4)(5), 15);
+console.log(add123(1)(2) + 3, 6);
