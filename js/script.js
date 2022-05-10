@@ -6669,3 +6669,38 @@ console.log(sortme(["Hello", "there", "I'm", "fine"]), ["fine", "Hello", "I'm", 
 console.log(sortme(["C", "d", "a", "B"]), ["a", "B", "C", "d"]);
 console.log(sortme(["CodeWars"]), ["CodeWars"]);
 console.log(sortme([]), []);
+
+// Lowest product of 4 consecutive numbers (6 kyu)
+
+/* 
+Create a function that returns the lowest product of 4 consecutive digits in a number given as a string.
+
+This should only work if the number has 4 digits or more. If not, return "Number is too small".
+
+Example
+lowestProduct("123456789") --> 24 (1x2x3x4)
+lowestProduct("35") --> "Number is too small"
+*/
+
+const lowestProduct = (input) => {
+	if (input.length < 4) {
+		return "Number is too small";
+	}
+
+	const resultArr = [];
+	const inputArr = input.split('').map(Number);
+
+	for (let i = 0; i < inputArr.length - 3; i++) {
+		const sumSliceInput = inputArr.slice(i, i + 4).reduce((acc, item) => acc * item, 1);
+		resultArr.push(sumSliceInput);
+
+	}
+
+	return Math.min(...resultArr);
+}
+
+console.log(lowestProduct("123456789"), 24);
+console.log(lowestProduct("234567899"), 120);
+console.log(lowestProduct("2345611117899"), 1);
+console.log(lowestProduct("333"), "Number is too small");
+console.log(lowestProduct("1234111"), 4, "Numbers should be consecutives");   
