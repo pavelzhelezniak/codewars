@@ -6762,7 +6762,10 @@ Letter frequency analysis is often used to analyse simple substitution cipher te
 */
 
 const letterFrequency = (text) => {
-	const newText = text.match(/[A-Z]/gi).join('').toLowerCase();
+	let newText = text.match(/[A-Z]/gi)
+	if (newText === null) return []
+
+	newText = newText.join('').toLowerCase();
 
 	const objText = [...newText].reduce((acc, cur) => {
 		acc[cur] = (acc[cur] || 0) + 1;
