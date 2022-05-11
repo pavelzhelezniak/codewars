@@ -6743,3 +6743,37 @@ console.log(add123(1)(2)(3), 6);
 console.log(add123(1)(2)(3)(4), 10);
 console.log(add123(1)(2)(3)(4)(5), 15);
 console.log(add123(1)(2) + 3, 6);
+
+// Character frequency (6 kyu)
+
+/* 
+Write a function that takes a piece of text in the form of a string and returns the letter frequency count for the text. 
+This count excludes numbers, spaces and all punctuation marks. 
+Upper and lower case versions of a character are equivalent and the result should all be in lowercase.
+
+The function should return a list of tuples (in Python and Haskell) 
+or arrays (in other languages) sorted by the most frequent letters first. The Rust implementation should return an ordered BTreeMap. Letters with the same frequency are ordered alphabetically. For example:
+
+letterFrequency('aaAabb dddDD hhcc')
+will return
+
+[['d',5], ['a',4], ['b',2], ['c',2], ['h',2]]
+Letter frequency analysis is often used to analyse simple substitution cipher texts like those created by the Caesar cipher.
+*/
+
+const letterFrequency = (text) => {
+	const newText = text.match(/[A-Z]/gi).join('').toLowerCase();
+
+	const objText = [...newText].reduce((acc, cur) => {
+		acc[cur] = (acc[cur] || 0) + 1;
+		return acc;
+	}, {})
+
+
+	return Object.entries(objText).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+
+}
+
+console.log(letterFrequency('wklv lv d vhfuhw phvvdjh'), [['v', 5], ['h', 4], ['d', 2], ['l', 2], ['w', 2], ['f', 1], ['j', 1], ['k', 1], ['p', 1], ['u', 1]]);
+console.log(letterFrequency("As long as I'm learning something, I figure I'm OK - it's a decent day."), [["i", 7], ["a", 5], ["e", 5], ["n", 5], ["g", 4], ["s", 4], ["m", 3], ["o", 3], ["t", 3], ["d", 2], ["l", 2], ["r", 2], ["c", 1], ["f", 1], ["h", 1], ["k", 1], ["u", 1], ["y", 1]]);
+console.log(letterFrequency('IWT LDGAS XH HIXAA P LTXGS EAPRT, STHEXIT BN TUUDGIH ID BPZT RATPG PCS ETGUTRI HTCHT DU XI.'), [["t", 12], ["i", 7], ["h", 6], ["a", 5], ["g", 5], ["p", 5], ["x", 5], ["d", 4], ["s", 4], ["u", 4], ["e", 3], ["r", 3], ["b", 2], ["c", 2], ["l", 2], ["n", 1], ["w", 1], ["z", 1]]);
