@@ -6801,3 +6801,33 @@ console.log(alphanumeric("hello world_"), false)
 console.log(alphanumeric("PassW0rd"), true)
 console.log(alphanumeric("     "), false)
 
+// Convert PascalCase string into snake_case (5 kyu)
+
+/* 
+Complete the function/method so that it takes a PascalCase string and returns the string in snake_case notation. Lowercase characters can be numbers. If the method gets a number as input, it should return a string.
+
+Examples
+"TestController"  -->  "test_controller"
+"MoviesAndBooks"  -->  "movies_and_books"
+"App7Test"        -->  "app7_test"
+1                 -->  "1"
+*/
+
+const toUnderscore = (string) => {
+	const letterUpperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	let newStr = '';
+	string = string.toString();
+	for (let i = 0; i < string.length; i++) {
+		const elem = string[i];
+		i === 0 ? newStr += elem.toLowerCase() :
+			letterUpperCase.includes(elem) ? newStr += `_${elem.toLowerCase()}` :
+				newStr += elem;
+	}
+
+	return newStr;
+}
+
+console.log(toUnderscore("TestController"), "test_controller");
+console.log(toUnderscore("MoviesAndBooks"), "movies_and_books");
+console.log(toUnderscore("App7Test"), "app7_test");
+console.log(toUnderscore(1), "1");
