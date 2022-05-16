@@ -6897,3 +6897,39 @@ console.log(encode('hello'), 'h2ll4');
 console.log(encode('How are you today?'), 'H4w 1r2 y45 t4d1y?');
 console.log(encode('This is an encoding test.'), 'Th3s 3s 1n 2nc4d3ng t2st.');
 console.log(decode('h2ll4'), 'hello');
+
+// Dashatize it (6 kyu)
+
+/* 
+Given a variable n,
+If n is an integer, Return a string with dash'-'marks before and after each odd integer, 
+but do not begin or end the string with a dash mark. 
+If n is negative, then the negative sign should be removed.
+If n is not an integer, return an empty value.
+Ex:
+dashatize(274) -> '2-7-4'
+dashatize(6815) -> '68-1-5'
+*/
+
+const dashatize = (num) => {
+	if (isNaN(num)) return 'NaN';
+
+	return (Math.abs(num).toString().split('').map((n, i, a) => {
+		let isFirstLetter = i == 0;
+		let isOdd = Boolean(+n % 2);
+		let isPrevOdd = Boolean(+a[i - 1] % 2);
+		return isFirstLetter ? n : (isOdd || isPrevOdd ? `-${n}` : `${n}`);
+	}
+	).join(''));
+
+	// return isNaN(num) ? 'NaN' : num.toString().match(/([13579]|[02468]+)/g).join('-');
+}
+
+console.log(dashatize(274), "2-7-4", "Should return 2-7-4");
+console.log(dashatize(5311), "5-3-1-1", "Should return 5-3-1-1");
+console.log(dashatize(86320), "86-3-20", "Should return 86-3-20");
+console.log(dashatize(974302), "9-7-4-3-02", "Should return 9-7-4-3-02");
+console.log(dashatize(NaN), "NaN", "Should return NaN");
+console.log(dashatize(0), "0", "Should return 0");
+console.log(dashatize(-1), "1", "Should return 1");
+console.log(dashatize(-28369), "28-3-6-9", "Should return 28-3-6-9");
