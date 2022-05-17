@@ -6933,3 +6933,38 @@ console.log(dashatize(NaN), "NaN", "Should return NaN");
 console.log(dashatize(0), "0", "Should return 0");
 console.log(dashatize(-1), "1", "Should return 1");
 console.log(dashatize(-28369), "28-3-6-9", "Should return 28-3-6-9");
+
+// Decipher this! (6 kyu)
+
+/* 
+You are given a secret message you need to decipher. 
+Here are the things you need to know to decipher it:
+
+For each word:
+
+the second and the last letter is switched (e.g. Hello becomes Holle)
+the first letter is replaced by its character code (e.g. H becomes 72)
+Note: there are no special characters used, only letters and spaces
+
+Examples
+
+decipherThis('72olle 103doo 100ya'); // 'Hello good day'
+decipherThis('82yade 115te 103o'); // 'Ready set go'
+*/
+
+const decipherThis = (str) => {
+	return str = str.split(' ').map((item, index, array) => {
+		const num = String.fromCharCode(parseInt(item, 10));
+		const word = (item.match(/[a-zA-Z]/gi) || []).join('');
+		const sliceWord = word.slice(1, word.length - 1);
+		return word.length === 0 ? num :
+			word.length === 1 ? num + word[0] :
+				word.length === 2 ? num + word[1] + word[0] :
+					num + word[word.length - 1] + sliceWord + word[0]
+	}).join(' ');
+};
+
+
+console.log(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'), 'Have a go at this and see how you do');
+console.log(decipherThis('72olle 103doo 100ya'), 'Hello good day');
+console.log(decipherThis('82yade 115te 103o'), 'Ready set go'); 
