@@ -6967,4 +6967,50 @@ const decipherThis = (str) => {
 
 console.log(decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o'), 'Have a go at this and see how you do');
 console.log(decipherThis('72olle 103doo 100ya'), 'Hello good day');
-console.log(decipherThis('82yade 115te 103o'), 'Ready set go'); 
+console.log(decipherThis('82yade 115te 103o'), 'Ready set go');
+
+// extract file name (6 kyu)
+
+/* 
+You have to extract a portion of the file name as follows:
+
+Assume it will start with date represented as long number
+Followed by an underscore
+You'll have then a filename with an extension
+it will always have an extra extension at the end
+Inputs:
+1231231223123131_FILE_NAME.EXTENSION.OTHEREXTENSION
+
+1_This_is_an_otherExample.mpg.OTHEREXTENSIONadasdassdassds34
+
+1231231223123131_myFile.tar.gz2
+Outputs
+FILE_NAME.EXTENSION
+
+This_is_an_otherExample.mpg
+
+myFile.tar
+Acceptable characters for random tests:
+
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-0123456789
+
+The recommended way to solve it is using RegEx and specifically groups.
+*/
+
+class FileNameExtractor {
+	static extractFileName(dirtyFileName) {
+		dirtyFileName = dirtyFileName.split('_');
+		dirtyFileName.shift();
+		dirtyFileName = dirtyFileName.join('_');
+		dirtyFileName = dirtyFileName.split('.');
+		dirtyFileName.pop();
+		dirtyFileName = dirtyFileName.join('.');
+		return dirtyFileName
+		// return dirtyFileName.slice(dirtyFileName.indexOf('_') + 1, dirtyFileName.lastIndexOf('.'));
+	}
+}
+
+console.log(FileNameExtractor.extractFileName("1_FILE_NAME.EXTENSION.OTHEREXTENSIONadasdassdassds34"), "FILE_NAME.EXTENSION");
+console.log(FileNameExtractor.extractFileName("1231231223123131_FILE_NAME.EXTENSION.OTHEREXTENSION"), "FILE_NAME.EXTENSION");
+console.log(FileNameExtractor.extractFileName("1_This_is_an_otherExample.mpg.OTHEREXTENSIONadasdassdassds34"), "This_is_an_otherExample.mpg");
+console.log(FileNameExtractor.extractFileName("1231231223123131_myFile.tar.gz2"), "myFile.tar");
