@@ -7121,3 +7121,30 @@ console.log(getDivisorsCnt(1), 1);
 console.log(getDivisorsCnt(10), 4);
 console.log(getDivisorsCnt(11), 2);
 console.log(getDivisorsCnt(54), 8);
+
+// String transformer (6 kyu)
+
+/* 
+Given a string, return a new string that has transformed based on the input:
+Change case of every character, ie. lower case to upper case, upper case to lower case.
+Reverse the order of words from the input.
+Note: You will have to handle multiple spaces, and leading/trailing spaces.
+
+For example:
+"Example Input" ==> "iNPUT eXAMPLE"
+You may assume the input only contain English alphabet and spaces.
+*/
+
+const stringTransformer = (str) => {
+	const allLowerCase = 'abcdefghijklmnopqrstufvwxyz';
+
+	return str.split('')
+		.map(item => allLowerCase.indexOf(item) === -1 ? item.toLowerCase() : item.toUpperCase())
+		.join('')
+		.split(' ')
+		.reverse()
+		.join(' ')
+}
+
+console.log(stringTransformer('Example string'), 'STRING eXAMPLE');
+console.log(stringTransformer('Gas Etp Myx   Ebxv   Ewtu'), 'STRING eXAMPLE');
