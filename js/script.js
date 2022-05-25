@@ -7175,3 +7175,37 @@ console.log(grabscrab("ainstuomn", ["mountains", "hills", "mesa"]), ["mountains"
 console.log(grabscrab("oolp", ["donkey", "pool", "horse", "loop"]), ["pool", "loop"], "Should have found 'pool' and 'loop'");
 console.log(grabscrab("ortsp", ["sport", "parrot", "ports", "matey"]), ["sport", "ports"], "Should have found 'sport' and 'ports'");
 console.log(grabscrab("ourf", ["one", "two", "three"]), [], "Should not have found anything");
+
+// Sequences and Series (6 kyu)
+
+/* 
+Have a look at the following numbers.
+
+ n | score
+---+-------
+ 1 |  50
+ 2 |  150
+ 3 |  300
+ 4 |  500
+ 5 |  750
+Can you find a pattern in it? If so, then write a function getScore(n)/get_score(n)/GetScore(n) 
+which returns the score for any positive number n.
+
+Note Real test cases consists of 100 random cases where 1 <= n <= 10000
+*/
+
+const getScore = (n) => {
+	let res = 0;
+	for (let i = 0; i <= n; i++) {
+		res += i * 50;
+	}
+
+	return res;
+}
+
+console.log(getScore(1), 50);
+console.log(getScore(2), 150);
+console.log(getScore(3), 300);
+console.log(getScore(4), 500);
+console.log(getScore(5), 750);
+console.log(getScore(80), 162000);
