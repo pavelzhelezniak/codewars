@@ -7209,3 +7209,42 @@ console.log(getScore(3), 300);
 console.log(getScore(4), 500);
 console.log(getScore(5), 750);
 console.log(getScore(80), 162000);
+
+// Numericals of a String (6 kyu)
+
+/* 
+You are given an input string.
+For each symbol in the string if it's the first character occurrence, 
+replace it with a '1', else replace it with the amount of times you've already seen it.
+Examples:
+input   =  "Hello, World!"
+result  =  "1112111121311"
+
+input   =  "aaaaaaaaaaaa"
+result  =  "123456789101112"
+There might be some non-ascii characters in the string.
+*/
+
+const numericals = (s) => {
+	const resAlf = {};
+	let resStr = '';
+
+	for (let i = 0; i < s.length; i++) {
+		const elem = s[i];
+		if (!resAlf.hasOwnProperty(elem)) {
+			resAlf[elem] = 1;
+			resStr += resAlf[elem];
+		} else {
+			resAlf[elem]++;
+			resStr += resAlf[elem];
+		}
+	}
+
+	return resStr;
+}
+
+console.log(numericals("Hello, World!"), "1112111121311");
+console.log(numericals("Hello, World! It's me, JomoPipi!"), "11121111213112111131224132411122");
+console.log(numericals("hello hello"), "11121122342");
+console.log(numericals("Hello"), "11121");
+console.log(numericals("aaaaaaaaaaaa"), "123456789101112");
