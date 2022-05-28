@@ -7301,3 +7301,54 @@ console.log(validate(123), false);
 console.log(validate(1), false);
 console.log(validate(2121), true);
 console.log(validate(1230), true);
+
+// Character with longest consecutive repetition (6 kyu)
+
+/* 
+For a given string s find the character c (or C) with longest consecutive repetition and return:
+[c, l]
+where l (or L) is the length of the repetition. 
+If there are two or more characters with the same l return the first in order of appearance.
+
+For empty string return:
+["", 0]
+
+In JavaScript: If you use Array.sort in your solution, 
+you might experience issues with the random tests as 
+Array.sort is not stable in the Node.js version used by CodeWars. 
+This is not a kata issue.
+
+Happy coding! :)
+*/
+
+const longestRepetition = (s) => {
+	const resArr = [];
+	let resStr = s[0];
+
+	if (s.length === 0) return ['', 0];
+
+	for (let i = 1; i < s.length; i++) {
+		const elem = s[i];
+		if (i === s.length - 1 && elem === s[i - 1]) {
+			resStr += elem;
+			resArr.push(resStr);
+		}
+		else if (elem === s[i - 1]) {
+			resStr += elem;
+		} else if (elem !== s[i - 1]) {
+			resArr.push(resStr);
+			resStr = elem;
+
+		}
+	}
+	const maxLength = Math.max(...resArr.map(item => item.length));
+	return [resArr.filter(item => item.length === maxLength)[0][0], maxLength];
+}
+
+console.log(longestRepetition("aaaabb"), ["a", 4]);
+console.log(longestRepetition("bbbaaabaaaa"), ["a", 4]);
+console.log(longestRepetition("cbdeuuu900"), ["u", 3]);
+console.log(longestRepetition("abbbbb"), ["b", 5]);
+console.log(longestRepetition("aabb"), ["a", 2]);
+console.log(longestRepetition(""), ["", 0]);
+console.log(longestRepetition("ba"), ["b", 1]);
