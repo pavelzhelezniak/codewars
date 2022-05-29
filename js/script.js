@@ -7352,3 +7352,24 @@ console.log(longestRepetition("abbbbb"), ["b", 5]);
 console.log(longestRepetition("aabb"), ["a", 2]);
 console.log(longestRepetition(""), ["", 0]);
 console.log(longestRepetition("ba"), ["b", 1]);
+
+// Is Integer Array? (6 kyu)
+
+/*
+Description:
+Write a function isIntArray with the below signature.
+function isIntArray(arr) {
+	 return true;
+}
+returns true if every element in an array is an integer. 
+returns true if array is empty.
+returns false for every other input.
+*/
+
+const isIntArray = (arr) => {
+	return Array.isArray(arr) && arr.every(function (x) { return Math.floor(x) === x });
+}
+
+console.log(isIntArray([]), true, "Input: []");
+console.log(isIntArray([1, 2, 3, 4]), true, "Input: [1, 2, 3, 4]");
+console.log(isIntArray([1, 2, 3, NaN]), false, "Input: [1, 2, 3, NaN]");
