@@ -7373,3 +7373,44 @@ const isIntArray = (arr) => {
 console.log(isIntArray([]), true, "Input: []");
 console.log(isIntArray([1, 2, 3, 4]), true, "Input: [1, 2, 3, 4]");
 console.log(isIntArray([1, 2, 3, NaN]), false, "Input: [1, 2, 3, NaN]");
+
+// Are we alternate? (6 kyu)
+
+/* 
+Create a function isAlt() that accepts a string as an argument and 
+validates whether the vowels (a, e, i, o, u) and consonants are in alternate order.
+
+isAlt("amazon")
+// true
+isAlt("apple")
+// false
+isAlt("banana")
+// true
+Arguments consist of only lowercase letters.
+*/
+
+const isAlt = (word) => {
+	const vowelsWords = "aeiou";
+
+	if (word.length === 1) return true;
+
+	if (vowelsWords.includes(word[0])) {
+		for (let i = 0; i < word.length; i += 2) {
+			if (!vowelsWords.includes(word[i])) { return false; }
+			else if (vowelsWords.includes(word[i + 1])) { return false; }
+		}
+		return true;
+	} else if (word.length !== 1 && vowelsWords.includes(word[1])) {
+
+		for (let i = 1; i < word.length; i += 2) {
+			if (!vowelsWords.includes(word[i])) { return false; }
+			else if (vowelsWords.includes(word[i + 1])) { return false; }
+		}
+		return true;
+	}
+	return false
+}
+
+console.log(isAlt("amazon"), true);
+console.log(isAlt("apple"), false);
+console.log(isAlt("banana"), true);
