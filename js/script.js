@@ -7451,3 +7451,40 @@ const mineLocation = (f) => {
 console.log(mineLocation([[1, 0], [0, 0]]), [0, 0]);
 console.log(mineLocation([[1, 0, 0], [0, 0, 0], [0, 0, 0]]), [0, 0]);
 console.log(mineLocation([[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]]), [2, 2]);
+
+// Simple transposition (6 kyu)
+
+/* 
+Simple transposition is a basic and simple cryptography technique. 
+We make 2 rows and put first a letter in the Row 1, the second in the Row 2, 
+third in Row 1 and so on until the end. Then we put the text from Row 2 next to the Row 1 text and thats it.
+
+Complete the function that receives a string and encrypt it with this simple transposition.
+
+Example
+For example if the text to encrypt is: "Simple text", the 2 rows will be:
+
+Row 1	S	m	l		e	t
+Row 2	i	p	e	t	x	
+
+So the result string will be: `"Sml etipetx"`
+*/
+
+const simpleTransposition = (text) => {
+	const row1 = [];
+	const row2 = [];
+
+	for (let i = 0; i < text.length; i++) {
+		const elem = text[i];
+		i % 2 === 0 ? row1.push(elem) : row2.push(elem);
+	}
+
+	return [...row1, ...row2].join('');
+}
+
+console.log(simpleTransposition("Sample text"), "Sml etapetx");
+console.log(simpleTransposition("Simple transposition"), "Sml rnpstoipetasoiin");
+console.log(simpleTransposition("All that glitters is not gold"), "Alta ltesi o odl htgitr sntgl");
+console.log(simpleTransposition("The better part of valor is discretion"), "Tebte ato ao sdsrtoh etrpr fvlri icein");
+console.log(simpleTransposition("Conscience does make cowards of us all"), "Cncec osmk oad fu losinede aecwrso sal");
+console.log(simpleTransposition("Imagination is more important than knowledge"), "Iaiaini oeipratta nwegmgnto smr motn hnkolde");
