@@ -7488,3 +7488,32 @@ console.log(simpleTransposition("All that glitters is not gold"), "Alta ltesi o 
 console.log(simpleTransposition("The better part of valor is discretion"), "Tebte ato ao sdsrtoh etrpr fvlri icein");
 console.log(simpleTransposition("Conscience does make cowards of us all"), "Cncec osmk oad fu losinede aecwrso sal");
 console.log(simpleTransposition("Imagination is more important than knowledge"), "Iaiaini oeipratta nwegmgnto smr motn hnkolde");
+
+// Alphabetized (6 kyu)
+
+/* 
+The alphabetized kata
+Re-order the characters of a string, so that they are concatenated into 
+a new string in "case-insensitively-alphabetical-order-of-appearance" order. 
+Whitespace and punctuation shall simply be removed!
+
+The input is restricted to contain no numerals and only words containing the english alphabet letters.
+
+Example:
+
+alphabetized("The Holy Bible") // "BbeehHilloTy"
+*/
+
+const alphabetized = (s) => {
+	const newS = s.match(/[a-zA-Z]/gi)
+		.sort((a, b) => {
+			a = a.toLowerCase();
+			b = b.toLowerCase();
+			return a === b ? 0 : a < b ? -1 : 1;
+		})
+		.join('');
+
+	return newS;
+}
+
+console.log(alphabetized('The Holy Bible'), 'BbeehHilloTy')
