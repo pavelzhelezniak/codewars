@@ -7727,3 +7727,24 @@ const sortTwisted37 = (array) => {
 console.log(sortTwisted37([1, 2, 3, 4, 5, 6, 7, 8, 9]), [1, 2, 7, 4, 5, 6, 3, 8, 9]);
 console.log(sortTwisted37([12, 13, 14]), [12, 14, 13]);
 console.log(sortTwisted37([9, 2, 4, 7, 3]), [2, 7, 4, 3, 9]);
+
+// Largest pair sum in array (7 kyu)
+
+/* 
+Given a sequence of numbers, find the largest pair sum in the sequence.
+
+For example
+
+[10, 14, 2, 23, 19] -->  42 (= 23 + 19)
+[99, 2, 2, 23, 19]  --> 122 (= 99 + 23)
+Input sequence contains minimum two elements and every element is an integer.
+*/
+
+const largestPairSum = (numbers) => {
+	const newArr = numbers.sort((a, b) => b - a);
+	return newArr[0] + newArr[1];
+}
+
+console.log(largestPairSum([10, 14, 2, 23, 19], 42));
+console.log(largestPairSum([-100, -29, -24, -19, 19], 0));
+console.log(largestPairSum([1, 2, 3, 4, 6, -1, 2], 10));
