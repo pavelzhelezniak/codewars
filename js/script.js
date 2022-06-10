@@ -7748,3 +7748,27 @@ const largestPairSum = (numbers) => {
 console.log(largestPairSum([10, 14, 2, 23, 19], 42));
 console.log(largestPairSum([-100, -29, -24, -19, 19], 0));
 console.log(largestPairSum([1, 2, 3, 4, 6, -1, 2], 10));
+
+// Duplicate Arguments (6 kyu)
+
+/* 
+Complete the solution so that it returns true if it contains any duplicate argument values. 
+Any number of arguments may be passed into the function.
+
+The array values passed in will only be strings or numbers. The only valid return values are true and false.
+
+Examples:
+
+solution(1, 2, 3)             -->  false
+solution(1, 2, 3, 2)          -->  true
+solution('1', '2', '3', '2')  -->  true
+*/
+
+const solution = (...arguments) => {
+	return [...new Set(arguments)].length != arguments.length
+}
+
+console.log(solution(1, 2, 3), false);
+console.log(solution(1, 2, 3, 6, 5, 6), true);
+console.log(solution('a', 'b', 'c', 'a'), true);
+console.log(solution(1, 2, 3, 'a', 'b'), false);
