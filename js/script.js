@@ -7764,11 +7764,43 @@ solution(1, 2, 3, 2)          -->  true
 solution('1', '2', '3', '2')  -->  true
 */
 
-const solution = (...arguments) => {
+const solution1234 = (...arguments) => {
 	return [...new Set(arguments)].length != arguments.length
 }
 
-console.log(solution(1, 2, 3), false);
-console.log(solution(1, 2, 3, 6, 5, 6), true);
-console.log(solution('a', 'b', 'c', 'a'), true);
-console.log(solution(1, 2, 3, 'a', 'b'), false);
+console.log(solution1234(1, 2, 3), false);
+console.log(solution1234(1, 2, 3, 6, 5, 6), true);
+console.log(solution1234('a', 'b', 'c', 'a'), true);
+console.log(solution1234(1, 2, 3, 'a', 'b'), false);
+
+// Number Format (6 kyu)
+
+/* 
+Format any integer provided into a string with "," (commas) in the correct places.
+
+Example:
+
+numberFormat(100000); // return '100,000'
+numberFormat(5678545); // return '5,678,545'
+numberFormat(-420902); // return '-420,902'
+*/
+
+const numberFormat = number => {
+	const arrRes = []
+
+	Math.abs(number).toString().split('').reverse().forEach((item, i) => {
+		if (i % 3 === 0 && i === 0) {
+			arrRes.push(item);
+		} else if (i % 3 === 0) {
+			arrRes.push(',');
+			arrRes.push(item);
+		} else {
+			arrRes.push(item);
+		}
+	})
+	return number < 0 ? '-' + arrRes.reverse().join('') : arrRes.reverse().join('')
+};
+
+console.log(numberFormat(100000), '100,000');
+console.log(numberFormat(5678545), '5,678,545');
+console.log(numberFormat(-420902), '-420,902');
