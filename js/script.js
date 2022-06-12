@@ -7804,3 +7804,41 @@ const numberFormat = number => {
 console.log(numberFormat(100000), '100,000');
 console.log(numberFormat(5678545), '5,678,545');
 console.log(numberFormat(-420902), '-420,902');
+
+// Single character palindromes (6 kyu)
+
+/* 
+You will be given a string and you task is to check if it is possible to convert that string into a palindrome by removing a single character. 
+If the string is already a palindrome, return "OK". 
+If it is not, and we can convert it to a palindrome by removing one character, then return "remove one", otherwise return "not possible". 
+The order of the characters should not be changed.
+
+For example:
+
+solve("abba") = "OK". -- This is a palindrome
+solve("abbaa") = "remove one". -- remove the 'a' at the extreme right. 
+solve("abbaab") = "not possible". 
+More examples in the test cases.
+
+Good luck!
+*/
+
+const solve123 = (s) => {
+	const palindrom = str => str.split('').reverse().join('');
+
+	if (s === palindrom(s)) return "OK";
+
+	for (let i = 0; i < s.length; i++) {
+		const newStr = s.slice(0, i) + s.slice(i + 1, s.length)
+		if (newStr === palindrom(newStr)) return "remove one";
+	}
+
+	return "not possible";
+};
+
+console.log(solve123("abba"), "OK");
+console.log(solve123("abbaa"), "remove one");
+console.log(solve123("abbaab"), "not possible");
+console.log(solve123("madmam"), "remove one");
+console.log(solve123("raydarm"), "not possible");
+console.log(solve123("hannah"), "OK");
