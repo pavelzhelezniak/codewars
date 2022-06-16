@@ -7914,3 +7914,39 @@ console.log(findDigit(-456, 4), 0);
 console.log(findDigit(0, 20), 0);
 console.log(findDigit(65, 0), -1);
 console.log(findDigit(24, -8), -1);
+
+// Sum of prime-indexed elements (6 kyu)
+
+/* 
+In this Kata, you will be given an integer array and your task is to return the sum of elements occupying prime-numbered indices.
+The first element of the array is at index 0.
+Good luck!
+*/
+
+const total = arr => {
+	let count = 0;
+	if (arr.length < 3) return 0;
+
+
+	for (let i = 2; i < arr.length; i++) {
+		let flag = true;
+
+		for (let k = 2; k < i; k++) {
+			if (i % k === 0) {
+				flag = false;
+			}
+		}
+
+		flag ? count += arr[i] : count += 0;
+	}
+
+	return count;
+};
+
+console.log(total([]), 0);
+console.log(total([1, 2, 3, 4]), 7);
+console.log(total([1, 2, 3, 4, 5, 6]), 13);
+console.log(total([1, 2, 3, 4, 5, 6, 7, 8]), 21);
+console.log(total([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]), 21);
+console.log(total([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]), 33);
+console.log(total([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]), 47);
