@@ -8073,3 +8073,50 @@ const a = [3, 8, 3, 6, 5, 7, 9, 1];
 console.log(sortByBit(a), [1, 8, 3, 3, 5, 6, 9, 7]);
 const b = [9, 4, 5, 3, 5, 7, 2, 56, 8, 2, 6, 8, 0];
 console.log(sortByBit(b), [0, 2, 2, 4, 8, 8, 3, 5, 5, 6, 9, 7, 56]);
+
+// N smallest elements in original order (6 kyu)
+
+/* 
+Your task is to write a function that does just what the title suggests 
+(so, fair warning, be aware that you are not getting out of it just throwing a lame bas sorting method there) 
+with an array/list/vector of integers and the expected number n of smallest elements to return.
+
+Also:
+the number of elements to be returned cannot be higher than the array/list/vector length;
+elements can be duplicated;
+in case of duplicates, just return them according to the original order (see third example for more clarity).
+Same examples and more in the test cases:
+
+firstNSmallest([1,2,3,4,5],3) === [1,2,3] //well, not technically ===, but you get what I mean
+firstNSmallest([5,4,3,2,1],3) === [3,2,1]
+firstNSmallest([1,2,3,4,1],3) === [1,2,1]
+firstNSmallest([1,2,3,-4,0],3) === [1,-4,0]
+firstNSmallest([1,2,3,4,5],0) === []
+*/
+
+const firstNSmallest = (array, n) => {
+	const newSortArr = [...array].sort((a, b) => a - b);
+	newSortArr.length = n;
+	const resArr = [];
+
+	for (let i = 0; i < array.length; i++) {
+		if (newSortArr.includes(array[i])) {
+			resArr.push(array[i]);
+			const index = newSortArr.indexOf(array[i]);
+			newSortArr.splice(index, 1)
+		}
+	}
+
+	return resArr;
+}
+
+console.log(firstNSmallest([1, 2, 3, 4, 5], 3), [1, 2, 3]);
+console.log(firstNSmallest([5, 4, 3, 2, 1], 3), [3, 2, 1]);
+console.log(firstNSmallest([1, 2, 3, 1, 2], 3), [1, 2, 1]);
+console.log(firstNSmallest([1, 2, 3, -4, 0], 3), [1, -4, 0]);//-4 0 1
+console.log(firstNSmallest([1, 2, 3, 4, 5], 0), []);
+console.log(firstNSmallest([1, 2, 3, 4, 5], 5), [1, 2, 3, 4, 5]);
+console.log(firstNSmallest([1, 2, 3, 4, 2], 4), [1, 2, 3, 2]);
+console.log(firstNSmallest([2, 1, 2, 3, 4, 2], 2), [2, 1]);
+console.log(firstNSmallest([2, 1, 2, 3, 4, 2], 3), [2, 1, 2]);
+console.log(firstNSmallest([2, 1, 2, 3, 4, 2], 4), [2, 1, 2, 2]);
