@@ -8141,9 +8141,7 @@ Examples (Input -- => Output):
 "zyxwvutsrqponmlkjihgfedcba"  -- => "abcdefghijklmnopqrstuvwxyz"
 */
 
-const sortGiftCode = (code) => {
-	return code.split('').sort().join('');
-}
+const sortGiftCode = (code) => code.split('').sort().join('');
 
 console.log(sortGiftCode('abcdef'), 'abcdef');
 console.log(sortGiftCode('pqksuvy'), 'kpqsuvy');
