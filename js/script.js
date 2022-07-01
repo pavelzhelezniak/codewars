@@ -8296,3 +8296,31 @@ console.log(maxDiff([-0, 1, 2, -3, 4, 5, -6]), 11);
 console.log(maxDiff([0, 1, 2, 3, 4, 5, 16]), 16);
 console.log(maxDiff([16]), 0);
 console.log(maxDiff([]), 0);
+
+// Ordered Count of Characters (7 kyu)
+
+/* 
+Count the number of occurrences of each character and return it as a list of tuples in order of appearance. 
+For empty output return an empty list.
+
+Example:
+
+orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]
+*/
+
+const orderedCount = (text) => {
+	const splitStr = text.split('');
+	const str = [...new Set(splitStr)];
+	let resArr = [];
+
+	for (let i = 0; i < str.length; i += 1) {
+		const count = splitStr.filter((item) => item === str[i]).length;
+		resArr.push([str[i], count]);
+	}
+
+	return resArr;
+}
+
+console.log(orderedCount("abracadabra"), [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]);
+console.log(orderedCount("Code Wars"), [['C', 1], ['o', 1], ['d', 1], ['e', 1], [' ', 1], ['W', 1], ['a', 1], ['r', 1], ['s', 1]]);
+console.log(orderedCount("233312"), [['2', 2], ['3', 3], ['1', 1]]);
