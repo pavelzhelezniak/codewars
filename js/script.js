@@ -8324,3 +8324,78 @@ const orderedCount = (text) => {
 console.log(orderedCount("abracadabra"), [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d', 1]]);
 console.log(orderedCount("Code Wars"), [['C', 1], ['o', 1], ['d', 1], ['e', 1], [' ', 1], ['W', 1], ['a', 1], ['r', 1], ['s', 1]]);
 console.log(orderedCount("233312"), [['2', 2], ['3', 3], ['1', 1]]);
+
+// *******************************
+
+/* const roundRobin = (participants) => {
+	const tournament = [];
+
+	const half = Math.ceil(participants.length / 2);
+	const groupA = participants.slice(0, half);
+	const groupB = participants.slice(half, participants.length);
+	groupB.reverse();
+
+	tournament.push(getRound(groupA, groupB));
+
+
+	for (let i = 1; i < participants.length - 1; i++) {
+		groupA.splice(1, 0, groupB.shift());
+		groupB.push(groupA.pop())
+		tournament.push(getRound(groupA, groupB));
+	}
+
+	//console.log(tournament)
+	//console.log("Number of Rounds:", tournament.length)
+	return tournament;
+}
+
+const getRound = (groupA, groupB) => {
+	const total = [];
+	groupA.forEach((p, i) => {
+		total.push([groupA[i], groupB[i]]);
+	});
+	return total;
+}
+
+console.log(roundRobin([1, 2, 3, 4, 5, 6, 7, 8]));
+
+const randomInteger = (min, max) => {
+	// случайное число от min до (max+1)
+	let rand = min + Math.random() * (max + 1 - min);
+	return Math.floor(rand);
+}
+console.log(randomInteger(0, [1, 2, 3, 4, 5, 6, 7, 8].length)); */
+
+// Lost number in number sequence (7 kyu)
+
+/* 
+An ordered sequence of numbers from 1 to N is given. 
+One number might have deleted from it, then the remaining numbers were mixed. Find the number that was deleted.
+
+Example:
+
+The starting array sequence is [1,2,3,4,5,6,7,8,9]
+The mixed array with one deleted number is [3,2,4,6,7,8,1,9]
+Your function should return the int 5.
+If no number was deleted from the starting array, your function should return the int 0.
+
+Note: N may be 1 or less (in the latter case, the first array will be []).
+*/
+
+const findDeletedNumber = (arr, mixArr) => {
+	if (mixArr.length === arr.length) {
+		return 0
+	} else {
+		const newMixArr = mixArr.sort((a, b) => a - b);
+
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i] !== newMixArr[i]) {
+				return arr[i];
+			}
+		}
+	}
+}
+
+console.log(findDeletedNumber([1, 2, 3, 4, 5], [3, 4, 1, 5]), 2, 'Deletion');
+console.log(findDeletedNumber([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 9, 7, 4, 6, 2, 3, 8]), 5, 'Deletion');
+console.log(findDeletedNumber([1, 2, 3, 4, 5, 6, 7, 8, 9], [5, 7, 6, 9, 4, 8, 1, 2, 3]), 0, 'No deletion');
