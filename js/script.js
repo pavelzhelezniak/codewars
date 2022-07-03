@@ -8399,3 +8399,22 @@ const findDeletedNumber = (arr, mixArr) => {
 console.log(findDeletedNumber([1, 2, 3, 4, 5], [3, 4, 1, 5]), 2, 'Deletion');
 console.log(findDeletedNumber([1, 2, 3, 4, 5, 6, 7, 8, 9], [1, 9, 7, 4, 6, 2, 3, 8]), 5, 'Deletion');
 console.log(findDeletedNumber([1, 2, 3, 4, 5, 6, 7, 8, 9], [5, 7, 6, 9, 4, 8, 1, 2, 3]), 0, 'No deletion');
+
+// Sum even numbersSum even numbers (7 kyu)
+
+/* 
+Complete the function that takes a sequence of numbers as single parameter. 
+Your function must return the sum of the even values of this sequence.
+
+Only numbers without decimals like 4 or 4.0 can be even.
+
+The input is a sequence of numbers: integers and/or floats.
+
+Examples
+[4, 3, 1, 2, 5, 10, 6, 7, 9, 8]  -->  30   # because 4 + 2 + 10 + 6 + 8 = 30
+[]                               -->  0
+*/
+
+const sumEvenNumbers = input => input.reduce((acc, item) => (item % 2 === 0 ? acc + item : acc), 0);
+
+console.log(sumEvenNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
