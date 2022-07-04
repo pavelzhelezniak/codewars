@@ -8418,3 +8418,16 @@ Examples
 const sumEvenNumbers = input => input.reduce((acc, item) => (item % 2 === 0 ? acc + item : acc), 0);
 
 console.log(sumEvenNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+
+// esreveR (7 kyu)
+
+/* 
+Write a function reverse which reverses a list (or in clojure's case, any list-like data structure)
+
+(the dedicated builtin(s) functionalities are deactivated)
+*/
+
+const reverse1 = (array) => array.reduce((acc, item) => [item].concat(acc), []);
+
+console.log(reverse1([1, 2, 3]), [3, 2, 1]);
+console.log(reverse1([1, null, 14, "two"]), ["two", 14, null, 1]);
