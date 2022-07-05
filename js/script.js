@@ -8431,3 +8431,28 @@ const reverse1 = (array) => array.reduce((acc, item) => [item].concat(acc), []);
 
 console.log(reverse1([1, 2, 3]), [3, 2, 1]);
 console.log(reverse1([1, null, 14, "two"]), ["two", 14, null, 1]);
+
+// SevenAte9 (7 kyu)
+
+/* 
+Write a function that removes every lone 9 that is inbetween 7s.
+
+"79712312" --> "7712312"
+"79797"    --> "777"
+*/
+
+const sevenAte9 = (str) => {
+	const arr = str.split('');
+
+	arr.forEach((item, index, arr) => {
+		if (arr[index - 1] === '7' && arr[index + 1] === '7' && item === '9') {
+			arr.splice(index, 1);
+		}
+	})
+
+	return arr.join('');
+}
+
+console.log(sevenAte9('797'), '77');
+console.log(sevenAte9('7979797'), '7777');
+console.log(sevenAte9('165561786121789797'), '16556178612178977');
