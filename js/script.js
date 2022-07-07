@@ -8469,3 +8469,17 @@ const spacify = str => str.split('').join(' ');
 
 console.log(spacify('hello world'), 'h e l l o   w o r l d');
 console.log(spacify('12345'), '1 2 3 4 5');
+
+// Divide and Conquer (7 kyu)
+
+/* 
+Given a mixed array of number and string representations of integers, add up the string integers and subtract this from the total of the non-string integers.
+Return as a number.
+*/
+
+const divCon = x => x.filter(item => typeof item === 'number').reduce((acc, item) => acc + item, 0) -
+	x.filter(item => typeof item === 'string').reduce((acc, item) => acc + Number(item), 0);
+
+console.log(divCon([9, 3, '7', '3']), 2);
+console.log(divCon(['5', '0', 9, 3, 2, 1, '9', 6, 7]), 14);
+console.log(divCon(['3', 6, 6, 0, '5', 8, 5, '6', 2, '0']), 13); 
