@@ -8634,3 +8634,20 @@ console.log(toLeetSpeak("CODEWARS"), "(0D3W@R$");
 console.log(toLeetSpeak("HELLO WORLD"), "#3110 W0R1D");
 console.log(toLeetSpeak("LOREM IPSUM DOLOR SIT AMET"), "10R3M !P$UM D010R $!7 @M37");
 console.log(toLeetSpeak("THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG"), "7#3 QU!(K 8R0WN F0X JUMP$ 0V3R 7#3 1@2Y D06");
+
+// Numbers in strings (7 kyu)
+
+/* 
+In this Kata, you will be given a string that has lowercase letters and numbers. 
+Your task is to compare the number groupings and return the largest number. Numbers will not have leading zeros.
+For example, solve("gh12cdy695m1") = 695, because this is the largest of all number groupings.
+Good luck!
+*/
+
+const solve = s => s.match(/\d+/g).map(item => Number(item)).sort((a, b) => b - a)[0];
+
+console.log(solve('gh12cdy695m1'), 695);
+console.log(solve('2ti9iei7qhr5'), 9);
+console.log(solve('vih61w8oohj5'), 61);
+console.log(solve('f7g42g16hcu5'), 42);
+console.log(solve('lu1j8qbbb85'), 85);
