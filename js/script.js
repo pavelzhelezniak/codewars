@@ -8688,3 +8688,21 @@ const vaporcode = string => string.toUpperCase().split('').filter(item => item !
 
 console.log(vaporcode("Lets go to the movies"), "L  E  T  S  G  O  T  O  T  H  E  M  O  V  I  E  S");
 console.log(vaporcode("Why isnt my code working"), "W  H  Y  I  S  N  T  M  Y  C  O  D  E  W  O  R  K  I  N  G");
+
+// Multiply characters (7 kyu)
+
+/* 
+Here we have a function that help us spam our hearty laughter. But is not working! I need you to find out why...
+
+Expected results:
+
+spam(1);  // hue
+spam(6);  // huehuehuehuehuehue
+spam(14); // huehuehuehuehuehuehuehuehuehuehuehuehuehue
+*/
+
+const spam = number => "hue".repeat(number);
+
+console.log(spam(1), "hue", "spam(1) should return 'hue'");
+console.log(spam(6), "huehuehuehuehuehue", "spam(6) should return 'huehuehuehuehuehue'");
+console.log(spam(14), "huehuehuehuehuehuehuehuehuehuehuehuehuehue", "spam(14) should return 'huehuehuehuehuehuehuehuehuehuehuehuehuehue'");
