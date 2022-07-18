@@ -8706,3 +8706,41 @@ const spam = number => "hue".repeat(number);
 console.log(spam(1), "hue", "spam(1) should return 'hue'");
 console.log(spam(6), "huehuehuehuehuehue", "spam(6) should return 'huehuehuehuehuehue'");
 console.log(spam(14), "huehuehuehuehuehuehuehuehuehuehuehuehuehue", "spam(14) should return 'huehuehuehuehuehuehuehuehuehuehuehuehuehue'");
+
+// Difference Of Squares (7 kyu)
+
+/* 
+Recreation of Project Euler problem #6
+
+Find the difference between the sum of the squares of the first n natural numbers (1 <= n <= 100) and the square of their sum.
+
+Example
+For example, when n = 10:
+
+The square of the sum of the numbers is:
+
+(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10)2 = 552 = 3025
+
+The sum of the squares of the numbers is:
+
+12 + 22 + 32 + 42 + 52 + 62 + 72 + 82 + 92 + 102 = 385
+
+Hence the difference between square of the sum of the first ten natural numbers and the sum of the squares of those numbes is: 3025 - 385 = 2640
+*/
+
+const differenceOfSquares = n => {
+	const arr = [];
+
+	for (let i = 1; i <= n; i++) {
+		arr.push(i);
+	}
+
+	const squareSumNumbers = (arr.reduce((acc, item) => acc + item, 0)) ** 2;
+	const sumSquareNumbers = arr.reduce((acc, item) => acc + item ** 2, 0);
+
+	return squareSumNumbers - sumSquareNumbers;
+}
+
+console.log(differenceOfSquares(5), 170);
+console.log(differenceOfSquares(10), 2640);
+console.log(differenceOfSquares(100), 25164150);
