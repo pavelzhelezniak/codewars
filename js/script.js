@@ -8809,3 +8809,35 @@ console.log(maxProduct([-17, -8, -102, -309], 2), 136);
 console.log(maxProduct([10, 3, -27, -1], 3), -30);
 console.log(maxProduct([14, 29, -28, 39, -16, -48], 4), -253344);
 console.log(maxProduct([1], 1), 1);
+
+// Complete The Pattern #1 (7 kyu)
+
+/* 
+Task:
+You have to write a function pattern which returns the following Pattern(See Pattern & Examples) upto n number of rows.
+
+Note:Returning the pattern is not the same as Printing the pattern.
+Rules/Note:
+If n < 1 then it should return "" i.e. empty string.
+There are no whitespaces in the pattern.
+Pattern:
+1
+22
+333
+....
+.....
+nnnnnn
+*/
+
+const pattern = n => {
+	const res = [];
+	for (let i = 1; i <= n; i++) {
+		i = '' + i;
+		res.push(i.repeat(i));
+	}
+	return res.join('\n');
+}
+
+console.log(pattern(1), "1");
+console.log(pattern(2), "1\n22");
+console.log(pattern(5), "1\n22\n333\n4444\n55555");
