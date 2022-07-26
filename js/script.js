@@ -8841,3 +8841,19 @@ const pattern = n => {
 console.log(pattern(1), "1");
 console.log(pattern(2), "1\n22");
 console.log(pattern(5), "1\n22\n333\n4444\n55555");
+
+// Sort by Last Char (7 kyu)
+
+/* 
+Given a string of words (x), you need to return an array of the words, sorted alphabetically by the final character in each.
+
+If two words have the same last letter, they returned array should show them in the order they appeared in the given string.
+
+All inputs will be valid.
+*/
+
+const last = x => x.split(' ').sort((a, b) => a[a.length - 1] < b[b.length - 1] ? -1 : a[a.length - 1] > b[b.length - 1] ? 1 : 0);
+
+console.log(last('man i need a taxi up to ubud'), ['a', 'need', 'ubud', 'i', 'taxi', 'man', 'to', 'up']);
+console.log(last('what time are we climbing up the volcano'), ['time', 'are', 'we', 'the', 'climbing', 'volcano', 'up', 'what']);
+console.log(last('take me to semynak'), ['take', 'me', 'semynak', 'to']);    
