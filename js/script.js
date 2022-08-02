@@ -8925,3 +8925,26 @@ console.log(vowel2index('this is my string'), 'th3s 6s my str15ng');
 console.log(vowel2index('Codewars is the best site in the world'), 'C2d4w6rs 10s th15 b18st s23t25 27n th32 w35rld');
 console.log(vowel2index('Tomorrow is going to be raining'), 'T2m4rr7w 10s g1415ng t20 b23 r2627n29ng');
 console.log(vowel2index(''), '');
+
+// Series of integers from m to n (7 kyu)
+
+/* 
+Write a function that accepts two arguments and generates a sequence containing the integers from the first argument to the second inclusive.
+
+Input
+Pair of integers greater than or equal to 0. The second argument will always be greater than or equal to the first.
+
+Example
+generateIntegers(2, 5) // --> [2, 3, 4, 5]
+*/
+
+const generateIntegers = (m, n) => {
+	const arr = [];
+	while (m <= n) {
+		arr.push(m);
+		m++;
+	}
+	return arr;
+}
+
+console.log(generateIntegers(2, 5), [2, 3, 4, 5]);
