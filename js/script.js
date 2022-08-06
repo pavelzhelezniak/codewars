@@ -9009,3 +9009,21 @@ console.log(houseNumbersSum([5, 1, 2, 3, 0, 1, 5, 0, 2]), 11);
 console.log(houseNumbersSum([4, 2, 1, 6, 0]), 13);
 console.log(houseNumbersSum([4, 1, 2, 3, 0, 10, 2]), 10);
 console.log(houseNumbersSum([0, 1, 2, 3, 4, 5]), 0);
+
+// Sum of integers in string (7 kyu)
+
+/* 
+Your task in this kata is to implement a function that calculates the sum of the integers inside a string. 
+For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog", the sum of the integers is 3635.
+
+Note: only positive integers will be tested.
+*/
+
+const sumOfIntegersInString = s => s.split(/([^0-9])/g).map(x => parseInt(x)).filter(Boolean).reduce((acc, el) => acc + el, 0);
+
+console.log(sumOfIntegersInString("12.4"), 16);
+console.log(sumOfIntegersInString("h3ll0w0rld"), 3);
+console.log(sumOfIntegersInString("2 + 3 = "), 5);
+console.log(sumOfIntegersInString("The Great Depression lasted from 1929 to 1939."), 3868);
+console.log(sumOfIntegersInString("C4t5 are 4m4z1ng."), 18);
+
