@@ -9128,3 +9128,23 @@ console.log(maxGap([-54, 37, 0, 64, -15, 640, 0]), 576);
 console.log(maxGap([130, 30, 50]), 80);
 console.log(maxGap([1, 1, 1]), 0);
 console.log(maxGap([-1, -1, -1]), 0);
+
+// Substituting Variables Into Strings: Padded Numbers (7 kyu)
+
+/* 
+Complete the solution so that it returns a formatted string. The return value should equal "Value is VALUE" where value is a 5 digit padded number.
+
+Example:
+
+solution(5) // should return "Value is 00005"
+*/
+
+const solution = value => {
+	const countZero = '0'.repeat(5 - value.toString().length);
+	return `Value is ${countZero}${value.toString()}`
+}
+
+console.log(solution(5), "Value is 00005");
+console.log(solution(1204), "Value is 01204");
+console.log(solution(109), "Value is 00109");
+console.log(solution(0), "Value is 00000");
