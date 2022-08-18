@@ -9207,3 +9207,54 @@ const greet = name => name ? `hello ${name}!` : null;
 
 console.log(greet("Niks"), "hello Niks!", "try again");
 console.log(greet(null), null, "try again");
+
+// By 3, or not by 3? That is the question . . . (7 kyu)
+
+/* 
+A trick I learned in elementary school to determine whether or not a number was divisible 
+by three is to add all of the integers in the number together and to divide the resulting sum by three. If there is no remainder from dividing the sum by three, then the original number is divisible by three as well.
+
+Given a series of digits as a string, determine if the number represented by the string is divisible by three.
+
+Example:
+
+"123"      -> true
+"8409"     -> true
+"100853"   -> false
+"33333333" -> true
+"7"        -> false
+Try to avoid using the % (modulo) operator.
+*/
+
+const divisibleByThree = str => Number.isInteger((str.split('').reduce((acc, item) => Number(acc) + Number(item), 0)) / 3);
+
+console.log(divisibleByThree('123'), true, "Should return true if the sum of the given digits is divisible by 3.");
+console.log(divisibleByThree('19254'), true, "Should return true if the sum of the given digits is divisible by 3.");
+console.log(divisibleByThree('88'), false, "Should return false if the sum of the given digits is not divisible by 3.");
+console.log(divisibleByThree('1'), false, "Should return false if the sum of the given digits is not divisible by 3.");
+
+// Numerical Palindrome #1 (7 kyu)
+
+/* 
+A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward. Examples of numerical palindromes are:
+
+2332
+110011
+54322345
+
+For a given number num, write a function to test if it's a numerical palindrome or not and return a boolean (true if it is and false if not).
+
+Return "Not valid" if the input is not an integer or less than 0.
+*/
+
+const palindrome = num => {
+
+	if (typeof num === 'number' && num > 0) {
+
+		return ('' + num) === ('' + num).split('').reverse().join('');
+
+	}
+
+	return 'Not valid';
+
+}
