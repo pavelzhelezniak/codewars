@@ -9280,3 +9280,18 @@ console.log(findSum(0, 3, 9, 2), 14, "0+3+9+2 = 14");
 console.log(findSum(), 0, "If no arguments, function should return 0");
 console.log(findSum(1, -2, 4), -1, "If negative arguments are passed, function should return -1");
 console.log(findSum(0), 0, "The sum of 0 is 0");
+
+// Filter Long Words (7 kyu)
+
+/* 
+Write a function that takes a string and an an integer n as parameters and returns a list of all words that are longer than n.
+
+Example:
+
+* With input "The quick brown fox jumps over the lazy dog", 4
+* Return ['quick', 'brown', 'jumps']
+*/
+
+const filterLongWords = (sentence, n) => sentence.split(' ').filter(item => item.length > n);
+
+console.log(filterLongWords("The quick brown fox jumps over the lazy dog", 4), ['quick', 'brown', 'jumps']);
