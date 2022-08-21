@@ -9295,3 +9295,15 @@ Example:
 const filterLongWords = (sentence, n) => sentence.split(' ').filter(item => item.length > n);
 
 console.log(filterLongWords("The quick brown fox jumps over the lazy dog", 4), ['quick', 'brown', 'jumps']);
+
+// Find min and max (7 kyu)
+
+/* 
+Implement a function that returns the minimal and the maximal value of a list (in this order).
+*/
+
+const getMinMax = arr => [Math.min(...arr), Math.max(...arr)];
+
+console.log(getMinMax([1]), [1, 1]);
+console.log(getMinMax([1, 2]), [1, 2]);
+console.log(getMinMax([2, 1]), [1, 2]);
