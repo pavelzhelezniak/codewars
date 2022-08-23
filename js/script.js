@@ -9338,3 +9338,26 @@ const insertDash = num => {
 console.log(insertDash(454793), '4547-9-3');
 console.log(insertDash(123456), '123456');
 console.log(insertDash(1003567), '1003-567');
+
+// Building Strings From a Hash (7 kyu)
+
+/* 
+Complete the solution so that it takes the object (JavaScript/CoffeeScript) or hash (ruby) passed in and generates a human readable string from its key/value pairs.
+
+The format should be "KEY = VALUE". Each key/value pair should be separated by a comma except for the last pair.
+
+Example:
+
+solution({a: 1, b: '2'}) // should return "a = 1,b = 2"
+*/
+
+const solution = pairs => {
+	let str = '';
+	for (let prop in pairs) {
+		str += `${prop} = ${pairs[prop]},`;
+	}
+
+	return str.slice(0, -1);
+}
+
+console.log(solution({ a: 1, b: '2' }), "a = 1,b = 2");
