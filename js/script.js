@@ -8259,7 +8259,7 @@ More examples can be found in the test cases.
 Good luck!
 */
 
-const solve = (arr) => {
+const solve12 = (arr) => {
 	let newArr = arr.slice().filter((item, i) => arr.indexOf(item) !== i)
 	for (let i = 0; i < newArr.length; i++) {
 		arr.splice(arr.indexOf(newArr[i]), 1)
@@ -8267,11 +8267,11 @@ const solve = (arr) => {
 	return arr
 }
 
-console.log(solve([3, 4, 4, 3, 6, 3]), [4, 6, 3]);
-console.log(solve([1, 2, 1, 2, 1, 2, 3]), [1, 2, 3]);
-console.log(solve([1, 2, 3, 4]), [1, 2, 3, 4]);
-console.log(solve([1, 1, 4, 5, 1, 2, 1]), [4, 5, 2, 1]);
-console.log(solve([1, 2, 1, 2, 1, 1, 3]), [2, 1, 3]);
+console.log(solve12([3, 4, 4, 3, 6, 3]), [4, 6, 3]);
+console.log(solve12([1, 2, 1, 2, 1, 2, 3]), [1, 2, 3]);
+console.log(solve12([1, 2, 3, 4]), [1, 2, 3, 4]);
+console.log(solve12([1, 1, 4, 5, 1, 2, 1]), [4, 5, 2, 1]);
+console.log(solve12([1, 2, 1, 2, 1, 1, 3]), [2, 1, 3]);
 
 // max diff - easy (7 kyu)
 
@@ -8644,13 +8644,13 @@ For example, solve("gh12cdy695m1") = 695, because this is the largest of all num
 Good luck!
 */
 
-const solve = s => s.match(/\d+/g).map(item => Number(item)).sort((a, b) => b - a)[0];
+const solve1234 = s => s.match(/\d+/g).map(item => Number(item)).sort((a, b) => b - a)[0];
 
-console.log(solve('gh12cdy695m1'), 695);
-console.log(solve('2ti9iei7qhr5'), 9);
-console.log(solve('vih61w8oohj5'), 61);
-console.log(solve('f7g42g16hcu5'), 42);
-console.log(solve('lu1j8qbbb85'), 85);
+console.log(solve1234('gh12cdy695m1'), 695);
+console.log(solve1234('2ti9iei7qhr5'), 9);
+console.log(solve1234('vih61w8oohj5'), 61);
+console.log(solve1234('f7g42g16hcu5'), 42);
+console.log(solve1234('lu1j8qbbb85'), 85);
 
 // Count the Characters (7 kyu)
 
@@ -9139,15 +9139,15 @@ Example:
 solution(5) // should return "Value is 00005"
 */
 
-const solution = value => {
+const solution12 = value => {
 	const countZero = '0'.repeat(5 - value.toString().length);
 	return `Value is ${countZero}${value.toString()}`
 }
 
-console.log(solution(5), "Value is 00005");
-console.log(solution(1204), "Value is 01204");
-console.log(solution(109), "Value is 00109");
-console.log(solution(0), "Value is 00000");
+console.log(solution12(5), "Value is 00005");
+console.log(solution12(1204), "Value is 01204");
+console.log(solution12(109), "Value is 00109");
+console.log(solution12(0), "Value is 00000");
 
 
 // Last Survivor (7 kyu)
@@ -9203,10 +9203,10 @@ greet("") === null; // Return null if input is empty string
 greet(null) === null; // Return null if input is null
 */
 
-const greet = name => name ? `hello ${name}!` : null;
+const greet1 = name => name ? `hello ${name}!` : null;
 
-console.log(greet("Niks"), "hello Niks!", "try again");
-console.log(greet(null), null, "try again");
+console.log(greet1("Niks"), "hello Niks!", "try again");
+console.log(greet1(null), null, "try again");
 
 // By 3, or not by 3? That is the question . . . (7 kyu)
 
@@ -9351,7 +9351,7 @@ Example:
 solution({a: 1, b: '2'}) // should return "a = 1,b = 2"
 */
 
-const solution = pairs => {
+const solution1245 = pairs => {
 	let str = '';
 	for (let prop in pairs) {
 		str += `${prop} = ${pairs[prop]},`;
@@ -9360,7 +9360,7 @@ const solution = pairs => {
 	return str.slice(0, -1);
 }
 
-console.log(solution({ a: 1, b: '2' }), "a = 1,b = 2");
+console.log(solution1245({ a: 1, b: '2' }), "a = 1,b = 2");
 
 // Summy (7 kyu)
 
@@ -9405,3 +9405,48 @@ const findAll = (array, n) => {
 console.log(findAll([6, 9, 3, 4, 3, 82, 11], 3), [2, 4]);
 console.log(findAll([10, 16, 20, 6, 14, 11, 20, 2, 17, 16, 14], 16), [1, 9]);
 console.log(findAll([20, 20, 10, 13, 15, 2, 7, 2, 20, 3, 18, 2, 3, 2, 16, 10, 9, 9, 7, 5, 15, 5], 20), [0, 1, 8]);
+
+// Numbers with this digit inside (7 kyu)
+
+/* 
+You have to search all numbers from inclusive 1 to inclusive a given number x, that have the given digit d in it.
+The value of d will always be 0 - 9.
+The value of x will always be greater than 0.
+
+You have to return as an array
+
+the count of these numbers,
+their sum
+and their product.
+
+For example:
+x = 11
+d = 1
+->
+Numbers: 1, 10, 11
+Return: [3, 22, 110]
+*/
+
+const numbersWithDigitInside = (x, d) => {
+	debugger
+	let numbersWith = [];
+	for (let i = 1; i <= x; i++) {
+		d = d.toString();
+		if (i.toString().includes(d)) {
+			numbersWith.push(i);
+		}
+	}
+
+	const countNumbersWith = numbersWith.length;
+	const sumNumbersWith = numbersWith.reduce((acc, item) => acc + item, 0);
+	const multNumbersWith = numbersWith.length ? numbersWith.reduce((acc, item) => acc * item, 1) : 0;
+
+	return [countNumbersWith, sumNumbersWith, multNumbersWith];
+}
+
+console.log(numbersWithDigitInside(5, 5), [0, 0, 0]);
+console.log(numbersWithDigitInside(1, 0), [0, 0, 0]);
+console.log(numbersWithDigitInside(7, 6), [1, 6, 6]);
+console.log(numbersWithDigitInside(11, 1), [3, 22, 110]);
+console.log(numbersWithDigitInside(20, 0), [2, 30, 200]);
+console.log(numbersWithDigitInside(44, 4), [9, 286, 5955146588160]);
