@@ -9428,7 +9428,6 @@ Return: [3, 22, 110]
 */
 
 const numbersWithDigitInside = (x, d) => {
-	debugger
 	let numbersWith = [];
 	for (let i = 1; i <= x; i++) {
 		d = d.toString();
@@ -9450,3 +9449,37 @@ console.log(numbersWithDigitInside(7, 6), [1, 6, 6]);
 console.log(numbersWithDigitInside(11, 1), [3, 22, 110]);
 console.log(numbersWithDigitInside(20, 0), [2, 30, 200]);
 console.log(numbersWithDigitInside(44, 4), [9, 286, 5955146588160]);
+
+// Simple string reversal (7 kyu)
+
+/* 
+In this Kata, we are going to reverse a string while maintaining the spaces (if any) in their original place.
+
+For example:
+
+solve("our code") = "edo cruo"
+-- Normal reversal without spaces is "edocruo". 
+-- However, there is a space at index 3, so the string becomes "edo cruo"
+
+solve("your code rocks") = "skco redo cruoy". 
+solve("codewars") = "srawedoc"
+More examples in the test cases. All input will be lower case letters and in some cases spaces.
+*/
+
+const solve012 = str => {
+	let result = "";
+	for (let i = str.length - 1; i >= 0; i--) {
+		if (str[i] != " ") {
+			result += str[i];
+		}
+		if (str[result.length] == " ") {
+			result += " ";
+		}
+	}
+	return result;
+}
+
+console.log(solve012("codewars"), "srawedoc");
+console.log(solve012("your code"), "edoc ruoy");
+console.log(solve012("your code rocks"), "skco redo cruoy");
+console.log(solve012("i love codewars"), "s rawe docevoli");
