@@ -9483,3 +9483,41 @@ console.log(solve012("codewars"), "srawedoc");
 console.log(solve012("your code"), "edoc ruoy");
 console.log(solve012("your code rocks"), "skco redo cruoy");
 console.log(solve012("i love codewars"), "s rawe docevoli");
+
+// String matchup (7 kyu)
+
+/* 
+Given two arrays of strings, return the number of times each string of the second array appears in the first array.
+
+Example
+array1 = ['abc', 'abc', 'xyz', 'cde', 'uvw']
+array2 = ['abc', 'cde', 'uap']
+How many times do the elements in array2 appear in array1?
+
+'abc' appears twice in the first array (2)
+'cde' appears only once (1)
+'uap' does not appear in the first array (0)
+Therefore, solve(array1, array2) = [2, 1, 0]
+*/
+
+const solve987 = (a, b) => {
+	const resArr = [];
+	for (let i = 0; i < b.length; i++) {
+		const copyA = [...a];
+		let count = 0;
+		while (copyA.indexOf(b[i]) !== -1) {
+
+			const index = copyA.indexOf(b[i]);
+			copyA.splice(index, 1);
+			count++;
+		}
+		resArr.push(count);
+	}
+
+	return resArr;
+}
+
+console.log(solve987(['abc', 'abc', 'xyz', 'abcd', 'cde'], ['abc', 'cde', 'uap']), [2, 1, 0]);
+console.log(solve987(['abc', 'xyz', 'abc', 'xyz', 'cde'], ['abc', 'cde', 'xyz']), [2, 1, 2]);
+console.log(solve987(['quick', 'brown', 'fox', 'is', 'quick'], ['quick', 'abc', 'fox']), [2, 0, 1]);
+console.log(solve987(['ef', 'fghij', 'fgh', 'fgh', 'ab', 'defg', 'cdefghi', 'ab', 'defghi', 'fg'], ['abc', 'abc', 'fgh', 'fghij', 'fgh']), [0, 0, 2, 1, 2]);
