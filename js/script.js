@@ -9521,3 +9521,27 @@ console.log(solve987(['abc', 'abc', 'xyz', 'abcd', 'cde'], ['abc', 'cde', 'uap']
 console.log(solve987(['abc', 'xyz', 'abc', 'xyz', 'cde'], ['abc', 'cde', 'xyz']), [2, 1, 2]);
 console.log(solve987(['quick', 'brown', 'fox', 'is', 'quick'], ['quick', 'abc', 'fox']), [2, 0, 1]);
 console.log(solve987(['ef', 'fghij', 'fgh', 'fgh', 'ab', 'defg', 'cdefghi', 'ab', 'defghi', 'fg'], ['abc', 'abc', 'fgh', 'fghij', 'fgh']), [0, 0, 2, 1, 2]);
+
+// Band name generator (7 kyu)
+
+/* 
+My friend wants a new band name for her band. She like bands that use the formula: "The" + a noun with the first letter capitalized, for example:
+
+"dolphin" -> "The Dolphin"
+
+However, when a noun STARTS and ENDS with the same letter, she likes to repeat the noun twice and connect them together with the first and last letter, 
+combined into one word (WITHOUT "The" in front), like this:
+
+"alaska" -> "Alaskalaska"
+
+Complete the function that takes a noun as a string, and returns her preferred band name written as a string.
+*/
+
+const bandNameGenerator = str => str[0].toLowerCase() === str[str.length - 1].toLowerCase() ?
+	str[0].toUpperCase() + str.slice(1) + str.slice(1).toLowerCase() :
+	`The ${str[0].toUpperCase()}${str.slice(1)}`;
+
+console.log(bandNameGenerator('knife'), 'The Knife');
+console.log(bandNameGenerator('tart'), 'Tartart');
+console.log(bandNameGenerator('sandles'), 'Sandlesandles');
+console.log(bandNameGenerator('bed'), 'The Bed');
