@@ -9568,3 +9568,25 @@ const twoDecimalPlaces = number => parseInt(number * 100) / 100;
 console.log(twoDecimalPlaces(10.1289767789), 10.12, "didn't work for 10.1289767789");
 console.log(twoDecimalPlaces(-7488.83485834983), -7488.83, "didn't work for -7488.83485834983");
 console.log(twoDecimalPlaces(4.653725356), 4.65, "didn't work for 4.653725356");
+
+// Find Screen Size (7 kyu)
+
+/* 
+Cheesy Cheeseman just got a new monitor! He is happy with it, but he just discovered that his old desktop wallpaper no longer fits. 
+He wants to find a new wallpaper, but does not know which size wallpaper he should be looking for, and alas, he just threw out the new monitor's box. 
+Luckily he remembers the width and the aspect ratio of the monitor from when Bob Mortimer sold it to him. Can you help Cheesy out?
+
+The Challenge
+Given an integer width and a string ratio written as WIDTH:HEIGHT, output the screen dimensions as a string written as WIDTHxHEIGHT.
+
+Note: The calculated height should be represented as an integer. If the height is fractional, truncate it.
+*/
+
+const findScreenHeight = (width, ratio) => {
+	const resolution = ratio.split(':');
+	return `${width}x${width / resolution[0] * resolution[1]}`;
+}
+
+console.log(findScreenHeight(1024, "4:3"), "1024x768");
+console.log(findScreenHeight(1280, "16:9"), "1280x720");
+console.log(findScreenHeight(3840, "32:9"), "3840x1080");
