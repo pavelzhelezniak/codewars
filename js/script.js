@@ -9590,3 +9590,32 @@ const findScreenHeight = (width, ratio) => {
 console.log(findScreenHeight(1024, "4:3"), "1024x768");
 console.log(findScreenHeight(1280, "16:9"), "1280x720");
 console.log(findScreenHeight(3840, "32:9"), "3840x1080");
+
+// Number Of Occurrences (7 kyu)
+
+/* 
+Write a function that returns the number of occurrences of an element in an array.
+
+Examples
+var arr = [0, 1, 2, 2, 3];
+arr.numberOfOccurrences(0) === 1;
+arr.numberOfOccurrences(4) === 0;
+arr.numberOfOccurrences(2) === 2;
+arr.numberOfOccurrences("a") === 0;
+*/
+
+Array.prototype.numberOfOccurrences = function (num) {
+	let count = 0;
+	for (let i = 0; i < this.length; i++) {
+		if (this[i] === num) {
+			count++;
+		}
+	}
+	return count;
+}
+
+const arr = [0, 1, 2, 2, 3];
+console.log(arr.numberOfOccurrences(0), 1);
+console.log(arr.numberOfOccurrences(4), 0);
+console.log(arr.numberOfOccurrences(2), 2);
+console.log(arr.numberOfOccurrences("a"), 0);
