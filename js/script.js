@@ -9738,3 +9738,16 @@ console.log(flatten([1, 2, 3]), [1, 2, 3]);
 console.log(flatten([[1, 2, 3], ["a", "b", "c"], [1, 2, 3]]), [1, 2, 3, "a", "b", "c", 1, 2, 3]);
 console.log(flatten([[3, 4, 5], [[9, 9, 9]], ["a,b,c"]]), [3, 4, 5, [9, 9, 9], "a,b,c"]);
 console.log(flatten([[[3], [4], [5]], [9], [9], [8], [[1, 2, 3]]]), [[3], [4], [5], 9, 9, 8, [1, 2, 3]]);
+
+// How many arguments (7 kyu)
+
+/* 
+Create a function called args_count that returns the number of arguments provided
+*/
+
+const args_count = (...arguments) => arguments.length;
+
+console.log(args_count(1, 2), 2);
+console.log(args_count(), 0);
+console.log(args_count('A', 'B', 'C'), 3);
+console.log(args_count(["foo", "bar"]), 1);
