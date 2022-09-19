@@ -9770,3 +9770,21 @@ console.log(solve("strengthlessnesses"), 1);
 console.log(solve("cuboideonavicuare"), 2);
 console.log(solve("chrononhotonthuooaos"), 5);
 console.log(solve("iiihoovaeaaaoougjyaw"), 8);
+
+// Cat and Mouse - Easy Version (7 kyu)
+
+/* 
+You will be given a string (x) featuring a cat 'C' and a mouse 'm'. The rest of the string will be made up of '.'.
+
+You need to find out if the cat can catch the mouse from it's current position. The cat can jump over three characters. So:
+
+C.....m returns 'Escaped!' <-- more than three characters between
+
+C...m returns 'Caught!' <-- as there are three characters between the two, the cat can jump.
+*/
+
+const catMouse = x => x.replace(/[\C\m]/gi, '').length < 4 ? "Caught!" : "Escaped!";
+
+console.log(catMouse('C....m'), "Escaped!");
+console.log(catMouse('C..m'), "Caught!");
+console.log(catMouse('C.....m'), "Escaped!");
