@@ -9831,3 +9831,20 @@ const crap = (x, bags, cap) => {
 console.log(crap([['_', '_', '_', '_'], ['_', '_', '_', '@'], ['_', '_', '@', '_']], 2, 2), "Clean");
 console.log(crap([['_', '_', '_', '_'], ['_', '_', '_', '@'], ['_', '_', '@', '_']], 1, 1), "Cr@p");
 console.log(crap([['_', '_'], ['_', '@'], ['D', '_']], 2, 2), "Dog!!");
+
+// Debug Sum of Digits of a Number (7 kyu)
+
+/* 
+Debug   function getSumOfDigits that takes positive integer to calculate sum of it's digits. Assume that argument is an integer.
+
+Example
+123  => 6
+223  => 7
+1337 => 14
+*/
+
+const getSumOfDigits = integer => integer.toString().split('').reduce((acc, item) => acc + Number(item), 0);
+
+console.log(getSumOfDigits(123), 6);
+console.log(getSumOfDigits(223), 7);
+console.log(getSumOfDigits(1337), 14);
