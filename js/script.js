@@ -9904,3 +9904,36 @@ console.log(productArray([12, 20]), [20, 12]);
 console.log(productArray([3, 27, 4, 2]), [216, 24, 162, 324]);
 console.log(productArray([13, 10, 5, 2, 9]), [900, 1170, 2340, 5850, 1300]);
 console.log(productArray([16, 17, 4, 3, 5, 2]), [2040, 1920, 8160, 10880, 6528, 16320]);
+
+// Split In Parts (7 kyu)
+
+/* 
+Description:
+The aim of this kata is to split a given string into different strings of equal size (note size of strings is passed to the method)
+
+Example:
+
+Split the below string into other strings of size #3
+
+'supercalifragilisticexpialidocious'
+
+Will return a new string
+'sup erc ali fra gil ist ice xpi ali doc iou s'
+Assumptions:
+
+String length is always greater than 0
+String has no spaces
+Size is always positive
+*/
+
+const splitInParts = (s, partLength) => {
+	let arr = [];
+	for (let i = 0; i < s.length; i += partLength) {
+		arr.push(s.slice(i, i + partLength))
+	}
+	return arr.join(' ')
+}
+
+console.log(splitInParts("supercalifragilisticexpialidocious", 3), "sup erc ali fra gil ist ice xpi ali doc iou s");
+console.log(splitInParts("HelloKata", 1), "H e l l o K a t a");
+console.log(splitInParts("HelloKata", 9), "HelloKata");
