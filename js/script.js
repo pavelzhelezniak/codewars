@@ -9997,3 +9997,51 @@ console.log(minimumSteps([10, 9, 9, 8], 17), 1);
 console.log(minimumSteps([8, 9, 10, 4, 2], 23), 3);
 console.log(minimumSteps([19, 98, 69, 28, 75, 45, 17, 98, 67], 464), 8);
 console.log(minimumSteps([4, 6, 3], 2), 0);
+
+// Compare Strings by Sum of Chars (7 kyu)
+
+/* 
+Compare two strings by comparing the sum of their values (ASCII character code).
+
+For comparing treat all letters as UpperCase
+null/NULL/Nil/None should be treated as empty strings
+If the string contains other characters than letters, treat the whole string as it would be empty
+Your method should return true, if the strings are equal and false if they are not equal.
+
+Examples:
+"AD", "BC"  -> equal
+"AD", "DD"  -> not equal
+"gf", "FG"  -> equal
+"zz1", ""   -> equal (both are considered empty)
+"ZzZz", "ffPFF" -> equal
+"kl", "lz"  -> not equal
+null, ""    -> equal
+*/
+
+const compare = (s1, s2) => {
+	if (s1 === null && s2 === '') {
+		return true;
+	} else if (s1 === null && s2 === null) {
+		return true;
+	} else if (s1 === null || s2 === null) {
+		return false;
+	} else if (/^\D+$/gi.test(s1) && /^\D+$/gi.test(s2)) {
+		return s1.split('').map(n => n.toUpperCase().charCodeAt()).reduce((a, b) => a + b) ===
+			s2.split('').map(n => n.toUpperCase().charCodeAt()).reduce((a, b) => a + b);
+	}
+	return true;
+}
+
+console.log(compare("AD", "BC"), true);
+console.log(compare("AD", "DD"), false);
+console.log(compare("gf", "FG",), true);
+console.log(compare("Ad", "DD",), false);
+console.log(compare("zz1", ""), true,);
+console.log(compare("ZzZz", "ffPFF"), true);
+console.log(compare("kl", "lz"), false);
+console.log(compare("!!", "7476"), true);
+console.log(compare("##", "1176"), true);
+console.log(compare(null, "BC"), false);
+console.log(compare(null, null), true);
+console.log(compare(null, ""), true);
+console.log(compare("", ""), true);
