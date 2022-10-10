@@ -10061,3 +10061,22 @@ const consecutive = (arr, a, b) => Math.abs(arr.indexOf(a) - arr.indexOf(b)) ===
 console.log(consecutive([1, 3, 5, 7], 3, 7), false);
 console.log(consecutive([1, 3, 5, 7], 3, 1), true);
 console.log(consecutive([1, 6, 9, -3, 4, -78, 0], -3, 4), true);
+
+// Remove All The Marked Elements of a List (7 kyu)
+
+/* 
+Define a method/function that removes from a given array of integers all the values contained in a second array.
+
+Examples (input -> output):
+* [1, 1, 2, 3, 1, 2, 3, 4], [1, 3] -> [2, 2, 4]
+* [1, 1, 2, 3, 1, 2, 3, 4, 4, 3, 5, 6, 7, 2, 8], [1, 3, 4, 2] -> [5, 6, 7, 8]
+* [8, 2, 7, 2, 3, 4, 6, 5, 4, 4, 1, 2, 3], [2, 4, 3] -> [8, 7, 6, 5, 1]
+Enjoy it!!
+*/
+
+Array.prototype.remove_ = (integer_list, values_list) => integer_list.filter(v => !values_list.includes(v));
+
+l = new Array()
+const integer_list = [1, 1, 2, 3, 1, 2, 3, 4, 4, 3, 5, 6, 7, 2, 8];
+const values_list = [1, 3, 4, 2];
+console.log(l.remove_(integer_list, values_list), [5, 6, 7, 8]);
