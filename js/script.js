@@ -10106,3 +10106,20 @@ console.log(solveAlphabet(["abode", "ABc", "xyzD"]), [4, 3, 1]);
 console.log(solveAlphabet(["abide", "ABc", "xyz"]), [4, 3, 0]);
 console.log(solveAlphabet(["IAMDEFANDJKL", "thedefgh", "xyzDEFghijabc"]), [6, 5, 7]);
 console.log(solveAlphabet(["encode", "abc", "xyzD", "ABmD"]), [1, 3, 1, 3]);
+
+// All unique (7 kyu)
+
+/* 
+Write a program to determine if a string contains only unique characters. 
+Return true if it does and false otherwise.
+
+The string may contain any of the 128 ASCII characters. 
+Characters are case-sensitive, e.g. 'a' and 'A' are considered different characters.
+*/
+
+const hasUniqueChars = str => new Set(str).size === str.length;
+
+console.log(hasUniqueChars("  nAa"), false); // because there are two spaces ' '
+console.log(hasUniqueChars("abcdef"), true);
+console.log(hasUniqueChars("aA"), true); // case - sensitivity
+console.log(hasUniqueChars("++-"), false); // because there are two '+'
