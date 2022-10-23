@@ -10152,3 +10152,30 @@ const cookingTime = eggs => 5 * Math.ceil(eggs / 8);
 console.log(cookingTime(0), 0, '0 eggs');
 console.log(cookingTime(5), 5, '5 eggs');
 console.log(cookingTime(10), 10, '10 eggs');
+
+// Sum of Cubes (7 kyu)
+
+/* 
+Write a function that takes a positive integer n, sums all the cubed values from 1 to n, and returns that sum.
+
+Assume that the input n will always be a positive integer.
+
+Examples: (Input --> output)
+
+2 --> 9 (sum of the cubes of 1 and 2 is 1 + 8)
+3 --> 36 (sum of the cubes of 1, 2, and 3 is 1 + 8 + 27)
+*/
+
+const sumCubes = n => {
+	let count = 0;
+	while (n > 0) {
+		count += n ** 3;
+		n--;
+	}
+	return count;
+}
+
+console.log(sumCubes(1), 1);
+console.log(sumCubes(2), 9);
+console.log(sumCubes(3), 36);
+console.log(sumCubes(4), 100);
