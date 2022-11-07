@@ -10195,3 +10195,39 @@ const cubeOdd = arr => arr.length === arr.filter(item => typeof item === 'number
 console.log(cubeOdd([1, 2, 3, 4]), 28);
 console.log(cubeOdd([-3, -2, 2, 3]), 0);
 console.log(cubeOdd(["a", 12, 9, "z", 42]), undefined);
+
+// Basic Calculator (7 kyu)
+
+/* 
+Write a function called calculate that takes 3 values. 
+The first and third values are numbers. 
+The second value is a character. If the character is "+" , "-", "*", or "/", 
+the function will return the result of the corresponding mathematical function on the two numbers. 
+If the string is not one of the specified characters, the function should return null (throw an ArgumentException in C#).
+
+calculate(2,"+", 4); //Should return 6
+calculate(6,"-", 1.5); //Should return 4.5
+calculate(-4,"*", 8); //Should return -32
+calculate(49,"/", -7); //Should return -7
+calculate(8,"m", 2); //Should return null
+calculate(4,"/",0) //should return null
+*/
+
+const calculate = (num1, operation, num2) => {
+	const operations = ['+', '-', '*', '/']
+
+	if (!operations.includes(operation)) return null;
+	if (operation === '/' && num2 === 0) return null;
+	if (eval(`${num1}${operation}${num2}`) === -0) return 0;
+	return (eval(`${num1}${operation}${num2}`));
+};
+
+console.log(calculate(3.2, "+", 8), 11.2, "3.2 + 8 = 11.2");
+console.log(calculate(3.2, "-", 8), -4.8, "3.2 - 8 = -4.8");
+console.log(calculate(3.2, "/", 8), 0.4, "3.2 / 8 = .4");
+console.log(calculate(3.2, "*", 8), 25.6, "3.2 * 8 = 25.6");
+console.log(calculate(-3, "+", 0), -3, "-3 + 0 = -3");
+console.log(calculate(-3, "-", 0), -3, "-3 - 0 = -3");
+console.log(calculate(-3, "/", 0), null, "-3 / 0 = null");
+console.log(calculate(-3, "*", 0), 0, "-3 * 0 = 0");
+console.log(calculate(-3, "w", 0), null, "-3 w 0 = null");
