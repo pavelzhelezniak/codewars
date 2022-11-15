@@ -10262,3 +10262,22 @@ console.log(vowelIndices("apple"), [1, 5]);
 console.log(vowelIndices("super"), [2, 4]);
 console.log(vowelIndices("orange"), [1, 3, 6]);
 console.log(vowelIndices("supercalifragilisticexpialidocious"), [2, 4, 7, 9, 12, 14, 16, 19, 21, 24, 25, 27, 29, 31, 32, 33]);
+
+// Parts of a list (7 kyu)
+
+/* 
+Write a function partlist that gives all the ways to divide a list (an array) of at least two elements into two non-empty parts.
+
+Each two non empty parts will be in a pair (or an array for languages without tuples or a structin C - C: see Examples test Cases - )
+Each part will be in a string
+Elements of a pair must be in the same order as in the original array.
+*/
+
+const partlist = arr => arr.map((v, i) => [arr.slice(0, i).join(' '), arr.slice(i).join(' ')]).slice(1);
+
+console.log(partlist(["I", "wish", "I", "hadn't", "come"]),
+	[["I", "wish I hadn't come"], ["I wish", "I hadn't come"], ["I wish I", "hadn't come"], ["I wish I hadn't", "come"]]);
+console.log(partlist(["cdIw", "tzIy", "xDu", "rThG"]),
+	[["cdIw", "tzIy xDu rThG"], ["cdIw tzIy", "xDu rThG"], ["cdIw tzIy xDu", "rThG"]]);
+console.log(partlist(["vJQ", "anj", "mQDq", "sOZ"]),
+	[["vJQ", "anj mQDq sOZ"], ["vJQ anj", "mQDq sOZ"], ["vJQ anj mQDq", "sOZ"]]);
