@@ -10392,3 +10392,29 @@ console.log(repeats([9, 10, 19, 13, 19, 13]), 19);
 console.log(repeats([16, 0, 11, 4, 8, 16, 0, 11]), 12);
 console.log(repeats([5, 17, 18, 11, 13, 18, 11, 13]), 22);
 console.log(repeats([5, 10, 19, 13, 10, 13]), 24);
+
+// Coding Meetup #4 - Higher-Order Functions Series - Find the first Python developer (7 kyu)
+
+/* 
+You will be given an array of objects (associative arrays in PHP) representing data about developers 
+who have signed up to attend the next coding meetup that you are organising. 
+The list is ordered according to who signed up first.
+
+Your task is to return one of the following strings:
+
+< firstName here >, < country here > of the first Python developer who has signed up; or
+There will be no Python developers if no Python developer has signed up.
+*/
+
+const list12 = [
+	{ firstName: 'Mark', lastName: 'G.', country: 'Scotland', continent: 'Europe', age: 22, language: 'JavaScript' },
+	{ firstName: 'Victoria', lastName: 'T.', country: 'Puerto Rico', continent: 'Americas', age: 30, language: 'Python' },
+	{ firstName: 'Emma', lastName: 'B.', country: 'Norway', continent: 'Europe', age: 19, language: 'Clojure' }
+];
+
+const getFirstPython = list => {
+	const pithonDeveloper = list.filter(developer => developer.language === 'Python');
+	return pithonDeveloper.length === 0 ? 'There will be no Python developers' : `${pithonDeveloper[0].firstName}, ${pithonDeveloper[0].country}`;
+}
+
+console.log(getFirstPython(list12), 'Victoria, Puerto Rico');
