@@ -10440,3 +10440,24 @@ console.log(nthSmallest([-5, -1, -6, -18], 4), -1);
 console.log(nthSmallest([-102, -16, -1, -2, -367, -9], 5), -2);
 console.log(nthSmallest([2, 169, 13, -5, 0, -1], 4), 2);
 console.log(nthSmallest([2, 1, 3, 3, 1, 2], 3), 2);
+
+// Help the Fruit Guy (7 kyu)
+
+/* 
+Our fruit guy has a bag of fruit (represented as an array of strings) where some fruits are rotten. 
+He wants to replace all the rotten pieces of fruit with fresh ones. 
+For example, given ["apple","rottenBanana","apple"] 
+the replaced array should be ["apple","banana","apple"]. 
+Your task is to implement a method that accepts an array of strings containing 
+fruits should returns an array of strings where all the rotten fruits are replaced by good ones.
+
+Notes
+If the array is null/nil/None or empty you should return empty array ([]).
+The rotten fruit name will be in this camelcase (rottenFruit).
+The returned array should be in lowercase.
+*/
+
+const removeRotten = (bag) => bag ? bag.map(x => x.toLowerCase().replace(/rotten/ig, "")) : [];
+
+console.log(removeRotten(["apple", "rottenBanana", "kiwi", "melone", "orange"]), ["apple", "banana", "kiwi", "melone", "orange"]);
+console.log(removeRotten([]), []);
