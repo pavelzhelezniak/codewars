@@ -10461,3 +10461,19 @@ const removeRotten = (bag) => bag ? bag.map(x => x.toLowerCase().replace(/rotten
 
 console.log(removeRotten(["apple", "rottenBanana", "kiwi", "melone", "orange"]), ["apple", "banana", "kiwi", "melone", "orange"]);
 console.log(removeRotten([]), []);
+
+// Alternate case (7 kyu)
+
+/* 
+Write function alternateCase which switch every letter in 
+string from upper to lower and from lower to upper. 
+E.g: Hello World -> hELLO wORLD
+*/
+
+const alternateCase = (s) => s.split('')
+	.map((letter) => letter === letter.toLowerCase() ? letter.toUpperCase() : letter.toLowerCase())
+	.join('');
+
+console.log(alternateCase("abc"), "ABC");
+console.log(alternateCase("ABC"), "abc");
+console.log(alternateCase("Hello World"), "hELLO wORLD"); 
