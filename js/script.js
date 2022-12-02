@@ -10601,3 +10601,21 @@ const stringify = (list) => list === null ? "null" : `${list.data} -> ${stringif
 console.log(stringify(new Node(1, new Node(2, new Node(3)))), "1 -> 2 -> 3 -> null");
 console.log(stringify(new Node(0, new Node(1, new Node(4, new Node(9, new Node(16)))))), "0 -> 1 -> 4 -> 9 -> 16 -> null");
 console.log(stringify(null), "null");
+
+// Valid Spacing (7 kyu)
+
+/* 
+Your task is to write a function called valid_spacing() or validSpacing() which checks if a string has valid spacing. 
+The function should return either true or false (or the corresponding value in each language).
+
+For this kata, the definition of valid spacing is one space between words, and no leading or trailing spaces. 
+Words can be any consecutive sequence of non space characters.
+*/
+
+const validSpacing = s => s == '' ? true : s.split(' ').find(el => el == '') >= 0 ? false : true;
+
+console.log(validSpacing('Hello world'), true);
+console.log(validSpacing(' Hello world'), false);
+console.log(validSpacing('Hello  world '), false);
+console.log(validSpacing('Hello'), true);
+console.log(validSpacing('Helloworld'), true);
