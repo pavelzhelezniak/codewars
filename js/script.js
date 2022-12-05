@@ -10641,3 +10641,29 @@ console.log(stringMerge("abcdefxxxyzz", "abcxxxyyyxyzz", "x"), "abcdefxxxyyyxyzz
 console.log(stringMerge("12345654321", "123456789", "6"), "123456789");
 console.log(stringMerge("JiOdIdA4", "oopopopoodddasdfdfsd", "d"), "JiOdddasdfdfsd");
 console.log(stringMerge("incredible", "people", "e"), "increople");
+
+// Letterbox Paint-Squad (7 kyu)
+
+/* 
+Since there are 10 of you in the group each person just concentrates on painting one digit! For example, 
+somebody will paint only the 1's, somebody else will paint only the 2's and so on...
+
+But at the end of the day you realise not everybody did the same amount of work.
+
+To avoid any fights you need to distribute the money fairly. That's where this Kata comes in.
+
+Kata Task
+Given the start and end letterbox numbers, write a method to return the frequency of all 10 digits painted.
+*/
+
+const paintLetterboxes = (start, end) => {
+	const defaultArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+	for (let i = start; i <= end; i++) {
+		i.toString().split('').forEach((item, index) => {
+			defaultArr[parseInt(item, 10)]++;
+		})
+	}
+	return defaultArr;
+}
+
+console.log(paintLetterboxes(125, 132), [1, 9, 6, 3, 0, 1, 1, 1, 1, 1]);
