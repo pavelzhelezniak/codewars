@@ -10667,3 +10667,22 @@ const paintLetterboxes = (start, end) => {
 }
 
 console.log(paintLetterboxes(125, 132), [1, 9, 6, 3, 0, 1, 1, 1, 1, 1]);
+
+// Basic Math (Add or Subtract) (7 kyu)
+
+/* 
+In this kata, you will do addition and subtraction on a given string. The return value must be also a string.
+
+Note: the input will not be empty.
+
+Examples
+"1plus2plus3plus4"  --> "10"
+"1plus2plus3minus4" -->  "2"
+*/
+
+const calculate12 = (str) => eval(str.replace(/(plus)/gi, '+').replace(/(minus)/gi, '-')).toString()
+
+console.log(calculate12("1plus2plus3plus4"), '10');
+console.log(calculate12('1minus2minus3minus4'), '-8');
+console.log(calculate12('1plus2plus3minus4'), '2');
+console.log(calculate12('719plus975minus248'), '1446');
