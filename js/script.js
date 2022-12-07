@@ -9761,15 +9761,15 @@ Given a lowercase string that has alphabetic characters only (both vowels and co
 Vowels are any of aeiou.
 */
 
-const solve = x => Math.max(...x.split(/[^aoeiu]/i).map(x => x.length))
+const solve12345 = x => Math.max(...x.split(/[^aoeiu]/i).map(x => x.length))
 
-console.log(solve("codewarriors"), 2);
-console.log(solve("suoidea"), 3);
-console.log(solve("ultrarevolutionariees"), 3);
-console.log(solve("strengthlessnesses"), 1);
-console.log(solve("cuboideonavicuare"), 2);
-console.log(solve("chrononhotonthuooaos"), 5);
-console.log(solve("iiihoovaeaaaoougjyaw"), 8);
+console.log(solve12345("codewarriors"), 2);
+console.log(solve12345("suoidea"), 3);
+console.log(solve12345("ultrarevolutionariees"), 3);
+console.log(solve12345("strengthlessnesses"), 1);
+console.log(solve12345("cuboideonavicuare"), 2);
+console.log(solve12345("chrononhotonthuooaos"), 5);
+console.log(solve12345("iiihoovaeaaaoougjyaw"), 8);
 
 // Cat and Mouse - Easy Version (7 kyu)
 
@@ -10686,3 +10686,33 @@ console.log(calculate12("1plus2plus3plus4"), '10');
 console.log(calculate12('1minus2minus3minus4'), '-8');
 console.log(calculate12('1plus2plus3minus4'), '2');
 console.log(calculate12('719plus975minus248'), '1446');
+
+// Find Count of Most Frequent Item in an Array (7 kyu)
+
+/* 
+Complete the function to find the count of the most frequent item of an array. 
+You can assume that input is an array of integers. For an empty array return 0
+
+Example
+input array: [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
+ouptut: 5 
+The most frequent number in the array is -1 and it occurs 5 times.
+*/
+
+const mostFrequentItemCount = collection => {
+	if (collection.length) {
+		const collectionObj = collection.reduce((acc, item) => {
+			acc[item] = (acc[item] || 0) + 1
+			return acc
+		}, {})
+		const collCount = Object.values(collectionObj);
+		return Math.max(...collCount);
+	} else {
+		return 0;
+	}
+}
+
+console.log(mostFrequentItemCount([-14, -13, -13, -13, -13, -12, -11, -11, -10, -10, -9, -7, -6, -6, -6, -5, -4, -4, 1, 1, 7, 8, 9, 10, 13]), 4);
+console.log(mostFrequentItemCount([3, -1, -1]), 2);
+console.log(mostFrequentItemCount([3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]), 5);
+console.log(mostFrequentItemCount([-14, -14, -14, -13, -12, -12, -12, -10, -6, -5, -1, -1, 0, 1, 2, 4, 4, 5, 7, 7, 7, 10, 10, 10, 13]), 3);
