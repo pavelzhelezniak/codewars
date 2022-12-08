@@ -10716,3 +10716,21 @@ console.log(mostFrequentItemCount([-14, -13, -13, -13, -13, -12, -11, -11, -10, 
 console.log(mostFrequentItemCount([3, -1, -1]), 2);
 console.log(mostFrequentItemCount([3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]), 5);
 console.log(mostFrequentItemCount([-14, -14, -14, -13, -12, -12, -12, -10, -6, -5, -1, -1, 0, 1, 2, 4, 4, 5, 7, 7, 7, 10, 10, 10, 13]), 3);
+
+// Return String of First Characters (7 kyu)
+
+/* 
+In this exercise, a string is passed to a method and a new string has to be returned with the first character of each word in the string.
+
+For example:
+
+"This Is A Test" ==> "TIAT"
+Strings will only contain letters and spaces, with exactly 1 space between words, and no leading/trailing spaces.
+*/
+
+const makeString = s => s.split(' ').map(v => v.slice(0, 1)).join('');
+
+console.log(makeString("sees eyes xray yoat"), "sexy", "Wrong result for 'sees eyes xray yoat'");
+console.log(makeString("brown eyes are nice"), "bean", "Wrong result for 'brown eyes are nice'");
+console.log(makeString("cars are very nice"), "cavn", "Wrong result for 'cars are very nice'");
+console.log(makeString("kaks de gan has a big head"), "kdghabh", "Wrong result for 'kaks de gan has a big head'");
