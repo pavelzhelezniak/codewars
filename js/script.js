@@ -10734,3 +10734,14 @@ console.log(makeString("sees eyes xray yoat"), "sexy", "Wrong result for 'sees e
 console.log(makeString("brown eyes are nice"), "bean", "Wrong result for 'brown eyes are nice'");
 console.log(makeString("cars are very nice"), "cavn", "Wrong result for 'cars are very nice'");
 console.log(makeString("kaks de gan has a big head"), "kdghabh", "Wrong result for 'kaks de gan has a big head'");
+
+// Remove consecutive duplicate words (7 kyu)
+
+/* 
+Your task is to remove all consecutive duplicate words from a string, leaving only first words entries.
+*/
+
+const removeConsecutiveDuplicates = s => s.split(' ').filter((item, i, arr) => item !== arr[i + 1]).join(' ');
+
+console.log(removeConsecutiveDuplicates('alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'),
+	'alpha beta gamma delta alpha beta gamma delta');
