@@ -10745,3 +10745,21 @@ const removeConsecutiveDuplicates = s => s.split(' ').filter((item, i, arr) => i
 
 console.log(removeConsecutiveDuplicates('alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'),
 	'alpha beta gamma delta alpha beta gamma delta');
+
+// Check three and two (7 kyu)
+
+/* 
+Given an array with exactly 5 strings "a", "b" or "c" (chars in Java, characters in Fortran), 
+check if the array contains three and two of the same values.
+*/
+
+const checkThreeAndTwo = array => {
+	const a = array.filter(item => item === 'a').length;
+	const b = array.filter(item => item === 'b').length;
+	const c = array.filter(item => item === 'c').length;
+	return (a === 3 || b === 3 || c === 3) && (a === 2 || b === 2 || c === 2)
+}
+
+console.log(checkThreeAndTwo(["a", "a", "a", "b", "b"]), true);
+console.log(checkThreeAndTwo(["a", "c", "a", "c", "b"]), false);
+console.log(checkThreeAndTwo(["a", "a", "a", "a", "a"]), false);
