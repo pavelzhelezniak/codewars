@@ -10792,3 +10792,26 @@ console.log(dbSort([1, 2, 3, 4, 5]), [1, 2, 3, 4, 5]);
 console.log(dbSort(["Banana", "Orange", "Apple", "Mango", 0, 2, 2]), [0, 2, 2, "Apple", "Banana", "Mango", "Orange"]);
 console.log(dbSort(["C", "W", "W", "W", 1, 2, 0]), [0, 1, 2, "C", "W", "W", "W"]);
 console.log(dbSort(["Apple", 46, "287", 574, "Peach", "3", "69", 78, "Grape", "423"]), [46, 78, 574, '287', '3', '423', '69', 'Apple', 'Grape', 'Peach'])
+
+// Add property to every object in array (7 kyu)
+
+/* 
+Your task is to add a new property usersAnswer to every object in the array questions. 
+The value of usersAnswer should be set to null. The solution should work for array of any length.
+*/
+
+const questions = [{
+	question: "What's the currency of the USA?",
+	choices: ["US dollar", "Ruble", "Horses", "Gold"],
+	corAnswer: 0
+}, {
+	question: "Where was the American Declaration of Independence signed?",
+	choices: ["Philadelphia", "At the bottom", "Frankie's Pub", "China"],
+	corAnswer: 0
+}];
+
+questions.forEach(item => {
+	item.usersAnswer = null
+});
+
+console.log(questions[0].usersAnswer === null);  
