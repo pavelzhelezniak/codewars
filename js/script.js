@@ -10897,3 +10897,27 @@ const countWins = (winnerList, country) => {
 console.log(countWins(winnerList1, 'Portugal'), 1);
 console.log(countWins(winnerList1, 'FootLand'), 0);
 console.log(countWins(winnerList1, 'Spain'), 9);
+
+// Arithmetic progression (7 kyu)
+
+/* 
+In your class, you have started lessons about arithmetic progression. 
+Since you are also a programmer, you have decided to write a function that will 
+return the first n elements of the sequence with the given common difference d and first element a. 
+Note that the difference may be zero!
+
+The result should be a string of numbers, separated by comma and space.
+*/
+
+const arithmeticSequenceElements = (a, r, n) => {
+	const arr = [];
+	for (let i = 0; i < n; i++) {
+		arr.push(a + (r * i));
+	}
+	return arr.join(', ');
+}
+
+console.log(arithmeticSequenceElements(1, 2, 5), "1, 3, 5, 7, 9");
+console.log(arithmeticSequenceElements(1, 0, 5), "1, 1, 1, 1, 1");
+console.log(arithmeticSequenceElements(1, -3, 10), "1, -2, -5, -8, -11, -14, -17, -20, -23, -26");
+console.log(arithmeticSequenceElements(100, -10, 10), "100, 90, 80, 70, 60, 50, 40, 30, 20, 10");
