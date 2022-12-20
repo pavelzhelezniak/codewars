@@ -10921,3 +10921,16 @@ console.log(arithmeticSequenceElements(1, 2, 5), "1, 3, 5, 7, 9");
 console.log(arithmeticSequenceElements(1, 0, 5), "1, 1, 1, 1, 1");
 console.log(arithmeticSequenceElements(1, -3, 10), "1, -2, -5, -8, -11, -14, -17, -20, -23, -26");
 console.log(arithmeticSequenceElements(100, -10, 10), "100, 90, 80, 70, 60, 50, 40, 30, 20, 10");
+
+// L2: Triple X (7 kyu)
+
+/* 
+Given a string, return true if the first instance of "x" in the string is immediately followed by the string "xx".
+*/
+
+const tripleX = str => str.slice(str.indexOf('x') + 1, str.indexOf('x') + 3) === 'xx';
+
+console.log(tripleX("abraxxxas"), true);
+console.log(tripleX("xoxotrololololololoxxx"), false);
+console.log(tripleX("soft kitty, warm kitty, xxxxx"), true);
+console.log(tripleX("softx kitty, warm kitty, xxxxx"), false);
