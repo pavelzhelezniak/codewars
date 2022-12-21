@@ -10934,3 +10934,17 @@ console.log(tripleX("abraxxxas"), true);
 console.log(tripleX("xoxotrololololololoxxx"), false);
 console.log(tripleX("soft kitty, warm kitty, xxxxx"), true);
 console.log(tripleX("softx kitty, warm kitty, xxxxx"), false);
+
+// Sum of all arguments (7 kyu)
+
+/* 
+Write a function that finds the sum of all its arguments.
+*/
+
+const sum = (...args) => args.reduce((acc, item) => acc + item, 0);
+
+console.log(sum(1), 1)
+console.log(sum(1, 2), 3)
+console.log(sum(5, 7, 9), 21)
+console.log(sum(12, 1, 1, 1, 1), 16)
+console.log(sum(12, 1, 1, 1, 1, 1, 1), 18)
