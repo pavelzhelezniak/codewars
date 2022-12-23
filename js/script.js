@@ -10978,3 +10978,25 @@ const spoonerize = words => {
 console.log(spoonerize("nit picking"), "pit nicking");
 console.log(spoonerize("wedding bells"), "bedding wells");
 console.log(spoonerize("jelly beans"), "belly jeans");
+
+// Initialize my name (7 kyu)
+
+/* 
+Some people just have a first name; some people have first and last names and some people have first,
+middle and last names.
+
+You task is to initialize the middle names (if there is any).
+*/
+
+const initializeNames = name => {
+	const arr = name.split(' ');
+	for (var i = 1; i < arr.length - 1; i++) {
+		arr[i] = `${arr[i][0]}.`;
+	}
+	return arr.join(' ');
+}
+
+console.log(initializeNames('Jack Ryan'), 'Jack Ryan', '');
+console.log(initializeNames('Lois Mary Lane'), 'Lois M. Lane', '');
+console.log(initializeNames('Dimitri'), 'Dimitri', '');
+console.log(initializeNames('Alice Betty Catherine Davis'), 'Alice B. C. Davis', '');
