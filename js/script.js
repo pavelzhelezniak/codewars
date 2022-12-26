@@ -11035,3 +11035,30 @@ const answer12 = [
 console.log(findAdmin(list4, 'JavaScript'), answer12);
 console.log(findAdmin(list4, 'Ruby'), []);
 console.log(findAdmin(list4, 'Python'), []);
+
+// Calculate Two People's Individual Ages (7 kyu)
+
+/* 
+Create a function that takes in the sum and age difference of two people, 
+calculates their individual ages, and returns a pair of values (oldest age first) 
+if those exist or null/None if:
+
+sum < 0
+difference < 0
+Either of the calculated ages come out to be negative
+*/
+
+const getAges = (sum, difference) => {
+	if (sum > 0 && difference > 0) {
+		const min = (sum - difference) / 2;
+		const max = sum - min;
+		if (min >= 0 && max >= 0)
+			return [max, min];
+	}
+	return null;
+};
+
+console.log(getAges(24, 4), [14, 10]);
+console.log(getAges(63, -14), null);
+console.log(getAges(30, 6), [18, 12]);
+console.log(getAges(70, 10), [40, 30]);
