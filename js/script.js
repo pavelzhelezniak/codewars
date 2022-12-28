@@ -11106,3 +11106,16 @@ console.log(solve([84, 79, 76, 61, 78]), [84, 61, 79, 76, 78]);
 console.log(solve([52, 77, 72, 44, 74, 76, 40]), [77, 40, 76, 44, 74, 52, 72]);
 console.log(solve([1, 6, 9, 4, 3, 7, 8, 2]), [9, 1, 8, 2, 7, 3, 6, 4]);
 console.log(solve([78, 79, 52, 87, 16, 74, 31, 63, 80]), [87, 16, 80, 31, 79, 52, 78, 63, 74]);
+
+// Limit string length - 1 (7 kyu)
+
+/* 
+The function must return the truncated version of the given string up to the given limit followed by "..."
+if the result is shorter than the original. Return the same string if nothing was truncated.
+*/
+
+const solution = (string, limit) => string.length > limit ? `${string.slice(0, limit)}...` : string;
+
+console.log(solution('Testing String', 3), 'Tes...');
+console.log(solution('Testing String', 8), 'Testing ...');
+console.log(solution('Test', 8), 'Test');
