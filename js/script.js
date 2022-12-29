@@ -11119,3 +11119,23 @@ const solution = (string, limit) => string.length > limit ? `${string.slice(0, l
 console.log(solution('Testing String', 3), 'Tes...');
 console.log(solution('Testing String', 8), 'Testing ...');
 console.log(solution('Test', 8), 'Test');
+
+// Move 10 (7 kyu)
+
+/* 
+Move every letter in the provided string forward 10 letters through the alphabet.
+
+If it goes past 'z', start again at 'a'.
+
+Input will be a string with length > 0.
+*/
+
+const moveTen = s => {
+	const str = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz';
+	const arr = s.split('').map(v => v = str.indexOf(v) + 10)
+	return arr.map(v => v = str[v]).join('')
+}
+
+console.log(moveTen("testcase"), "docdmkco");
+console.log(moveTen("codewars"), "mynogkbc");
+console.log(moveTen("exampletesthere"), "ohkwzvodocdrobo");
