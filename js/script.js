@@ -11139,3 +11139,16 @@ const moveTen = s => {
 console.log(moveTen("testcase"), "docdmkco");
 console.log(moveTen("codewars"), "mynogkbc");
 console.log(moveTen("exampletesthere"), "ohkwzvodocdrobo");
+
+// Sort arrays - 1 (7 kyu)
+
+/* 
+Just a simple sorting usage. 
+Create a function that returns the elements of the input-array / list sorted in lexicographical order.
+*/
+
+sortme = function (names) {
+	return names.sort();
+}
+
+console.log(sortme(['one', 'two', 'three']), ["one", "three", "two"]);
