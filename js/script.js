@@ -11200,3 +11200,25 @@ console.log(mergeArrays([1, 2, 3, 4, 5, 6, 7, 8], ['a', 'b', 'c', 'd', 'e']), [1
 console.log(mergeArrays(['a', 'b', 'c', 'd', 'e'], [1, 2, 3, 4, 5]), ['a', 1, 'b', 2, 'c', 3, 'd', 4, 'e', 5]);
 console.log(mergeArrays([2, 5, 8, 23, 67, 6], ['b', 'r', 'a', 'u', 'r', 's']), [2, 'b', 5, 'r', 8, 'a', 23, 'u', 67, 'r', 6, 's']);
 console.log(mergeArrays(['b', 'r', 'a', 'u', 'r', 's', 'e', 'q', 'z'], [2, 5, 8, 23, 67, 6]), ['b', 2, 'r', 5, 'a', 8, 'u', 23, 'r', 67, 's', 6, 'e', 'q', 'z']);
+
+// How many are smaller than me? (7 kyu)
+
+/* 
+Write a function that given, an array arr, returns an array containing at each index i 
+the amount of numbers that are smaller than arr[i] to the right.
+
+For example:
+
+* Input [5, 4, 3, 2, 1] => Output [4, 3, 2, 1, 0]
+* Input [1, 2, 0] => Output [1, 1, 0]
+If you've completed this one and you feel like testing your performance tuning of this same kata, 
+head over to the much tougher version How many are smaller than me II?
+*/
+
+const smaller = nums => nums.map((n, i) => nums.slice(i).filter(v => v < n).length);
+
+console.log(smaller([5, 4, 3, 2, 1]), [4, 3, 2, 1, 0]);
+console.log(smaller([1, 2, 3]), [0, 0, 0]);
+console.log(smaller([1, 2, 0]), [1, 1, 0]);
+console.log(smaller([1, 2, 1]), [0, 1, 0]);
+console.log(smaller([1, 1, -1, 0, 0]), [3, 3, 0, 0, 0]);
