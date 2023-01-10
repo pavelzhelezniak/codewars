@@ -11314,3 +11314,28 @@ const searchNames = logins => logins.filter(a => a[0][a[0].length - 1] === '_');
 // const searchNames = logins => logins.filter(a => a[0].endsWith('_'));
 
 console.log(searchNames([["foo", "foo@foo.com"], ["bar_", "bar@bar.com"]]), [["bar_", "bar@bar.com"]]);
+
+// Find The Duplicated Number in a Consecutive Unsorted List (7 kyu)
+
+/* 
+You are given an array of n+1 integers 1 through n. In addition there is a single duplicate integer.
+
+The array is unsorted.
+
+An example valid array would be [3, 2, 5, 1, 3, 4]. It has the integers 1 through 5 and 3 is duplicated. 
+[1, 2, 4, 5, 5] would not be valid as it is missing 3.
+
+You should return the duplicate value as a single integer.
+*/
+
+const findDup = arr => {
+	const max = Math.max(...arr);
+	for (let i = 1; i <= max; i++) {
+		if (arr.indexOf(i) !== arr.lastIndexOf(i)) {
+			return i;
+		}
+	}
+}
+
+console.log(findDup([1, 3, 2, 5, 4, 5, 7, 6]), 5);
+console.log(findDup([1, 2, 2, 3]), 2);
