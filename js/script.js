@@ -11339,3 +11339,32 @@ const findDup = arr => {
 
 console.log(findDup([1, 3, 2, 5, 4, 5, 7, 6]), 5);
 console.log(findDup([1, 2, 2, 3]), 2);
+
+// Exclamation marks series #5: Remove all exclamation marks from the end of words (7 kyu)
+
+/* 
+Remove all exclamation marks from the end of words. Words are separated by a single space. 
+There are no exclamation marks within a word.
+*/
+
+const remove = string => {
+	const result = [];
+	const arr = string.split(' ');
+	for (let i = 0; i < arr.length; i++) {
+		const newArr = arr[i].split('').reverse();
+		for (let j = 0; j < newArr.length; j++) {
+			if (newArr[j] !== '!') {
+				result.push(newArr.slice(j).reverse().join(''));
+				break;
+			}
+		}
+	}
+	return result.join(' ');
+}
+
+console.log(remove("Hi!"), "Hi");
+console.log(remove("Hi!!!"), "Hi");
+console.log(remove("!Hi"), "!Hi");
+console.log(remove("!Hi!"), "!Hi");
+console.log(remove("Hi! Hi!"), "Hi Hi");
+console.log(remove("!!!Hi !!hi!!! !hi"), "!!!Hi !!hi !hi");
