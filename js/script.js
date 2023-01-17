@@ -11439,3 +11439,29 @@ console.log(catchSignChange([1, 3, 4, 5]), 0);
 console.log(catchSignChange([1, -3, -4, 0, 5]), 2);
 console.log(catchSignChange([]), 0);
 console.log(catchSignChange([-47, 84, -30, -11, -5, 74, 77]), 3);
+
+// Scrolling Text (7 kyu)
+
+/* 
+Let's create some scrolling text!
+Your task is to complete the function which takes a string, and returns an array with all possible rotations of the given string, in uppercase.
+*/
+
+const scrollingText = text => {
+	const result = [];
+	for (let i = 0; i < text.length; i++) {
+		result.push(text.toUpperCase().slice(i) + text.toUpperCase().slice(0, i));
+	}
+	return result;
+}
+
+console.log(scrollingText("abc"), ["ABC", "BCA", "CAB"]);
+console.log(scrollingText("CODEWARS"), ["CODEWARS",
+	"ODEWARSC",
+	"DEWARSCO",
+	"EWARSCOD",
+	"WARSCODE",
+	"ARSCODEW",
+	"RSCODEWA",
+	"SCODEWAR"]);
+
