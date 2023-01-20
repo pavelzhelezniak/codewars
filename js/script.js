@@ -11531,3 +11531,26 @@ const pattern1 = n => {
 
 console.log(pattern1(3), "1\n1*2\n1**3");
 console.log(pattern1(7), "1\n1*2\n1**3\n1***4\n1****5\n1*****6\n1******7");
+
+
+// Consecutive letters (7 kyu)
+
+/* 
+In this Kata, we will check if a string contains consecutive letters 
+as they appear in the English alphabet and if each letter occurs only once.
+*/
+
+const solve = string =>
+	string
+		.split("")
+		.sort()
+		.map((i) => i.charCodeAt())
+		.every(
+			(_element, index, array) =>
+				index === 0 || array[index] - array[index - 1] === 1
+		);
+
+console.log(solve("abc"), true);
+console.log(solve("abd"), false);
+console.log(solve("dabc"), true);
+console.log(solve("abbc"), false);
