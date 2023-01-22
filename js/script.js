@@ -11573,3 +11573,20 @@ console.log(arrCheck([['string']]), true);
 console.log(arrCheck([[], {}]), false);
 console.log(arrCheck([[1], [2], [3]]), true);
 console.log(arrCheck(['A', 'R', 'R', 'A', 'Y']), false);
+
+// Debug the functions EASY (7 kyu)
+
+/* 
+Should be easy, begin by looking at the code. Debug the code and the functions should work.
+
+There are three functions: Multiplication (x) Addition (+) and Reverse (!esreveR)
+ */
+
+const multi = arr => arr.reduce((acc, item) => acc * item);
+
+const add = arr => arr.reduce((acc, item) => acc + item);
+
+const reverse12 = str => str.split('').reverse().join('');
+
+console.log(multi([5, 1, 5]), 25);
+console.log(add([9, 8, 5]), 22);
