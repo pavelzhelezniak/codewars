@@ -11630,3 +11630,30 @@ console.log(calculate123(-4, "*", 8), -32);
 console.log(calculate123(49, "/", -7), -7);
 console.log(calculate123(8, "m", 2), null);
 console.log(calculate123(4, "/", 0), null);
+
+// Show multiples of 2 numbers within a range (7 kyu)
+
+/* 
+Print all numbers up to 3rd parameter which are multiple of both 1st and 2nd parameter.
+
+Python, Javascript, Java, Ruby versions: return results in a list/array
+
+NOTICE:
+
+Do NOT worry about checking zeros or negative values.
+To find out if 3rd parameter (the upper limit) is inclusive or not, check the tests, it differs in each translation
+*/
+
+const multiples = (s1, s2, s3) => {
+	const result = [];
+	for (let i = s1; i < s3; i++) {
+		if (i % s1 === 0 && i % s2 === 0) {
+			result.push(i);
+		}
+	}
+	return result;
+}
+
+console.log(multiples(2, 4, 40), [4, 8, 12, 16, 20, 24, 28, 32, 36]);
+console.log(multiples(13, 5, 800), [65, 130, 195, 260, 325, 390, 455, 520, 585, 650, 715, 780]);
+console.log(multiples(13, 15, 800), [195, 390, 585, 780]);
