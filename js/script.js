@@ -11682,3 +11682,28 @@ const mean = lst => {
 
 console.log(mean(["u", "6", "d", "1", "i", "w", "6", "s", "t", "4", "a", "6", "g", "1", "2", "w", "8", "o", "2", "0"]), [3.6, "udiwstagwo"]);
 console.log(mean(["0", "c", "7", "x", "6", "2", "3", "5", "w", "7", "0", "y", "v", "u", "h", "i", "n", "u", "0", "0"]), [3.0, "cxwyvuhinu"]);
+
+// Substring fun (7 kyu)
+
+/* 
+Complete the function that takes an array of words.
+
+You must concatenate the nth letter from each word to construct a new word which should be returned as a string, 
+where n is the position of the word in the list.
+
+For example:
+
+["yoda", "best", "has"]  -->  "yes"
+  ^        ^        ^
+  n=0     n=1     n=2
+Note: Test cases contain valid input only - i.e. a string array or an empty array; and each word will have enough letters.
+*/
+
+const nthChar = words => {
+	let result = '';
+	words.forEach((item, i, arr) => { result += item[i] });
+	return result;
+}
+
+console.log(nthChar([]), '');
+console.log(nthChar(['yoda', 'best', 'has']), 'yes');
