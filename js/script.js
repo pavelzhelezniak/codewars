@@ -11761,3 +11761,22 @@ const makePassword = phrase => phrase.split(' ').map(item => {
 
 console.log(makePassword("Give me liberty or give me death"), "Gml0gmd", "Wrong output for 'Give me liberty or give me death'");
 console.log(makePassword("Keep Calm and Carry On"), "KCaC0", "Wrong output for 'Keep Calm and Carry On'");
+
+// sPoNgEbOb MeMe (7 kyu)
+
+/* 
+You need to create a function that converts the input into this format, 
+with the output being the same string expect there is a pattern of uppercase and lowercase letters.
+
+Example:
+
+input:  "stop Making spongebob Memes!"
+output: "StOp mAkInG SpOnGeBoB MeMeS!"
+*/
+
+const spongeMeme = sentence => sentence
+	.split('')
+	.map((_item, i) => (i % 2) ? sentence[i].toLowerCase() : sentence[i].toUpperCase())
+	.join('');
+
+console.log(spongeMeme("stop Making spongebob Memes!"), 'StOp mAkInG SpOnGeBoB MeMeS!');
