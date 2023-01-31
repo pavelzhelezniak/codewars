@@ -11776,7 +11776,7 @@ output: "StOp mAkInG SpOnGeBoB MeMeS!"
 
 const spongeMeme = sentence => sentence
 	.split('')
-	.map((_item, i) => (i % 2) ? sentence[i].toLowerCase() : sentence[i].toUpperCase())
+	.map((item, i) => (i % 2) ? item.toLowerCase() : item.toUpperCase())
 	.join('');
 
 console.log(spongeMeme("stop Making spongebob Memes!"), 'StOp mAkInG SpOnGeBoB MeMeS!');
