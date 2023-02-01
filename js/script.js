@@ -11780,3 +11780,40 @@ const spongeMeme = sentence => sentence
 	.join('');
 
 console.log(spongeMeme("stop Making spongebob Memes!"), 'StOp mAkInG SpOnGeBoB MeMeS!');
+
+// Interactive Dictionary (7 kyu)
+
+/* 
+In this kata, your job is to create a class Dictionary which you can add words to and their entries. Example:
+
+>>> let d = new Dictionary();
+
+>>> d.newEntry("Apple", "A fruit that grows on trees");
+
+>>> console.log(d.look("Apple"));
+A fruit that grows on trees
+
+>>> console.log(d.look("Banana"));
+Can't find entry for Banana
+*/
+
+class Dictionary {
+	constructor() {
+		this.diction = {};
+	}
+
+	newEntry(key, value) {
+		this.diction[key] = value;
+	}
+
+	look(key) {
+		return this.diction[key] || `Can\'t find entry for ${key}`;
+	}
+}
+
+let d = new Dictionary();
+d.newEntry('Apple', 'A fruit');
+console.log(d.look('Apple'));
+d.newEntry('Soccer', 'A sport');
+console.log(d.look('Soccer'));
+console.log(d.look('Ball'));
