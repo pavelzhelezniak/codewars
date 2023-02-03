@@ -11879,3 +11879,23 @@ function mult(x) {
 }
 
 console.log(chain(2, [add, mult]), 360, "Error: chain function does not work");
+
+// Find the Capitals (7 kyu)
+
+/* 
+Complete the method that takes a sequence of objects with two keys each: country or state, and capital. 
+Keys may be symbols or strings.
+
+The method should return an array of sentences declaring the state or country and its capital.
+*/
+
+const capital = capitals => capitals.map(item => `The capital of ${item.country || item.state} is ${item.capital}`);
+
+state_capitals = [{ state: 'Maine', capital: 'Augusta' }];
+console.log(capital(state_capitals)[0], "The capital of Maine is Augusta");
+
+country_capitals = [{ 'country': 'Spain', 'capital': 'Madrid' }];
+console.log(capital(country_capitals)[0], "The capital of Spain is Madrid")
+
+mixed_capitals = [{ "state": 'Maine', capital: 'Augusta' }, { country: 'Spain', "capital": "Madrid" }];
+console.log(capital(mixed_capitals)[1], "The capital of Spain is Madrid")
