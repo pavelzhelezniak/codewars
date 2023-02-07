@@ -11933,3 +11933,24 @@ console.log(pendulum([49, 40, 41, 41, 39, 43, 40, 46, 30, 47, 46, 40]), [47, 46,
 console.log(pendulum([48, 41, 38, 35, 50, 46, 38, 42, 37, 49, 44, 32, 37]), [50, 48, 44, 41, 38, 37, 32, 35, 37, 38, 42, 46, 49]);
 console.log(pendulum([49, 30, 39, 30, 40, 44, 43, 48, 47, 50, 42, 48, 33]), [50, 48, 47, 43, 40, 33, 30, 30, 39, 42, 44, 48, 49]);
 console.log(pendulum([48, 43, 35, 47, 39, 38, 38, 46, 49, 32, 42]), [49, 47, 43, 39, 38, 32, 35, 38, 42, 46, 48]);
+
+// Return a string's even characters. (7 kyu)
+
+/* 
+Write a function that returns a sequence (index begins with 1) of all the even characters from a string. 
+If the string is smaller than two characters or longer than 100 characters, the function should return "invalid string".
+
+For example:
+
+"abcdefghijklm" --> ["b", "d", "f", "h", "j", "l"]
+"a"             --> "invalid string"
+*/
+
+const evenChars = x => x.length > 100 || x.length < 2 ? "invalid string" : [...x].filter((z, i) => 1 == i % 2);
+
+console.log(evenChars("1234"), ["2", "4"]);
+console.log(evenChars(";;;--"), [";", "-"]);
+console.log(evenChars("abcdefghijklm"), ["b", "d", "f", "h", "j", "l"]);
+console.log(evenChars("aiqbuwbjqwbckjdwbwkqbefhglqhfjbwqejbcadn.bcaw.jbhwefjbwqkvbweevkj.bwvwbhvjk.dsvbajdv.hwuvghwuvfhgw.vjhwncv.wecnaw.ecnvw.kejvhnw.evjkhweqv.kjhwqeev.kjbhdjk.vbaewkjva"), "invalid string")
+console.log(evenChars("a"), "invalid string");
+console.log(evenChars(""), "invalid string");
