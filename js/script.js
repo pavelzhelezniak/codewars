@@ -12114,3 +12114,24 @@ console.log(decrypt(" Tah itse sits!", 3), "This is a test!");
 console.log(decrypt("This is a test!", 4), "This is a test!");
 console.log(decrypt("This is a test!", -1), "This is a test!");
 console.log(decrypt("hskt svr neetn!Ti aai eyitrsig", 1), "This kata is very interesting!");
+
+// longest_palindrome (7 kyu)
+
+/* 
+The objective is to return all pairs of integers from a given array of integers that have a difference of 2.
+The result array should be sorted in ascending order of values.
+Assume there are no duplicate integers in the array. The order of the integers in the input array should not matter.
+*/
+
+const twosDifference = input => input.sort((a, b) => a - b)
+	.reduce((acc, item, _i, arr) => {
+		if (arr.includes(item + 2)) {
+			acc.push([item, item + 2])
+		}
+		return acc;
+	}, []);
+
+console.log(twosDifference([1, 2, 3, 4]), [[1, 3], [2, 4]]);
+console.log(twosDifference([1, 3, 4, 6]), [[1, 3], [4, 6]]);
+console.log(twosDifference([1, 23, 3, 4, 7]), [[1, 3]]);
+console.log(twosDifference([4, 3, 1, 5, 6]), [[1, 3], [3, 5], [4, 6]]);
