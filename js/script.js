@@ -12115,7 +12115,7 @@ console.log(decrypt("This is a test!", 4), "This is a test!");
 console.log(decrypt("This is a test!", -1), "This is a test!");
 console.log(decrypt("hskt svr neetn!Ti aai eyitrsig", 1), "This kata is very interesting!");
 
-// longest_palindrome (7 kyu)
+// longest_palindrome (6 kyu)
 
 /* 
 The objective is to return all pairs of integers from a given array of integers that have a difference of 2.
@@ -12135,3 +12135,26 @@ console.log(twosDifference([1, 2, 3, 4]), [[1, 3], [2, 4]]);
 console.log(twosDifference([1, 3, 4, 6]), [[1, 3], [4, 6]]);
 console.log(twosDifference([1, 23, 3, 4, 7]), [[1, 3]]);
 console.log(twosDifference([4, 3, 1, 5, 6]), [[1, 3], [3, 5], [4, 6]]);
+
+// Primorial Of a Number (6 kyu)
+
+/* 
+Is similar to factorial of a number, In primorial, not all the natural numbers get multiplied, 
+only prime numbers are multiplied to calculate the primorial of a number. 
+It's denoted with P# and it is the product of the first n prime numbers.
+
+Explanation:
+Since the passed number is (6) ,Then the primorial should obtained by multiplying  2 * 3 * 5 * 7 * 11 * 13 = 30030 .
+*/
+
+const numPrimorial = n => {
+	const primeNumbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101];
+	primeNumbers.length = n;
+	return primeNumbers.reduce((acc, item) => acc * item, 1);
+}
+
+console.log(numPrimorial(3), 30);
+console.log(numPrimorial(4), 210);
+console.log(numPrimorial(5), 2310);
+console.log(numPrimorial(8), 9699690);
+console.log(numPrimorial(9), 223092870);
