@@ -12223,3 +12223,38 @@ console.log(shiftedDiff("Esham", "Esham"), 0);
 console.log(shiftedDiff(" ", " "), 0);
 console.log(shiftedDiff("hoop", "pooh"), -1);
 console.log(shiftedDiff("  ", " "), -1);
+
+// Simple Fun #79: Delete a Digit (7 kyu)
+
+/* 
+Given an integer n, find the maximal number you can obtain by deleting exactly one digit of the given number.
+
+Example
+For n = 152, the output should be 52;
+
+For n = 1001, the output should be 101.
+
+Input/Output
+[input] integer n
+
+Constraints: 10 ≤ n ≤ 1000000.
+
+[output] an integer
+*/
+
+const deleteDigit = n => {
+	let res = 0;
+	const arr = n.toString();
+
+	for (let i = 0; i < arr.length; i++) {
+		let currentNumber = parseInt(((arr.slice(0, i) + arr.slice(i + 1))), 10)
+		if (currentNumber > res) {
+			res = currentNumber;
+		}
+	}
+	return res;
+}
+
+console.log(deleteDigit(152), 52);
+console.log(deleteDigit(1001), 101);
+console.log(deleteDigit(10), 1);
