@@ -12284,3 +12284,27 @@ console.log(solve([1, 2, 3, 0, 5, 0, 1, 6, 8, 8, 6, 9, 1]), [1, 1, 1, 0, 0, 6, 6
 console.log(solve([5, 9, 6, 9, 6, 5, 9, 9, 4, 4]), [9, 9, 9, 9, 4, 4, 5, 5, 6, 6]);
 console.log(solve([4, 4, 2, 5, 1, 1, 3, 3, 2, 8]), [1, 1, 2, 2, 3, 3, 4, 4, 5, 8]);
 console.log(solve([4, 9, 5, 0, 7, 3, 8, 4, 9, 0]), [0, 0, 4, 4, 9, 9, 3, 5, 7, 8]);
+
+// Function Composition (6 kyu)
+
+/* 
+Function composition is a mathematical operation that mainly presents itself in lambda calculus and computability. 
+It is explained well here, but this is my explanation, in simple mathematical notation:
+
+f3 = compose( f1 f2 )
+	Is equivalent to...
+f3(a) = f1( f2( a ) )
+Your task is to create a compose function to carry out this task, which will be passed two functions or lambdas. 
+Ruby functions will be passed, and should return, either a proc or a lambda. 
+Remember that the resulting composed function may be passed multiple arguments!
+
+compose(f , g)(x)
+=> f( g( x ) )
+*/
+
+const compose = (f, g) => (...args) => f(g(...args));
+
+const add1 = a => a + 1;
+const addAll3 = (a, b, c) => a + b + c;
+
+console.log(compose(add1, addAll3)(1, 2, 3), 7);
