@@ -12478,3 +12478,23 @@ console.log(isAValidMessage("3hey5hello2hi5"), false);
 console.log(isAValidMessage("code4hello5"), false);
 console.log(isAValidMessage("1a2bb3ccc4dddd5eeeee"), true);
 console.log(isAValidMessage(""), true);
+
+// "Stringing"+"Me"+"Along" (6 kyu)
+
+/* 
+Implement a function that receives a string, and lets you extend it with repeated calls. 
+When no argument is passed you should return a string consisting of space-separated words you've received earlier.
+
+Note: There will always be at least 1 string; all inputs will be non-empty.
+
+For example:
+
+createMessage("Hello")("World!")("how")("are")("you?")() === "Hello World! how are you?"
+Tip (helpful, but not necessary): Try using classes!
+
+Good luck and happy coding!
+*/
+
+const createMessage = (str) => (newStr) => newStr ? createMessage(str + ' ' + newStr) : str;
+
+console.log(createMessage("Hello")("World!")("how")("are")("you?")(), "Hello World! how are you?");
