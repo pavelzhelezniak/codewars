@@ -12498,3 +12498,14 @@ Good luck and happy coding!
 const createMessage = (str) => (newStr) => newStr ? createMessage(str + ' ' + newStr) : str;
 
 console.log(createMessage("Hello")("World!")("how")("are")("you?")(), "Hello World! how are you?");
+
+// Hard Time Bomb (6 kyu)
+
+/* 
+A bomb has been set to go off! You have to find the wire and cut it in order to stop the timer. 
+There is a global var that holds the numeric ID to which wire to cut. Find that and then you can Bomb.CutTheWire(wireKey);
+*/
+
+const wireCode = Object.keys(global);
+const numVariable = wireCode.filter(key => (typeof global[key] === 'number'))[0]
+Bomb.CutTheWire(global[numVariable]);
