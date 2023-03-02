@@ -12562,3 +12562,34 @@ console.log(sub.encode("aeiou"), "eirfg");
 console.log(sub.decode("eta"), "abc");
 console.log(sub.decode("qxz"), "xyz");
 console.log(sub.decode("eirfg"), "aeiou");
+
+// Framed Reflection (6 kyu)
+
+/* 
+100th Kata
+You are given a message (text) that you choose to read in a mirror (weirdo). 
+Return what you would see, complete with the mirror frame. Example:
+
+'Hello World'
+
+would give:
+*********
+* elleH *
+* dlroW *
+*********
+
+Words in your solution should be left-aligned.
+*/
+
+const mirror = text => {
+	const stars = Math.max(...text.split(' ').map(v => v.length)) + 4;
+	const space = Math.max(...text.split(' ').map(v => v.length));
+	const arr = text.split(' ')
+		.map(v => '\n* ' + v.split('').reverse().join('') + ' '.repeat(space - v.length) + ' *\n')
+		.join('')
+		.replace(/\*\n\n\*/g, '*\n*');
+	return '*'.repeat(stars) + arr + '*'.repeat(stars)
+};
+
+console.log(mirror('Hello World'), '*********\n* olleH *\n* dlroW *\n*********');
+console.log(mirror('Codewars'), '************\n* srawedoC *\n************'); 
