@@ -3792,13 +3792,11 @@ A string consists of lowercase latin letters, digits and symbols.
 
 [output] a string
 */
-
-function reverseLetter(str) {
-	const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-
-	return str.split('').reverse().filter(item => alphabet.indexOf(item) !== -1).join('')
-
-}
+const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+const reverseLetter = str => str.split('')
+	.reverse()
+	.filter(item => alphabet.indexOf(item) !== -1)
+	.join('');
 
 console.log(reverseLetter("krishan"), "nahsirk")
 console.log(reverseLetter("ultr53o?n"), "nortlu")
