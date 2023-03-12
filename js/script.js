@@ -12777,3 +12777,37 @@ const list234 = [
 
 console.log(countDevelopers(list12345), 1, "Noah is the only JavaScript developer from Europe");
 console.log(countDevelopers(list234), 0, "Lukas is not a JS devolper");
+
+// Minimize Sum Of Array (Array Series #1) (7 kyu)
+
+/* 
+Task
+Given an array of integers , Find the minimum sum which is obtained from summing each Two integers product .
+
+Notes
+Array/list will contain positives only .
+Array/list will always have even size
+Input >> Output Examples
+minSum({5,4,2,3}) ==> return (22) 
+Explanation:
+The minimum sum obtained from summing each two integers product ,  5*2 + 3*4 = 22
+minSum({12,6,10,26,3,24}) ==> return (342)
+Explanation:
+The minimum sum obtained from summing each two integers product ,  26*3 + 24*6 + 12*10 = 342
+minSum({9,2,8,7,5,4,0,6}) ==> return (74)
+Explanation:
+The minimum sum obtained from summing each two integers product ,  9*0 + 8*2 +7*4 +6*5 = 74
+*/
+
+const minSum = arr => {
+	const sort = arr.sort((a, b) => a - b)
+	let minSum = 0;
+	for (let i = 0; i < arr.length / 2; i++) {
+		minSum += sort[i] * sort[sort.length - 1 - i]
+	}
+	return minSum
+};
+
+console.log(minSum([5, 4, 2, 3]), 22);
+console.log(minSum([12, 6, 10, 26, 3, 24]), 342);
+console.log(minSum([9, 2, 8, 7, 5, 4, 0, 6]), 74);
