@@ -12811,3 +12811,53 @@ const minSum = arr => {
 console.log(minSum([5, 4, 2, 3]), 22);
 console.log(minSum([12, 6, 10, 26, 3, 24]), 342);
 console.log(minSum([9, 2, 8, 7, 5, 4, 0, 6]), 74);
+
+// Which color is the brightest? (7 kyu)
+
+/* 
+One of the common ways of representing color is the RGB color model, in which the Red, Green, 
+and Blue primary colors of light are added together in various ways to reproduce a broad array of colors.
+
+One of the ways to determine brightness of a color is to find the value V of the alternative HSV 
+(Hue, Saturation, Value) color model. Value is defined as the largest component of a color:
+
+V = max(R,G,B)
+You are given a list of colors in 6-digit hexidecimal notation #RRGGBB. Return the brightest of these colors!
+
+For example,
+
+brightest(["#001000", "#000000"]) == "#001000"
+brightest(["#ABCDEF", "#123456"]) == "#ABCDEF"
+If there are multiple brightest colors, return the first one:
+
+brightest(["#00FF00", "#FFFF00", "#01130F"]) == "#00FF00"
+Note that both input and output should use upper case for characters A, B, C, D, E, F.
+*/
+
+const brightest = colors => {
+	let colorIndex = 0;
+	let brightest = 0;
+
+	const getColorValue = (currentColor, startPos, endPos, notation = 16) =>
+		parseInt(currentColor.slice(startPos, endPos), notation);
+
+	for (let i = 0; i < colors.length; i++) {
+		const currentColor = colors[i];
+		const R = getColorValue(currentColor, 1, 3);
+		const G = getColorValue(currentColor, 3, 5);
+		const B = getColorValue(currentColor, 5, 7);
+		const maxValue = Math.max(R, G, B);
+		if (maxValue > brightest) {
+			brightest = maxValue;
+			colorIndex = i;
+		}
+	}
+
+	return colors[colorIndex];
+}
+
+console.log(brightest(["#001000", "#000000"]), "#001000");
+console.log(brightest(["#ABCDEF", "#123456"]), "#ABCDEF");
+console.log(brightest(["#00FF00", "#FFFF00"]), "#00FF00");
+console.log(brightest(["#FFFFFF", "#1234FF"]), "#FFFFFF");
+console.log(brightest(["#FFFFFF", "#123456", "#000000"]), "#FFFFFF");
