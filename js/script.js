@@ -12991,3 +12991,53 @@ console.log(unluckyDays(1812), 2, "should be: 2");
 console.log(unluckyDays(1618), 2, "should be: 2");
 console.log(unluckyDays(2132), 1, "should be: 1");
 console.log(unluckyDays(2065), 3, "should be: 3");
+
+// The Coupon Code (7 kyu)
+
+/* 
+Story
+Your online store likes to give out coupons for special occasions. 
+Some customers try to cheat the system by entering invalid codes or using expired coupons.
+
+Task
+Your mission:
+Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
+
+A coupon is no more valid on the day AFTER the expiration date. 
+All dates will be passed as strings in this format: "MONTH DATE, YEAR".
+
+Examples:
+checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
+checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
+*/
+
+const checkCoupon = (enteredCode, correctCode, currentDate, expirationDate) => {
+	const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+		'August', 'September', 'October', 'November', 'December'];
+
+	if (enteredCode === correctCode) {
+		const [currentMonthAndDay, currentYear] = currentDate.split(', ');
+		const [expirationMonthAndDay, expirationYear] = expirationDate.split(', ');
+
+		if (Number(currentYear) < Number(expirationYear)) {
+			return true;
+		} else if (Number(currentYear) === Number(expirationYear)) {
+			const [currentMonth, currentDay] = currentMonthAndDay.split(' ');
+			const [expirationMonth, expirationDay] = expirationMonthAndDay.split(' ');
+
+			if (months.indexOf(currentMonth) === months.indexOf(expirationMonth)) {
+				return Number(currentDay) <= Number(expirationDay);
+			} else if (months.indexOf(currentMonth) < months.indexOf(expirationMonth)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+};
+
+console.log(checkCoupon('123', '123', 'September 5, 2014', 'October 1, 2014'), true);
+console.log(checkCoupon('123a', '123', 'September 5, 2014', 'October 1, 2014'), false);
+console.log(checkCoupon("123", "123", "July 9, 2015", "July 9, 2015"), true);
+console.log(checkCoupon("123", "123", "July 9, 2015", "July 2, 2015"), false);
+console.log(checkCoupon("abc", "abc", "November 8, 2013", "November 5, 2014"), true);
