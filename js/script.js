@@ -12861,3 +12861,43 @@ console.log(brightest(["#ABCDEF", "#123456"]), "#ABCDEF");
 console.log(brightest(["#00FF00", "#FFFF00"]), "#00FF00");
 console.log(brightest(["#FFFFFF", "#1234FF"]), "#FFFFFF");
 console.log(brightest(["#FFFFFF", "#123456", "#000000"]), "#FFFFFF");
+
+// Handshake problem (6 kyu)
+
+/* 
+Johnny is a farmer and he annually holds a beet farmers convention "Drop the beet".
+Every year he takes photos of farmers handshaking. Johnny knows that no two farmers handshake more than once. 
+He also knows that some of the possible handshake combinations may not happen.
+However, Johnny would like to know the minimal amount of people that participated this year just by counting 
+all the handshakes.
+Help Johnny by writing a function, that takes the amount of handshakes and returns the minimal amount of people 
+needed to perform these handshakes (a pair of farmers handshake only once).
+*/
+
+const getParticipants = handshakes => {
+	//! maxHandshakes = countParticipants × (countParticipants - 1) / 2 ===>
+	//! countParticipants**2 - countParticipants - 2 * maxHandshakes = 0; (quadratic equation )
+
+	let countParticipants = 0;
+	const a = 1, b = -1, c = -handshakes * 2;
+
+	if (!handshakes) {
+		return countParticipants;
+	}
+
+	const D = b ** 2 - 4 * a * c;
+	const countParticipantsFirst = (-(b) - Math.sqrt(D)) / 2 * a;
+	const countParticipantsSecond = (-(b) + Math.sqrt(D)) / 2 * a;
+	countParticipants = Math.max(countParticipantsFirst, countParticipantsSecond)
+
+	return Math.ceil(countParticipants);
+};
+
+console.log(getParticipants(1), 2);
+console.log(getParticipants(0), 0);
+console.log(getParticipants(3), 3);
+console.log(getParticipants(6), 4);
+console.log(getParticipants(7), 5);
+console.log(getParticipants(12), 6);
+console.log(getParticipants(19), 7);
+console.log(getParticipants(27), 8);
