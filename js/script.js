@@ -12922,3 +12922,38 @@ console.log(deepCount([1, 2, 3]), 3, "Expected 3");
 console.log(deepCount(["x", "y", ["z"]]), 4, "Expected 4");
 console.log(deepCount([1, 2, [3, 4, [5]]]), 7, "Expected 7");
 console.log(deepCount([[[[[[[[[]]]]]]]]]), 8, "Expected 8");
+
+// N-th Fibonacci (6 kyu)
+
+/* 
+I love Fibonacci numbers in general, but I must admit I love some more than others.
+
+I would like for you to write me a function that, when given a number n (n >= 1 ), returns the nth number in the Fibonacci Sequence.
+
+For example:
+
+	nthFibo(4) == 2
+Because 2 is the 4th number in the Fibonacci Sequence.
+
+For reference, the first two numbers in the Fibonacci sequence are 0 and 1, and each subsequent number is the sum of the previous two.
+*/
+
+const nthFibo = n => {
+	const fibonacciSeries = [0, 1];
+
+	for (let i = 2; i <= n; i++) {
+		fibonacciSeries[i] = fibonacciSeries[i - 2] + fibonacciSeries[i - 1]
+	}
+
+	return fibonacciSeries[n - 1];
+}
+
+console.log(nthFibo(1), 0, "1-st Fibo");
+console.log(nthFibo(2), 1, "2-nd Fibo");
+console.log(nthFibo(3), 1, "3-rd Fibo");
+console.log(nthFibo(4), 2, "4-th Fibo");
+console.log(nthFibo(5), 3, "5-th Fibo");
+console.log(nthFibo(6), 5, "6-th Fibo");
+console.log(nthFibo(7), 8, "7-th Fibo");
+console.log(nthFibo(8), 13, "8-th Fibo");
+console.log(nthFibo(9), 21, "9-th Fibo");
