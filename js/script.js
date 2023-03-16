@@ -13143,3 +13143,27 @@ const recycle = array => {
 }
 
 console.log(recycle(input), output);
+
+// Javascript Mathematician (7 kyu)
+
+/* 
+You are writing a function that takes two sets of arguments of arbitrary length. 
+The return value will be the sum of the values of all of the arguments.
+
+The function should contain at least 1 argument per set.
+
+calculate(1)(1) // should return 2
+calculate(1,1)(1) // should return 3
+calculate(1,1)(1,-1) // should return 2
+calculate(2,4)(3,7,1) // should return 17
+*/
+
+const calculate1234 = (...arg1) => {
+	let sum = arg1.reduce((acc, item) => acc + item, 0)
+	return (...arg2) => arg2.reduce((acc, item) => acc + item, 0) + sum;
+};
+
+console.log(calculate1234(1)(1), 2);
+console.log(calculate1234(1, 1)(1), 3);
+console.log(calculate1234(1, 1)(1, -1), 2);
+console.log(calculate1234(2, 4)(3, 7, 1), 17);
