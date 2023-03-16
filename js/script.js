@@ -13167,3 +13167,31 @@ console.log(calculate1234(1)(1), 2);
 console.log(calculate1234(1, 1)(1), 3);
 console.log(calculate1234(1, 1)(1, -1), 2);
 console.log(calculate1234(2, 4)(3, 7, 1), 17);
+
+// Can you keep a secret? (6 kyu)
+
+/* 
+There's no such thing as private properties on a coffeescript object! But, maybe there are?
+
+Implement a function createSecretHolder(secret) which accepts any value as secret and returns an object with ONLY two methods
+
+getSecret() which returns the secret
+setSecret() which sets the secret
+obj = createSecretHolder(5)
+obj.getSecret() # returns 5
+obj.setSecret(2)
+obj.getSecret() # returns 2
+*/
+
+const createSecretHolder = secret => ({
+	getSecret: () => secret,
+	setSecret: (newSecret) => {
+		secret = newSecret;
+	}
+});
+
+const secretHolder = createSecretHolder(5);
+
+console.log(secretHolder.getSecret(), 'returns 5');
+console.log(secretHolder.setSecret(2));
+console.log(secretHolder.getSecret(), 'returns 2');
