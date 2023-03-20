@@ -13293,3 +13293,57 @@ const find = (object, path) => {
 const actual = find(object, path);
 
 console.log(actual, expected);
+
+// Angle Between Clock Hands (6 kyu)
+
+/* 
+Given a Date (in JS and Ruby) or hours and minutes (in C and Python), 
+return the angle between the two hands of a 12-hour analog clock in radians.
+
+Notes:
+The minute hand always points to the exact minute (there is no seconds hand).
+The hour hand does not "snap" to the tick marks: e.g. at 6:30 the angle is not 0 
+because the hour hand is already half way between 6 and 7.
+Return the smaller of the angles ( <= π ).
+Return π if the hands are opposite.
+Examples
+at noon the angle is: 0
+at 3:00 the angle is: π/2 (90 degrees)
+at 6:00 the angle is: π (180 degrees)
+at 9:00 the angle is: π/2 (90 degrees)
+*/
+
+const handAngle = date => {
+	const hours = date.getHours();
+	const minutes = date.getMinutes();
+
+	const anglePerHour = 360 / 12;
+	const anglePerMinute = 360 / 60;
+
+	const hourHand = hours * anglePerHour + minutes / 60 * anglePerHour;
+	const minuteHand = minutes * anglePerMinute;
+
+	const angleDegree = Math.abs(hourHand - minuteHand);
+	const angelRadian = Math.min(360 - angleDegree, angleDegree) * Math.PI / 180;
+
+	return angelRadian
+};
+
+const makeDate = (hours, minutes) => {
+	const date = new Date();
+	date.setMinutes(minutes);
+	date.setHours(hours);
+	return date;
+};
+
+console.log(handAngle(makeDate(0, 0)), 0.0);
+console.log(handAngle(makeDate(12, 0)), 0.0);
+console.log(handAngle(makeDate(6, 0)), 3.141592653589793);
+console.log(handAngle(makeDate(1, 0)), 0.5235987755982988);
+console.log(handAngle(makeDate(9, 0)), 1.5707963267948966);
+console.log(handAngle(makeDate(10, 0)), 1.0471975511965976);
+console.log(handAngle(makeDate(0, 15)), 1.4398966328953218);
+console.log(handAngle(makeDate(0, 45)), 1.9634954084936207);
+console.log(handAngle(makeDate(12, 30)), 2.8797932657906435);
+console.log(handAngle(makeDate(7, 15)), 2.2252947962927703);
+console.log(handAngle(makeDate(6, 5)), 2.6616271092913526);
