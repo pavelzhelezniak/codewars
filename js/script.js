@@ -13626,3 +13626,51 @@ console.log(oper(vertMirror, "hSgdHQ\nHnDMao\nClNNxX\niRvxxH\nbqTVvA\nwvSyRu"), 
 console.log(oper(vertMirror, "IzOTWE\nkkbeCM\nWuzZxM\nvDddJw\njiJyHF\nPVHfSx"), "EWTOzI\nMCebkk\nMxZzuW\nwJddDv\nFHyJij\nxSfHVP");
 console.log(oper(horMirror, "lVHt\nJVhv\nCSbg\nyeCt"), "yeCt\nCSbg\nJVhv\nlVHt");
 console.log(oper(horMirror, "njMK\ndbrZ\nLPKo\ncEYz"), "cEYz\nLPKo\ndbrZ\nnjMK");
+
+// Coding Meetup #3 - Higher-Order Functions Series - Is Ruby coming? (7 kyu)
+
+/* 
+You will be given an array of objects (associative arrays in PHP) representing data about developers 
+who have signed up to attend the next coding meetup that you are organising.
+
+Your task is to return:
+
+true if at least one Ruby developer has signed up; or
+false if there will be no Ruby developers.
+For example, given the following input array:
+
+var list1 = [
+  { firstName: 'Emma', lastName: 'Z.', country: 'Netherlands', continent: 'Europe', age: 29, language: 'Ruby' },
+  { firstName: 'Piotr', lastName: 'B.', country: 'Poland', continent: 'Europe', age: 128, language: 'Javascript' },
+  { firstName: 'Jayden', lastName: 'P.', country: 'Jamaica', continent: 'Americas', age: 42, language: 'JavaScript' }
+];
+your function should return true.
+
+Notes:
+
+The input array will always be valid and formatted as in the example above.
+*/
+
+const isRubyComing = list => {
+	let count = 0;
+
+	for (let i = 0; i < list.length; i++) {
+		list[i].language === 'Ruby' ? count++ : null;
+	}
+
+	return count > 0;
+}
+
+const list9 = [
+	{ firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
+	{ firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python' },
+	{ firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' }
+];
+
+const list8 = [
+	{ firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
+	{ firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python' }
+];
+
+console.log(isRubyComing(list9), true);
+console.log(isRubyComing(list8), false);
