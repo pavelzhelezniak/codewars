@@ -13674,3 +13674,49 @@ const list8 = [
 
 console.log(isRubyComing(list9), true);
 console.log(isRubyComing(list8), false);
+
+// Over The Road (7 kyu)
+
+/* 
+You've just moved into a perfectly straight street with exactly n identical houses on either side of the road. 
+Naturally, you would like to find out the house number of the people on the other side of the street. 
+The street looks something like this:
+
+Street
+1|   |6
+3|   |4
+5|   |2
+  you
+Evens increase on the right; odds decrease on the left. House numbers start at 1 and increase without gaps. 
+When n = 3, 1 is opposite 6, 3 opposite 4, and 5 opposite 2.
+
+Example (address, n --> output)
+Given your house number address and length of street n, give the house number on the opposite side of the street.
+
+1, 3 --> 6
+3, 3 --> 4
+2, 3 --> 5
+3, 5 --> 8
+Note about errors
+If you are timing out, running out of memory, or get any kind of "error", read on. 
+Both n and address could get upto 500 billion with over 200 random tests. 
+If you try to store the addresses of 500 billion houses in a list then you will run out of memory and the tests will crash. 
+This is not a kata problem so please don't post an issue. Similarly if the tests don't 
+complete within 12 seconds then you also fail.
+
+To solve this, you need to think of a way to do the kata without making massive lists or huge for loops. 
+Read the discourse for some inspiration :)
+*/
+
+const hodd = (r, n) => 1 + (r - 1) * 2;
+const heven = (r, n) => 2 * n - (r - 1) * 2;
+const rodd = (h, n) => (h + 1) / 2;
+const reven = (h, n) => (2 * n + 2 - h) / 2;
+
+const overTheRoad = (h, n) => 0 == n % 2 ? hodd(reven(h, n), n) : heven(rodd(h, n), n);
+
+console.log(overTheRoad(1, 3), 6);
+console.log(overTheRoad(3, 3), 4);
+console.log(overTheRoad(2, 3), 5);
+console.log(overTheRoad(3, 5), 8);
+console.log(overTheRoad(7, 11), 16);
