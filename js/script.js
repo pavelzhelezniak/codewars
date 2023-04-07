@@ -13821,3 +13821,43 @@ console.log(countRedBeads(0), 0);
 console.log(countRedBeads(1), 0);
 console.log(countRedBeads(3), 4);
 console.log(countRedBeads(5), 8);
+
+// Alphabetical Addition (7 kyu)
+
+/* 
+Your task is to add up letters to one letter.
+
+The function will be given a variable amount of arguments, each one being a letter to add.
+
+Notes:
+Letters will always be lowercase.
+Letters can overflow (see second to last example of the description)
+If no letters are given, the function should return 'z'
+Examples:
+addLetters('a', 'b', 'c') = 'f'
+addLetters('a', 'b') = 'c'
+addLetters('z') = 'z'
+addLetters('z', 'a') = 'a'
+addLetters('y', 'c', 'b') = 'd' // notice the letters overflowing
+addLetters() = 'z'
+*/
+
+const addLetters = (...letters) => {
+	let code = 0
+	if (letters.length === 0) {
+		return 'z';
+	}
+
+	for (var i = 0; i < letters.length; i++) {
+		code += letters[i].charCodeAt(0) - 96;
+		if (code > 26) {
+			code = code - 26;
+		}
+	}
+
+	return String.fromCharCode((code) + 96);
+};
+
+console.log(addLetters(['a', 'b', 'c']), 'f');
+console.log(addLetters(['z']), 'z');
+console.log(addLetters(['a', 'b']), 'c');
