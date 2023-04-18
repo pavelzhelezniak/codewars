@@ -14030,3 +14030,36 @@ console.log(f(), false, "n must be a value");
 console.log(f(3.14), false, "n must be an integer");
 console.log(f(0), false, "a value of n greater than 0 is required");
 console.log(f(-10), false, "a positive value of n is required");
+
+// Averages of numbers (7 kyu)
+
+/* 
+#Get the averages of these numbers
+
+Write a method, that gets an array of integer-numbers and return an array of the averages of each integer-number and his follower, 
+if there is one.
+
+Example:
+
+Input:  [ 1, 3, 5, 1, -10]
+Output:  [ 2, 4, 3, -4.5]
+If the array has 0 or 1 values or is null, your method should return an empty array.
+
+Have fun coding it and please don't forget to vote and rank this kata! :-)
+*/
+
+const averages = numbers => {
+	const result = [];
+
+	if (numbers) {
+		for (let i = 0; i < numbers.length - 1; i++) {
+			result.push((numbers[i] + numbers[i + 1]) / 2);
+		}
+	}
+
+	return result;
+};
+
+console.log(averages([2, 2, 2, 2, 2]), [2, 2, 2, 2]);
+console.log(averages([2, -2, 2, -2, 2]), [0, 0, 0, 0]);
+console.log(averages([1, 3, 5, 1, -10]), [2, 4, 3, -4.5]);
