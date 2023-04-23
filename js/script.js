@@ -14252,3 +14252,38 @@ console.log(maxTriSum([-7, 12, -7, 29, -5, 0, -7, 0, 0, 29]), 41);
 console.log(maxTriSum([-2, 0, 2]), 0);
 console.log(maxTriSum([-2, -4, 0, -9, 2]), 0);
 console.log(maxTriSum([-5, -1, -9, 0, 2]), 1);
+
+// Squares sequence (7 kyu)
+
+/* 
+Complete the function that returns an array of length n, starting with the given number x and the squares of the previous number. 
+If n is negative or zero, return an empty array/list.
+
+Examples
+2, 5  -->  [2, 4, 16, 256, 65536]
+3, 3  -->  [3, 9, 81]
+*/
+
+const squares = (x, n) => {
+	const res = [];
+	let count = x;
+	if (n > 0) {
+		for (let i = 0; i < n; i++) {
+			if (i === 0) {
+				res.push(x);
+			} else {
+				count = count ** 2;
+				res.push(count);
+			}
+		}
+	}
+
+	return res;
+};
+
+console.log(squares(2, 5), [2, 4, 16, 256, 65536]);
+console.log(squares(3, 3), [3, 9, 81]);
+console.log(squares(5, 3), [5, 25, 625]);
+console.log(squares(10, 4), [10, 100, 10000, 100000000]);
+console.log(squares(2, 0), []);
+console.log(squares(2, -5), []);
