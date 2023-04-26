@@ -14386,3 +14386,44 @@ console.log(pairs([21, 20, 22, 40, 39, -56, 30, -55, 95, 94]), 2);
 console.log(pairs([81, 44, 80, 26, 12, 27, -34, 37, -35]), 0);
 console.log(pairs([-55, -56, -7, -6, 56, 55, 63, 62]), 4);
 console.log(pairs([73, 72, 8, 9, 73, 72]), 3);
+
+// Rotate for a Max (7 kyu)
+
+/* 
+Let us begin with an example:
+Take a number: 56789. Rotate left, you get 67895.
+Keep the first digit in place and rotate left the other digits: 68957.
+Keep the first two digits in place and rotate the other ones: 68579.
+Keep the first three digits and rotate left the rest: 68597. 
+Now it is over since keeping the first four it remains only one digit which rotated is itself.
+You have the following sequence of numbers:
+56789 -> 67895 -> 68957 -> 68579 -> 68597
+and you must return the greatest: 68957.
+
+Task
+Write function max_rot(n) which given a positive integer n 
+returns the maximum number you got doing rotations similar to the above example.
+So max_rot (or maxRot or ... depending on the language) is such as:
+max_rot(56789) should return 68957
+max_rot(38458215) should return 85821534
+*/
+
+const maxRot = n => {
+	const listOfNums = [];
+	const array = [...n.toString()];
+	let num = 0;
+	while (num < array.length - 1) {
+		const number = array.splice(num, 1);
+		array.push(parseInt(number, 10));
+		listOfNums.push(parseInt(array.join(""), 10));
+		num++;
+	}
+	listOfNums.unshift(n);
+
+	return Math.max(...listOfNums);
+};
+
+console.log(maxRot(38458215), 85821534);
+console.log(maxRot(195881031), 988103115);
+console.log(maxRot(896219342), 962193428);
+console.log(maxRot(69418307), 94183076);
