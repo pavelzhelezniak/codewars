@@ -14522,3 +14522,24 @@ console.log(menFromBoys([2, -43, 95, -90, 37]), [-90, 2, 95, 37, -43]);
 console.log(menFromBoys([82, -61, -87, -12, 21, 1]), [-12, 82, 21, 1, -61, -87]);
 console.log(menFromBoys([63, -57, 76, -85, 88, 2, -28]), [-28, 2, 76, 88, 63, -57, -85]);
 console.log(menFromBoys([49, 818, -282, 900, 928, 281, -282, -1]), [-282, 818, 900, 928, 281, 49, -1]);
+
+// Indexed capitalization (7 kyu)
+
+/* 
+Given a string and an array of integers representing indices, capitalize all letters at the given indices.
+
+For example:
+
+capitalize("abcdef",[1,2,5]) = "aBCdeF"
+capitalize("abcdef",[1,2,5,100]) = "aBCdeF". There is no index 100.
+The input will be a lowercase string with no spaces and an array of digits.
+*/
+
+const capitalize1 = (s, arr) => [...s].map((item, index) => arr.includes(index) ? item.toUpperCase() : item).join('');
+
+console.log(capitalize1("abcdef", [1, 2, 5]), 'aBCdeF');
+console.log(capitalize1("abcdef", [1, 2, 5, 100]), 'aBCdeF');
+console.log(capitalize1("codewars", [1, 3, 5, 50]), 'cOdEwArs');
+console.log(capitalize1("abracadabra", [2, 6, 9, 10]), 'abRacaDabRA');
+console.log(capitalize1("codewarriors", [5]), 'codewArriors');
+console.log(capitalize1("indexinglessons", [0]), 'Indexinglessons');
