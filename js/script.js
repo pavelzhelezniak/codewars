@@ -14586,3 +14586,49 @@ console.log(arrayLeaders([-1, -29, -26, -2]), [-1]);
 console.log(arrayLeaders([-36, -12, -27]), [-36, -12]);
 console.log(arrayLeaders([5, -2, 2]), [5, 2]);
 console.log(arrayLeaders([0, -1, -29, 3, 2]), [0, -1, 3, 2]);
+
+// Coding Meetup #5 - Higher-Order Functions Series - Prepare the count of languages (7 kyu)
+
+/* 
+You will be given an array of objects (associative arrays in PHP, table in COBOL) 
+representing data about developers who have signed up to attend the next coding meetup that you are organising.
+
+Your task is to return an object (associative array in PHP, table in COBOL) 
+which includes the count of each coding language represented at the meetup.
+
+For example, given the following input array:
+
+var list1 = [
+  { firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'C' },
+  { firstName: 'Anna', lastName: 'R.', country: 'Liechtenstein', continent: 'Europe', age: 52, language: 'JavaScript' },
+  { firstName: 'Ramon', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby' },
+  { firstName: 'George', lastName: 'B.', country: 'England', continent: 'Europe', age: 81, language: 'C' },
+];
+your function should return the following object (associative array in PHP, table in COBOL):
+
+{ C: 2, JavaScript: 1, Ruby: 1 }
+Notes:
+
+The order of the languages in the object does not matter.
+The count value should be a valid number.
+The input array will always be valid and formatted as in the example above.
+*/
+
+const countLanguages = list => {
+	const result = {};
+	for (let i = 0; i < list.length; i++) {
+		if (!result[list[i].language]) {
+			result[list[i].language] = 1;
+		} else {
+			result[list[i].language]++;
+		}
+	}
+	return result;
+};
+
+console.log(countLanguages([
+	{ firstName: 'Noah', lastName: 'M.', country: 'Switzerland', continent: 'Europe', age: 19, language: 'C' },
+	{ firstName: 'Anna', lastName: 'R.', country: 'Liechtenstein', continent: 'Europe', age: 52, language: 'JavaScript' },
+	{ firstName: 'Ramon', lastName: 'R.', country: 'Paraguay', continent: 'Americas', age: 29, language: 'Ruby' },
+	{ firstName: 'George', lastName: 'B.', country: 'England', continent: 'Europe', age: 81, language: 'C' },
+]), { C: 2, JavaScript: 1, Ruby: 1 });
