@@ -14741,3 +14741,27 @@ console.log(boredom({
 	katie: 'IS', laura: 'IS', saajid: 'canteen', alex: 'pissing about',
 	john: 'retail', mr: 'pissing about'
 }), 'party time!!');
+
+// 16+18=214 (7 kyu)
+
+/* 
+In simple terms, our method does not like the principle of carrying over numbers and just writes down every number it calculates :-)
+
+You may assume both integers are positive integers.
+*/
+
+const add = (num1, num2) => {
+	let sumString = '';
+	while (num1 || num2) {
+		sumString = (num1 % 10) + (num2 % 10) + sumString;
+		num1 = Math.floor(num1 / 10);
+		num2 = Math.floor(num2 / 10);
+	}
+
+	return parseInt(sumString, 10) || 0;
+};
+
+console.log(add(1222, 30277), 31499);
+console.log(add(1236, 30977), 31111013);
+console.log(add(38810, 1383), 391193);
+console.log(add(49999, 49999), 818181818);
