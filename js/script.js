@@ -14936,3 +14936,31 @@ const wordValue = a => {
 
 console.log(wordValue(["codewars", "abc", "xyz"]), [88, 12, 225]);
 console.log(wordValue(["abc abc", "abc abc", "abc", "abc"]), [12, 24, 18, 24]);
+
+// Return the first M multiples of N (7 kyu)
+
+/* 
+Implement a function, multiples(m, n), which returns an array of the first m multiples of the real number n. 
+Assume that m is a positive integer.
+
+Ex.
+
+multiples(3, 5.0)
+should return
+
+[5.0, 10.0, 15.0]
+*/
+
+const multiples12 = (m, n) => {
+	let count = n;
+	const res = [];
+	for (let i = 0; i < m; i++) {
+		res.push(count);
+		count += n;
+
+	}
+
+	return res;
+};
+
+console.log(multiples12(3, 5), [5, 10, 15]);
