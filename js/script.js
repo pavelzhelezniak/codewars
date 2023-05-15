@@ -15011,3 +15011,24 @@ console.log(isSameLanguage([
 	{ firstName: 'Mia', lastName: 'H.', country: 'Germany', continent: 'Europe', age: 39, language: 'Ruby' },
 	{ firstName: 'Maria', lastName: 'I.', country: 'Greece', continent: 'Europe', age: 32, language: 'C' },
 ]), false);
+
+// The Office IV - Find a Meeting Room (7 kyu)
+
+/* 
+Your job at E-Corp is both boring and difficult. 
+It isn't made any easier by the fact that everyone constantly wants to have a meeting with you, 
+and that the meeting rooms are always taken!
+
+In this kata, you will be given an array. Each value represents a meeting room. 
+Your job? Find the first empty one and return its index (N.B. There may be more than one empty room in some test cases).
+
+'X' --> busy
+'O' --> empty
+If all rooms are busy, return "None available!"
+*/
+
+const meeting1 = x => x.indexOf('O') > -1 ? x.indexOf('O') : 'None available!';
+
+console.log(meeting1(['X', 'O', 'X']), 1);
+console.log(meeting1(['O', 'X', 'X', 'X', 'X']), 0);
+console.log(meeting1(['X', 'X', 'X', 'X', 'X']), 'None available!');
