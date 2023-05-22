@@ -15125,3 +15125,17 @@ const bingo12 = a => {
 
 console.log(bingo12([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), "LOSE");
 console.log(bingo12([21, 13, 2, 7, 5, 14, 7, 15, 9, 10]), "WIN");
+
+// Average Scores (7 kyu)
+
+/* 
+Create a function that returns the average of an array of numbers ("scores"), 
+rounded to the nearest whole number. You are not allowed to use any loops (including for, for/in, while, and do/while loops).
+
+The array will never be empty.
+*/
+
+const average = scores => Math.round(scores.reduce((acc, item) => (acc + item), 0) / scores.length);
+
+console.log(average([49, 3, 5, 300, 7]), 73);
+console.log(average([90, 98, 89, 100, 100, 86, 94]), 94);
