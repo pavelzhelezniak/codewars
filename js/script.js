@@ -15171,6 +15171,33 @@ const createDict = (keys, values) => {
 	return res;
 };
 
-console.log(createDict(['a', 'b', 'c'], [1, 2, 3]), { 'a': 1, 'b': 2, 'c': 3 })
-console.log(createDict(['a', 'b', 'c'], [1, 2, 3, 4]), { 'a': 1, 'b': 2, 'c': 3 })
-console.log(createDict(['a', 'b', 'c', 'd'], [1, 2, 3]), { 'a': 1, 'b': 2, 'c': 3, 'd': null })
+console.log(createDict(['a', 'b', 'c'], [1, 2, 3]), { 'a': 1, 'b': 2, 'c': 3 });
+console.log(createDict(['a', 'b', 'c'], [1, 2, 3, 4]), { 'a': 1, 'b': 2, 'c': 3 });
+console.log(createDict(['a', 'b', 'c', 'd'], [1, 2, 3]), { 'a': 1, 'b': 2, 'c': 3, 'd': null });
+
+// Vowel one (7 kyu)
+
+/* 
+Write a function that takes a string and outputs a strings of 1's and 0's where vowels become 1's and non-vowels become 0's.
+
+All non-vowels including non alpha characters (spaces,commas etc.) should be included.
+
+Examples:
+
+vowelOne( "abceios" ) // "1001110"
+
+vowelOne( "aeiou, abc" ) // "1111100100"
+*/
+
+const vowelOne = s => s.toLowerCase()
+	.split('')
+	.map(item =>
+		item === 'a' ||
+			item === 'e' ||
+			item === 'i' ||
+			item === 'o' ||
+			item === 'u' ? '1' : '0')
+	.join('');
+
+console.log(vowelOne("vowelOne"), "01010101");
+console.log(vowelOne("123, arou"), "000001011");
