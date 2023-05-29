@@ -15255,3 +15255,50 @@ Examples
 */
 
 const makeBackronym = string => string.toUpperCase().split('').map(elem => dict[elem]).join(' ');
+
+// Exclamation marks series #13: Count the number of exclamation marks and question marks, return the product (7 kyu)
+
+/* 
+Description:
+Count the number of exclamation marks and question marks, return the product.
+
+Examples
+Product("") == 0
+product("!") == 0
+Product("!ab? ?") == 2
+Product("!!") == 0
+Product("!??") == 2
+Product("!???") == 3
+Product("!!!??") == 6
+Product("!!!???") == 9
+Product("!???!!") == 9
+Product("!????!!!?") == 20
+*/
+
+const product = s => (s.match(/\?/g) || []).length * (s.match(/!/g) || []).length;
+
+console.log(product(""), 0);
+console.log(product("!"), 0);
+console.log(product("!!"), 0);
+console.log(product("!??"), 2);
+console.log(product("!???"), 3);
+console.log(product("!!!??"), 6);
+console.log(product("!!!???"), 9);
+console.log(product("!???!!"), 9);
+console.log(product("!ab? ?"), 2);
+console.log(product("!????!!!?"), 20);
+
+// Building Strings From a Hash (7 kyu)
+
+/* 
+Complete the solution so that it takes the object (JavaScript/CoffeeScript) 
+or hash (ruby) passed in and generates a human readable string from its key/value pairs.
+
+The format should be "KEY = VALUE". Each key/value pair should be separated by a comma except for the last pair.
+
+Example:
+
+solution({a: 1, b: '2'}) // should return "a = 1,b = 2"
+*/
+
+const solution = pairs => Object.keys(pairs).map(value => value + " = " + pairs[value]).join(',');
