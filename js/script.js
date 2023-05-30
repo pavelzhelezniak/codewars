@@ -15302,3 +15302,21 @@ solution({a: 1, b: '2'}) // should return "a = 1,b = 2"
 */
 
 const solution = pairs => Object.keys(pairs).map(value => value + " = " + pairs[value]).join(',');
+
+// Length and two values (7 kyu)
+
+/* 
+Given an integer n and two other values, build an array of size n filled with these two values alternating.
+
+Examples
+5, true, false     -->  [true, false, true, false, true]
+10, "blue", "red"  -->  ["blue", "red", "blue", "red", "blue", "red", "blue", "red", "blue", "red"]
+0, "one", "two"    -->  []
+Good luck!
+*/
+
+const alternate = (n, firstValue, secondValue) => Array.from({ length: n }, (_, i) => !(i % 2) ? firstValue : secondValue);
+
+console.log(alternate(5, true, false), [true, false, true, false, true]);
+console.log(alternate(20, 'blue', 'red'), ['blue', 'red', 'blue', 'red', 'blue', 'red', 'blue', 'red', 'blue', 'red', 'blue', 'red', 'blue', 'red', 'blue', 'red', 'blue', 'red', 'blue', 'red']);
+console.log(alternate(0, "lemons", "apples"), []);
