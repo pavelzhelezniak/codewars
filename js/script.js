@@ -15821,3 +15821,50 @@ const gps = (s, x) => {
 
 console.log(gps(20, [0.0, 0.23, 0.46, 0.69, 0.92, 1.15, 1.38, 1.61]), 41);
 console.log(gps(12, [0.0, 0.11, 0.22, 0.33, 0.44, 0.65, 1.08, 1.26, 1.68, 1.89, 2.1, 2.31, 2.52, 3.25]), 219);
+
+// SantaClausable Interface (7 kyu)
+
+/* 
+You probably know, that in Javascript (and also Ruby) there is no concept of interfaces. 
+There is only a concept of inheritance, but you can't assume that a certain method or property exists, 
+just because it exists in the parent prototype / class. We want to find out, 
+whether a given object fulfils the requirements to implement the "SantaClausable" interface. 
+We need to implement a method which checks for this interface.
+
+Rules
+The SantaClausable interface is implemented, if all of the following methods are defined on an object:
+
+sayHoHoHo() / say_ho_ho_ho
+distributeGifts() / distribute_gifts
+goDownTheChimney() / go_down_the_chimney
+Example
+var santa = {
+	 sayHoHoHo: function() { console.log('Ho Ho Ho!') },
+	 distributeGifts: function() { console.log('Gifts for all!'); },
+	 goDownTheChimney: function() { console.log('*whoosh*'); }
+};
+
+var notSanta = {
+	 sayHoHoHo: function() { console.log('Oink Oink!') }
+	 // no distributeGifts() and no goDownTheChimney()
+};
+
+isSantaClausable(santa); // must return TRUE
+isSantaClausable(notSanta); // must return FALSE
+*/
+
+const santa = {
+	sayHoHoHo: function () { console.log('Ho Ho Ho!') },
+	distributeGifts: function () { console.log('Gifts for all!'); },
+	goDownTheChimney: function () { console.log('*whoosh*'); }
+};
+
+const notSanta = {
+	sayHoHoHo: function () { console.log('Oink Oink!') }
+};
+
+const isSantaClausable = obj => ['sayHoHoHo', 'distributeGifts', 'goDownTheChimney'].every(methodName =>
+	typeof obj[methodName] === 'function');
+
+console.log(isSantaClausable(santa), true);
+console.log(isSantaClausable(notSanta), false);
