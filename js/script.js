@@ -16047,3 +16047,20 @@ console.log(doug.species, "dog");
 console.log(doug.status, "Serving his master");
 console.log(doug.introduce(), "Hello, my name is Doug and I am 12 years old.");
 console.log(doug.greetMaster(), "Hello Eliza");
+
+// Unpacking Arguments (7 kyu)
+
+/* 
+You must create a function, spread, that takes a function and a list of arguments to be applied to that function. 
+You must make this function return the result of calling the given function/lambda with the given arguments.
+
+eg:
+
+spread(someFunction, [1, true, "Foo", "bar"] ) 
+// is the same as...
+someFunction(1, true, "Foo", "bar")
+*/
+
+const spread = (func, args) => func(...args);
+
+console.log(spread(function (x, y) { return x + y }, [1, 2]), 3)
