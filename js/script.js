@@ -16142,3 +16142,46 @@ console.log(sumOfN(3), [0, 1, 3, 6]);
 console.log(sumOfN(-4), [0, -1, -3, -6, -10]);
 console.log(sumOfN(1), [0, 1]);
 console.log(sumOfN(-6), [0, -1, -3, -6, -10, -15, -21]);
+
+// Cats and shelves (7 kyu)
+
+/* 
+An infinite number of shelves are arranged one above the other in a staggered fashion.
+The cat can jump either one or three shelves at a time: 
+from shelf i to shelf i+1 or i+3 (the cat cannot climb on the shelf directly above its head), 
+according to the illustration:
+
+					  ┌────────┐
+					  │-6------│
+					  └────────┘
+┌────────┐       
+│------5-│        
+└────────┘  ┌─────► OK!
+				│    ┌────────┐
+				│    │-4------│
+				│    └────────┘
+┌────────┐  │
+│------3-│  │     
+BANG!────┘  ├─────► OK! 
+  ▲  |\_/|  │    ┌────────┐
+  │ ("^-^)  │    │-2------│
+  │ )   (   │    └────────┘
+┌─┴─┴───┴┬──┘
+│------1-│
+└────────┘
+Input
+Start and finish shelf numbers (always positive integers, finish no smaller than start)
+
+Task
+Find the minimum number of jumps to go from start to finish
+
+Example
+Start 1, finish 5, then answer is 2 (1 => 4 => 5 or 1 => 2 => 5)
+*/
+
+const solution = (start, finish) => {
+	const diff = finish - start;
+	return Math.floor(diff / 3) + (diff % 3);
+};
+
+console.log(solution(1, 5), 2);
