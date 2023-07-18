@@ -16422,3 +16422,24 @@ const heron = (a, b, c) => {
 
 console.log(heron(3, 4, 5), 6);
 console.log(heron(6, 8, 10), 24);
+
+// Colour Association (7 kyu)
+
+/* 
+Colour plays an important role in our lifes. Most of us like this colour better then another. 
+User experience specialists believe that certain colours have certain psychological meanings for us.
+
+You are given a 2D array, composed of a colour and its 'common' association in each array element. 
+The function you will write needs to return the colour as 'key' and association as its 'value'.
+
+For example:
+
+var array = [["white", "goodness"], ...] //returns [{white: 'goodness'}, ...]
+*/
+
+const colourAssociation = array => array.map(([colour, association]) => ({ [colour]: association }));
+
+console.log(colourAssociation([["white", "goodness"], ["blue", "tranquility"]]),
+	[{ white: "goodness" }, { blue: "tranquility" }]);
+console.log(colourAssociation([["red", "energy"], ["yellow", "creativity"], ["brown", "friendly"], ["green", "growth"]]),
+	[{ red: "energy" }, { yellow: "creativity" }, { brown: "friendly" }, { green: "growth" }]);
