@@ -16513,3 +16513,19 @@ var Calculator = {
 console.log(Calculator.average(3, 4, 5), 4);
 console.log(Calculator.average(3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3), 5.769230769230769);
 console.log(Calculator.average(), 0, 'Calculator.average() (no arguments) should result in 0');
+
+// Name Array Capping (7 kyu)
+
+/* 
+Create a method that accepts an array of names, and returns an array of each name with its first letter capitalized.
+
+example
+
+capMe(['jo', 'nelson', 'jurie'])     // returns ['Jo', 'Nelson', 'Jurie']
+capMe(['KARLY', 'DANIEL', 'KELSEY']) // returns ['Karly', 'Daniel', 'Kelsey']
+*/
+
+const capMe = names => names.map(name => name[0].toUpperCase() + name.slice(1).toLowerCase());
+
+console.log(capMe(['jo', 'nelson', 'jurie']), ['Jo', 'Nelson', 'Jurie']);
+console.log(capMe(['KARLY', 'DANIEL', 'KELSEY']), ['Karly', 'Daniel', 'Kelsey']);
