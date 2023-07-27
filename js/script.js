@@ -16529,3 +16529,21 @@ const capMe = names => names.map(name => name[0].toUpperCase() + name.slice(1).t
 
 console.log(capMe(['jo', 'nelson', 'jurie']), ['Jo', 'Nelson', 'Jurie']);
 console.log(capMe(['KARLY', 'DANIEL', 'KELSEY']), ['Karly', 'Daniel', 'Kelsey']);
+
+// Get decimal part of the given number (7 kyu)
+
+/* 
+Write a function that returns only the decimal part of the given number.
+
+You only have to handle valid numbers, not Infinity, NaN, or similar. Always return a positive decimal part.
+
+Examples
+getDecimal(2.4)  === 0.4
+getDecimal(-0.2) === 0.2
+*/
+
+const getDecimal = n => Math.abs(n % 1);
+
+console.log(getDecimal(10), 0);
+console.log(getDecimal(-1.2), 0.2);
+console.log(getDecimal(4.5), 0.5);
