@@ -16622,3 +16622,25 @@ const splitTheBill = x => {
 
 console.log(splitTheBill({ A: 20, B: 15, C: 10 }), { A: 5, B: 0, C: -5 });
 console.log(splitTheBill({ A: 40, B: 25, X: 10 }), { A: 15, B: 0, X: -15 });
+
+// Return substring instance count (7 kyu)
+
+/* 
+Complete the solution so that it returns the number of times the search_text is found within the full_text.
+
+Usage example:
+
+solution('aa_bb_cc_dd_bb_e', 'bb') # should return 2 since bb shows up twice
+solution('aaabbbcccc', 'bbb') # should return 1
+*/
+
+const solution = (fullText, searchText) => {
+	const reg = new RegExp(`${searchText}`, 'g')
+	const result = fullText.match(reg) || [];
+
+	return result.length
+};
+
+console.log(solution('abcdeb', 'b'), 2);
+console.log(solution('abc', 'b'), 1);
+console.log(solution('abbc', 'bb'), 1);
