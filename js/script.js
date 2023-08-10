@@ -16700,3 +16700,38 @@ const timeForMilkAndCookies = date => date.getDate() === 24 && date.getMonth() =
 console.log(timeForMilkAndCookies(new Date(2013, 11, 24)), true);
 console.log(timeForMilkAndCookies(new Date(2013, 0, 23)), false);
 console.log(timeForMilkAndCookies(new Date(3000, 11, 24)), true);
+
+// Nice Array (7 kyu)
+
+/* 
+A Nice array is defined to be an array where for every value n in the array, 
+there is also an element n - 1 or n + 1 in the array.
+
+examples:
+
+[2, 10, 9, 3] is a nice array because
+
+ 2 =  3 - 1
+10 =  9 + 1
+ 3 =  2 + 1
+ 9 = 10 - 1
+
+[4, 2, 3] is a nice array because
+
+4 = 3 + 1
+2 = 3 - 1
+3 = 2 + 1 (or 3 = 4 - 1)
+
+[4, 2, 1] is a not a nice array because
+
+for n = 4, there is neither n - 1 = 3 nor n + 1 = 5
+Write a function named isNice/IsNice that returns true if its array argument is a Nice array, else false. 
+An empty array is not considered nice.
+*/
+
+const isNice = arr => arr.length !== 0 ?
+	arr.every(el1 => arr.some(el2 => el1 === el2 + 1 || el1 === el2 - 1)) :
+	false;
+
+console.log(isNice([2, 10, 9, 3]), true);
+console.log(isNice([3, 4, 5, 7]), false);
