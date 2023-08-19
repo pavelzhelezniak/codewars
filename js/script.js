@@ -16852,3 +16852,21 @@ console.log(testit(1, 2), 3, "")
 console.log(testit(10, 20), 30, "")
 console.log(testit(1, 1), 1, "")
 console.log(testit(1, 3), 3, "")
+
+// Pluck (7 kyu)
+
+/* 
+Implement a function which takes a sequence of objects and a property name, 
+and returns a sequence containing the named property of each object.
+
+For example:
+
+pluck([{a:1}, {a:2}], 'a')      // -> [1,2]
+pluck([{a:1, b:3}, {a:2}], 'b') // -> [3, undefined]
+If an object is missing the property, you should just leave it as undefined/None in the output array.
+*/
+
+const pluck = (objs, name) => objs.map(item => item[name]);
+
+console.log(pluck([{ a: 1 }, { a: 2 }], 'a'), [1, 2]);
+console.log(pluck([{ a: 1, b: 3 }, { a: 2 }], 'b'), [3, undefined]);
