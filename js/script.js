@@ -17046,3 +17046,24 @@ console.log(block.getLength(), 4);
 console.log(block.getHeight(), 6);
 console.log(block.getVolume(), 48);
 console.log(block.getSurfaceArea(), 88);
+
+// Last (7 kyu)
+
+/* 
+Find the last element of the given argument(s).
+
+Examples
+last([1, 2, 3, 4] ) // =>  4
+last("xyz")         // => "z"
+last(1, 2, 3, 4)    // =>  4
+In javascript and CoffeeScript a list will be an array, a string or the list of arguments.
+*/
+
+function last1(list) {
+	const last = arguments[arguments.length - 1];
+	return last[last.length - 1] || last;
+};
+
+console.log(last1([1, 2, 3, 4, 5]), 5);   //-- array
+console.log(last1("abcde"), "e");     //-- string
+console.log(last1(1, "b", 3, "d", 5), 5);//-- arguments
