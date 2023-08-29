@@ -17143,3 +17143,31 @@ console.log(combine(objA, objB), { a: 13, b: 20, c: 36, d: 3 });
 console.log(combine(objA, objC), { a: 15, b: 20, c: 30, d: 11, e: 8 });
 console.log(combine(objA, objB, objC), { a: 18, b: 20, c: 36, d: 14, e: 8 });
 console.log(combine(objA, objC, objD), { a: 15, b: 20, c: 33, d: 11, e: 8 });
+
+// Return the closest number multiple of 10 (7 kyu)
+
+/* 
+Given a number return the closest number to it that is divisible by 10.
+
+Example input:
+
+22
+25
+37
+Expected output:
+
+20
+30
+40
+*/
+
+const closestMultiple10 = num => {
+	const a = parseInt(num / 10, 10) * 10;
+	const b = a + 10;
+
+	return (num - a >= b - num) ? b : a;
+};
+
+console.log(closestMultiple10(15), 20);
+console.log(closestMultiple10(17), 20);
+console.log(closestMultiple10(21), 30);
