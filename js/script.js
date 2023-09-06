@@ -17265,4 +17265,47 @@ const List = [
 	{ '-2': 'Vatsan' }, { '5': 'for' }, { '6': 'a' }, { '12': 'spin' }
 ];
 
-console.log(sentence(List), 'Vatsan took his dog for a spin');  
+console.log(sentence(List), 'Vatsan took his dog for a spin');
+
+// Valid Parentheses (7 kyu)
+
+/* 
+Write a function that takes a string of parentheses, and determines if the order 
+of the parentheses is valid. The function should return true if the string is valid, 
+and false if it's invalid.
+
+Examples
+"()"              =>  true
+")(()))"          =>  false
+"("               =>  false
+"(())((()())())"  =>  true
+Constraints
+0 <= length of input <= 100
+
+All inputs will be strings, consisting only of characters ( and ).
+Empty strings are considered balanced (and therefore valid), and will be tested.
+For languages with mutable strings, the inputs should not be mutated.
+*/
+
+const validParentheses = parens => {
+	let result = 0;
+
+	for (let i = 0; i < parens.length && result >= 0; i++) {
+		result += (parens[i] == '(') ? 1 : -1;
+	}
+
+	return (result === 0);
+};
+
+console.log(validParentheses("()"), true);
+console.log(validParentheses("((()))"), true);
+console.log(validParentheses("()()()"), true);
+console.log(validParentheses("(()())()"), true);
+console.log(validParentheses("()(())((()))(())()"), true);
+console.log(validParentheses(")("), false);
+console.log(validParentheses("()()("), false);
+console.log(validParentheses("((())"), false);
+console.log(validParentheses("())(()"), false);
+console.log(validParentheses(")()"), false);
+console.log(validParentheses(")"), false);
+console.log(validParentheses(""), true);
