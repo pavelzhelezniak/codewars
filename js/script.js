@@ -17404,3 +17404,21 @@ console.log(cuboid.surfaceArea, 148);
 [cuboid.length, cuboid.width, cuboid.height] = [7, 8, 9];
 console.log(cuboid.volume, 504);
 console.log(cuboid.surfaceArea, 382);
+
+// For the sake of argument (7 kyu)
+
+/* 
+Write a function named numbers.
+
+function should return True if all parameters are of the Number type.
+
+The function should accept any number of parameters.
+
+Example usage:
+
+numbers(1, 4, 3, 2, 5); // true
+numbers(1, "a", 3); // false
+numbers(1, 3, NaN); // true
+*/
+
+const numbers12 = (...args) => args.every(arg => typeof arg === 'number');
