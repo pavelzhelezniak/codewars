@@ -17568,3 +17568,77 @@ console.log(convertHashToArray({ name: "Jeremy", age: 24 }), [["age", 24], ["nam
 console.log(convertHashToArray({ name: "Jeremy", age: 24, role: "Software Engineer" }), [["age", 24], ["name", "Jeremy"], ["role", "Software Engineer"]]);
 console.log(convertHashToArray({ product: "CodeWars", powerLevelOver: 9000 }), [["powerLevelOver", 9000], ["product", "CodeWars"]]);
 console.log(convertHashToArray({}), []);
+
+// Counting in the Amazon (7 kyu)
+
+/* 
+The Arara are an isolated tribe found in the Amazon who count in pairs. 
+For example one to eight is as follows:
+
+1 = anane
+2 = adak
+3 = adak anane
+4 = adak adak
+5 = adak adak anane
+6 = adak adak adak
+7 = adak adak adak anane
+8 = adak adak adak adak
+
+Take a given number and return the Arara's equivalent.
+
+e.g.
+
+countArara(3) 'adak anane'
+
+countArara(8) 'adak adak adak adak'
+countArara 3 // -> "adak anane"
+
+countArara 8 // -> "adak adak adak adak"
+*/
+
+const countArara = n => n % 2 === 0 ? 'adak '.repeat((n - 2) / 2) + 'adak' : 'adak '.repeat(n / 2) + 'anane';
+
+console.log(countArara(1), "anane");
+console.log(countArara(3), "adak anane");
+console.log(countArara(8), "adak adak adak adak");
+
+// Sum a list but ignore any duplicates (7 kyu)
+
+/* 
+Please write a function that sums a list, but ignores any duplicate items in the list.
+
+For instance, for the list [3, 4, 3, 6] , the function should return 10.
+*/
+
+const sumNoDuplicates = numList =>
+	numList.filter(item => numList.indexOf(item) === numList.lastIndexOf(item))
+		.reduce((acc, item) => acc + item, 0);
+
+const fixedCases = [
+	[[1, 1, 2, 3], 5],
+	[[], 0],
+	[[1, 1, 2, 2, 3], 3],
+	[[5, 6, 10, 3, 10, 10, 6, 7, 0, 9, 1, 1, 6, 3, 1], 21],
+	[[0, 10, 8, 9, 7, 3, 3, 9, 3, 6, 0], 31],
+	[[0, 1, 4, 4, 0, 4, 2, 5, 9, 0, 10, 9, 0, 1, 2], 15],
+	[[7, 2, 10, 9, 10, 2, 7, 3, 10, 8, 2, 5], 25],
+	[[7, 2, 0, 3, 5, 7, 8, 3, 2, 10, 9, 5], 27],
+	[[1, 9, 9, 5, 7, 7, 6, 1, 5, 6], 0],
+	[[10, 10, 1, 4, 10, 3, 9, 6, 10, 10, 9, 9, 10, 5, 6, 10, 4, 1], 8],
+	[[7, 10, 10, 9, 0, 2, 5, 10, 3, 8, 1, 4, 9, 9, 5, 8, 8, 8, 5, 3], 14],
+	[[1, 9, 2, 1, 5, 5, 1, 1, 5, 10, 5, 9, 5, 2, 1], 10],
+	[[8, 6, 3, 6, 7, 3, 4, 4, 2, 1, 4, 5, 8, 6], 15],
+	[[10, 9, 2, 8, 9, 10, 4, 6, 9, 5, 1, 1, 4, 3, 9, 7, 8, 5, 5], 18],
+	[[5, 5, 0, 0, 6, 3, 7, 2, 4, 2], 20],
+	[[0, 8, 5, 10, 1, 1, 6, 8], 21],
+	[[4, 2, 10, 9, 10, 5, 1, 7, 1, 9, 8, 7, 4, 2, 5, 8, 3, 10, 8], 3],
+	[[9, 8, 3, 1, 8, 1, 7], 19],
+	[[1, 4, 3, 8, 9, 4, 7, 5, 10, 10, 7, 6, 9, 3], 20],
+	[[2, 0, 4, 2, 2, 3, 6, 7, 3, 8, 10, 6, 8], 21],
+	[[7, 9, 5, 6, 1, 0, 5, 0, 4, 7, 1, 2, 8, 9, 6, 1], 14],
+	[[7, 1, 8, 8, 5, 5, 1, 4, 0, 1, 10, 1], 21],
+];
+
+for (let [input, expected] of fixedCases) {
+	console.log(sumNoDuplicates(input), expected);
+}
