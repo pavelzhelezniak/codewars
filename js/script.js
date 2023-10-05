@@ -17941,3 +17941,22 @@ const double = array => array.map(item => item * 2);
 
 console.log(double([1, 2, 3, 4, 5]), [2, 4, 6, 8, 10]);
 console.log(double([71, -548, 12.3, 31415]), [142, -1096, 24.6, 62830]);
+
+// Double Every Other (7 kyu)
+
+/* 
+Write a function that doubles every second integer in a list, starting from the left.
+
+Example:
+
+For input array/list :
+
+[1,2,3,4]
+the function should return :
+
+[1,4,3,8]
+*/
+
+const doubleEveryOther = a => a.map((item, i) => i % 2 !== 0 ? item * 2 : item);
+
+console.log(doubleEveryOther([1, 2, 3, 4]), [1, 4, 3, 8]);
