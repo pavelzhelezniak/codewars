@@ -17960,3 +17960,23 @@ the function should return :
 const doubleEveryOther = a => a.map((item, i) => i % 2 !== 0 ? item * 2 : item);
 
 console.log(doubleEveryOther([1, 2, 3, 4]), [1, 4, 3, 8]);
+
+// Sum of a Beach (7 kyu)
+
+/* 
+Beaches are filled with sand, water, fish, and sun. Given a string, 
+calculate how many times the words "Sand", "Water", "Fish", and "Sun" appear without overlapping (regardless of the case).
+
+Examples
+sumOfABeach("WAtErSlIde")                    ==>  1
+sumOfABeach("GolDeNSanDyWateRyBeaChSuNN")    ==>  3
+sumOfABeach("gOfIshsunesunFiSh")             ==>  4 
+sumOfABeach("cItYTowNcARShoW")               ==>  0
+*/
+
+const sumOfABeach = beach => beach.split(/water|sand|fish|sun/gi).length - 1;
+
+console.log(sumOfABeach("weoqipurpoqwuirpousandiupqwoieurioweuwateruierqpoiweurpouifiShqowieuqpwoeuisUn"), 4);
+console.log(sumOfABeach("sAnDsandwaTerwatErfishFishsunsunsandwater"), 10);
+console.log(sumOfABeach("joifjepiojfoiejfoajoijawoeifjowejfjoiwaefjiaowefjaofjwoj fawojef "), 0);
+console.log(sumOfABeach("jwefjwjfsandsandwaterwaterfishfishsunsunsandwateriojwhefa;jawof;jawio;f"), 10);
