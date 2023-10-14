@@ -18011,3 +18011,25 @@ const ghostBusters = building => {
 console.log(ghostBusters("Factor y") === "Factory", 'Nope, there may still be a ghost in the building. Try again.');
 console.log(ghostBusters("O  f fi ce") === "Office", 'Nope, there may still be a ghost in the building. Try again.');
 console.log(ghostBusters("BusStation") === "You just wanted my autograph didn't you?", 'Nope, as there were no ghosts in the BusStation you need to return a witty retort.');
+
+// Is It Negative Zero (-0)? (7 kyu)
+
+/* 
+There exist two zeroes: +0 (or just 0) and -0.
+
+Write a function that returns true if the input number is -0 and false otherwise (True and False for Python).
+
+In JavaScript / TypeScript / Coffeescript the input will be a number.
+
+In Python / Java / C / NASM / Haskell / the input will be a float.
+*/
+
+const isNegativeZero = n => Object.is(-0,n);
+
+console.log(isNegativeZero(-0), true);
+console.log(isNegativeZero(-Infinity), false);
+console.log(isNegativeZero(-5), false);
+console.log(isNegativeZero(-4), false);
+console.log(isNegativeZero(-3), false);
+console.log(isNegativeZero(-2), false);
+console.log(isNegativeZero(-1), false);
