@@ -18024,7 +18024,7 @@ In JavaScript / TypeScript / Coffeescript the input will be a number.
 In Python / Java / C / NASM / Haskell / the input will be a float.
 */
 
-const isNegativeZero = n => Object.is(-0,n);
+const isNegativeZero = n => Object.is(-0, n);
 
 console.log(isNegativeZero(-0), true);
 console.log(isNegativeZero(-Infinity), false);
@@ -18050,7 +18050,32 @@ Notes:
 4 <= n <= 50
 */
 
-const root=(x, n)=> Math.pow(x, 1 / n);
+const root = (x, n) => Math.pow(x, 1 / n);
 
 console.log(root(8, 3), 2, "Wrong value");
 console.log(root(6.25, 2), 2.5, "Wrong value");
+
+// Power of 4 (7 kyu)
+
+/* 
+Write a method that returns true if a given parameter is a power of 4, and false if it's not. 
+If parameter is not an Integer (eg String, Array) method should return false as well.
+
+(In C# Integer means all integer Types like Int16,Int32,.....)
+*/
+
+const powerOf4 = n => Number.isInteger(n) ? Number.isInteger(Math.log(n) / Math.log(4)) : false;
+
+console.log(powerOf4(4), true);
+console.log(powerOf4(16), true, "4^4 = 16");
+console.log(powerOf4(1), true, "Four to the power of 0 is 1");
+console.log(powerOf4(8), false, "8 is not a power of 4");
+console.log(powerOf4(20), false, "20 is not a power of 4");
+console.log(powerOf4(32), false, "32 is not a power of 4");
+console.log(powerOf4(44), false, "44 is not a power of 4");
+console.log(powerOf4(3.1415), false);
+console.log(powerOf4("1"), false, "Should return false for strings");
+console.log(powerOf4("4"), false, "Should return false for strings");
+console.log(powerOf4(null), false, "Should return false for non-numbers");
+console.log(powerOf4(undefined), false, "Should return false for non-numbers");
+console.log(powerOf4(function () { }), false, "Should return false for non-numbers");
