@@ -18079,3 +18079,23 @@ console.log(powerOf4("4"), false, "Should return false for strings");
 console.log(powerOf4(null), false, "Should return false for non-numbers");
 console.log(powerOf4(undefined), false, "Should return false for non-numbers");
 console.log(powerOf4(function () { }), false, "Should return false for non-numbers");
+
+// Alphabetically ordered (7 kyu)
+
+/* 
+Your task is very simple. Just write a function that takes an input string of lowercase letters and returns true/false 
+depending on whether the string is in alphabetical order or not.
+
+Examples (input -> output)
+"kata" -> false ('a' comes after 'k')
+"ant" -> true (all characters are in alphabetical order)
+*/
+
+const alphabetic = s => s === s.split('').sort().join('');
+
+console.log(alphabetic("asd"), false);
+console.log(alphabetic("codewars"), false);
+console.log(alphabetic("door"), true);
+console.log(alphabetic("cell"), true);
+console.log(alphabetic("z"), true);
+console.log(alphabetic(""), true);    
