@@ -18150,3 +18150,15 @@ console.log(archersReady([]), false, "Should handle no archers");
 console.log(archersReady([1, 2, 3, 4]), false, "Should handle unprepared archers");
 console.log(archersReady([5, 6, 7, 8]), true, "Should handle prepared archers");
 console.log(archersReady([1, 2, 3, 4, 5, 6, 7, 8]), false, "Should handle mixed archers");
+
+// Square(n) Sum (8 kyu)
+
+/* 
+Complete the square sum function so that it squares each number passed into it and then sums the results together.
+*/
+
+const squareSum = numbers => numbers.reduce((acc, item) => acc + item ** 2, 0);
+
+console.log(squareSum([1, 2]), 5);
+console.log(squareSum([0, 3, 4, 5]), 50);
+console.log(squareSum([]), 0);
