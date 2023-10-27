@@ -18174,3 +18174,20 @@ const areaLargestSquare = r => 2 * (r ** 2);
 console.log(areaLargestSquare(5), 50);
 console.log(areaLargestSquare(7), 98);
 console.log(areaLargestSquare(15), 450);
+
+// Regexp Basics - is it a vowel? (6 kyu)
+
+/* 
+Implement the function which should return true if given object is a vowel 
+(meaning a, e, i, o, u, uppercase or lowercase), and false otherwise.
+*/
+
+String.prototype.vowel = function () {
+	return /^[aeiou]$/i.test(this)
+}
+
+console.log('a'.vowel(), true);
+console.log('E'.vowel(), true);
+console.log('ou'.vowel(), false);
+console.log('z'.vowel(), false);
+console.log('lol'.vowel(), false);
