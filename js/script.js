@@ -18232,8 +18232,33 @@ c is the constant added between the terms.
 Remember that first is in the index 0 .. just saying ...
 */
 
-const nthterm = (first, n, c)=> first + n * c;
+const nthterm = (first, n, c) => first + n * c;
 
 console.log(nthterm(1, 2, 3), 7)
 console.log(nthterm(2, 2, 2), 6)
 console.log(nthterm(-50, 10, 20), 150)
+
+// Changing letters (7 kyu)
+
+/* 
+When provided with a String, capitalize all vowels
+
+For example:
+Input : "Hello World!"
+Output : "HEllO WOrld!"
+Note: Y is not a vowel in this kata.
+*/
+
+const swap = string => st.replace(/[aeuio]/gi, $1 => $1.toUpperCase());
+
+console.log(swap(""), "");
+console.log(swap("   @@@"), "   @@@");
+console.log(swap("HelloWorld!"), "HEllOWOrld!");
+console.log(swap("Sunday"), "SUndAy");
+console.log(swap("Codewars"), "COdEwArs");
+console.log(swap("Monday"), "MOndAy");
+console.log(swap("Friday"), "FrIdAy");
+console.log(swap("abracadabra"), "AbrAcAdAbrA");
+console.log(swap("AbrAcAdAbrA"), "AbrAcAdAbrA");
+console.log(swap("ABRACADABRA"), "ABRACADABRA");
+console.log(swap("aBRaCaDaBRa"), "ABRACADABRA");
