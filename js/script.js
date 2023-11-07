@@ -18325,3 +18325,22 @@ const trim = (str, size) => str.length <= size ? str : `${str.slice(0, size <= 3
 console.log(trim("Creating kata is fun", 14), "Creating ka...");
 console.log(trim("He", 1), "H...");
 console.log(trim("Code Wars is pretty rad", 50), "Code Wars is pretty rad");
+
+// Reverse the bits in an integer (7 kyu)
+
+/* 
+Write a function that reverses the bits in an integer.
+
+For example, the number 417 is 110100001 in binary. Reversing the binary is 100001011 which is 267.
+
+You can assume that the number is not negative.
+*/
+
+const reverseBits = n => parseInt(n.toString(2).split('').reverse().join(''), 2);
+
+console.log(reverseBits(417), 267);
+console.log(reverseBits(267), 417);
+console.log(reverseBits(0), 0);
+console.log(reverseBits(2017), 1087);
+console.log(reverseBits(1023), 1023);
+console.log(reverseBits(1024), 1);
