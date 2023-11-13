@@ -18399,3 +18399,25 @@ console.log(sequence(3, 4), [4, 4, 4], "number filled");
 console.log(sequence(3, 's'), ['s', 's', 's'], "string filled");
 console.log(sequence(5, []), [[], [], [], [], []], "5 empty arrays");
 console.log(sequence(5, (x, idx) => idx % 2), [0, 1, 0, 1, 0], "have to filled by two parram function pattern");
+
+// Naughty or Nice? (7 kyu)
+
+/* 
+Happy Holidays fellow Code Warriors!
+It's almost Christmas! That means Santa's making his list, and checking it twice. Unfortunately, 
+elves accidentally mixed the Naughty and Nice list together! Santa needs your help to save Christmas!
+
+Save Christmas!
+Santa needs you to write two functions. Both of the functions accept a sequence of objects. 
+The first one returns a sequence containing only the names of the nice people, 
+and the other returns a sequence containing only the names of the naughty people. 
+Return an empty sequence [] if the result from either of the functions contains no names.
+
+The objects in the passed will represent people. Each object contains two properties: name and wasNice.
+name - The name of the person
+wasNice - True if the person was nice this year, false if they were naughty
+*/
+
+const getNiceNames = people => people.filter(item => item.wasNice).map(item => item.name);
+
+const getNaughtyNames = people => people.filter(item => !item.wasNice).map(item => item.name);
