@@ -18421,3 +18421,26 @@ wasNice - True if the person was nice this year, false if they were naughty
 const getNiceNames = people => people.filter(item => item.wasNice).map(item => item.name);
 
 const getNaughtyNames = people => people.filter(item => !item.wasNice).map(item => item.name);
+
+// Sorting Dictionaries (7 kyu)
+
+/* 
+Python dictionaries are inherently unsorted. So what do you do if you need to sort the contents of a dictionary?
+
+Create a function that returns a sorted list of (key, value) tuples (Javascript: arrays of 2 items).
+
+The list must be sorted by the value and be sorted largest to smallest.
+
+Examples
+sortDict({3:1, 2:2, 1:3}) == [[1,3], [2,2], [3,1]]
+sortDict({1:2, 2:4, 3:6}) == [[3,6], [2,4], [1,2]]
+*/
+
+const sortDict = dict => Object.keys(dict)
+	.map(v => [+v || v, dict[v]])
+	.sort((a, b) => b[1] - a[1]);
+
+console.log(sortDict({ 1: 3, 2: 2, 3: 1 }), [[1, 3], [2, 2], [3, 1]]);
+console.log(sortDict({ 3: 1, 2: 2, 1: 3 }), [[1, 3], [2, 2], [3, 1]]);
+console.log(sortDict({ 1: 2, 2: 4, 3: 6 }), [[3, 6], [2, 4], [1, 2]]);
+console.log(sortDict({ 1: 5, 3: 10, 2: 2, 6: 3, 8: 8 }), [[3, 10], [8, 8], [1, 5], [6, 3], [2, 2]]);
