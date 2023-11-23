@@ -18662,3 +18662,25 @@ console.log(getLargerNumbers(arrOne, arrTwo), [23, 64, 53, 17, 88], `Wrong resul
 arrOne = [34, -64, 15, 17, 88];
 arrTwo = [23, 14, 53, 17, 80];
 console.log(getLargerNumbers(arrOne, arrTwo), [34, 14, 53, 17, 88], `Wrong result for a = ${arrOne}, b = ${arrTwo}`);
+
+// Tail Swap (7 kyu)
+
+/* 
+You'll be given a list of two strings, and each will contain exactly one colon (":") in the middle (but not at beginning or end). 
+The length of the strings, before and after the colon, are random.
+
+Your job is to return a list of two strings (in the same order as the original list), but with the characters after each colon swapped.
+
+Examples
+["abc:123", "cde:456"]  -->  ["abc:456", "cde:123"]
+["a:12345", "777:xyz"]  -->  ["a:xyz", "777:12345"]
+*/
+
+const tailSwap = arr => {
+	const res = arr.map((item) => item.split(':'));
+
+	return [[res[0][0], res[1][1]].join(':'), [res[1][0], res[0][1]].join(':')];
+};
+
+console.log(tailSwap(['abc:123', 'cde:456']), ['abc:456', 'cde:123']);
+console.log(tailSwap(['a:12345', '777:xyz']), ['a:xyz', '777:12345']);
