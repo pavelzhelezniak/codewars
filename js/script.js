@@ -18704,4 +18704,23 @@ const search = (budget, prices) => prices.filter(item => item <= budget).sort((a
 
 console.log(search(3, [6, 1, 2, 9, 2]), "1,2,2")
 console.log(search(14, [7, 3, 23, 9, 14, 20, 7]), "3,7,7,9,14")
-console.log(search(0, [6, 1, 2, 9, 2]), "") 
+console.log(search(0, [6, 1, 2, 9, 2]), "")
+
+// Four / Seven (7kyu)
+
+/* 
+Simple kata, simple rules: your function should accept the inputs 4 and 7. 
+If 4 is entered, the function should return 7. If 7 is entered, the function should return 4. 
+Anything else entered as input should return 0. There's only one catch, your function cannot include if statements, 
+switch statements, or the ternary operator (or the eval function due to the fact that you can get around the if requirement using it).
+
+There are some very simple ways of answering this problem, but I encourage you to try and be as creative as possible.
+*/
+
+const fourSeven = n => {
+	const resObj = { 4: 7, 7: 4 };
+	return resObj[n] || 0
+};
+
+console.log(fourSeven(4), 7, "n = 4 should return 7");
+console.log(fourSeven(7), 4, "n = 7 should return 4");
