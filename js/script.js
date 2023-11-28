@@ -18724,3 +18724,23 @@ const fourSeven = n => {
 
 console.log(fourSeven(4), 7, "n = 4 should return 7");
 console.log(fourSeven(7), 4, "n = 7 should return 4");
+
+// Hells Kitchen (7 kyu)
+
+/* 
+Gordon Ramsay shouts. He shouts and swears. There may be something wrong with him.
+
+Anyway, you will be given a string of four words. Your job is to turn them in to Gordon language.
+
+Rules:
+
+Obviously the words should be Caps, Every word should end with '!!!!', 
+Any letter 'a' or 'A' should become '@', 
+Any other vowel should become '*'.
+*/
+
+const gordon = a => a.toUpperCase().replace(/[A]/gi, '@').replace(/[eiuo]/gi, '*').split(' ').map(item => item + '!!!!').join(' ');
+
+console.log(gordon('What feck damn cake'), 'WH@T!!!! F*CK!!!! D@MN!!!! C@K*!!!!');
+console.log(gordon('are you stu pid'), '@R*!!!! Y**!!!! ST*!!!! P*D!!!!');
+console.log(gordon('i am a chef'), '*!!!! @M!!!! @!!!! CH*F!!!!'); 
