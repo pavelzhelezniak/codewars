@@ -18795,3 +18795,36 @@ console.log(isItANum("sjfniebienvr12312312312ehfWh"), "Not a phone number");
 console.log(isItANum("0192387415456"), "Not a phone number");
 console.log(isItANum("v   uf  f 0tt2eg qe0b 8rtyq4eyq564()(((((165"), "02084564165");
 console.log(isItANum("stop calling me no I have never been in an accident"), "Not a phone number");
+
+// Keep the Order (7 kyu)
+
+/* 
+Your job here is to write a function (keepOrder in JS/CoffeeScript, keep_order in Ruby/Crystal/Python, keeporder in Julia), 
+which takes a sorted array ary and a value val, 
+and returns the lowest index where you could insert val to maintain the sorted-ness of the array. 
+The input array will always be sorted in ascending order. It may contain duplicates.
+
+Do not modify the input.
+
+Some examples:
+keepOrder([1, 2, 3, 4, 7], 5) //=> 4
+							 ^(index 4)
+keepOrder([1, 2, 3, 4, 7], 0) //=> 0
+			 ^(index 0)
+keepOrder([1, 1, 2, 2, 2], 2) //=> 2
+					 ^(index 2)
+*/
+
+const keepOrder = (ary, val) => ary.filter(item => item < val).length;
+
+console.log(keepOrder([1, 2, 3, 4, 7], 5), 4);
+console.log(keepOrder([1, 2, 3, 4, 7], 0), 0);
+console.log(keepOrder([1, 1, 2, 2, 2], 2), 2);
+console.log(keepOrder([1, 2, 3, 4], 5), 4);
+console.log(keepOrder([1, 2, 3, 4], -1), 0);
+console.log(keepOrder([1, 2, 3, 4], 2), 1);
+console.log(keepOrder([1, 2, 3, 4], 0), 0);
+console.log(keepOrder([1, 2, 3, 4], 1), 0);
+console.log(keepOrder([1, 2, 3, 4], 2), 1);
+console.log(keepOrder([1, 2, 3, 4], 3), 2);
+console.log(keepOrder([-5, -4, -2, -1, 1, 2], -2), 2);
