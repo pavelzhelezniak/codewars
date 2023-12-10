@@ -18876,3 +18876,22 @@ const one1 = (arr, fun) => arr.filter(fun).length === 1;
 console.log(one1([1, 2, 3, 4, 5], function (item) { return item < 2 }), true)
 console.log(one1([1, 2, 3, 4, 5], function (item) { return item % 2 }), false, "more than 1 item are odd")
 console.log(one1([1, 2, 3, 4, 5], function (item) { return item > 5 }), false, "none item is greater than 5")
+
+// Unscrambled eggs (7 kyu)
+
+/* 
+Unscramble the eggs.
+
+The string given to your function has had an "egg" inserted directly after each consonant. 
+You need to return the string before it became eggcoded.
+
+Example
+unscrambleEggs("Beggegeggineggneggeregg"); => "Beginner"
+//             "B---eg---in---n---er---"
+Kata is supposed to be for beginners to practice regular expressions, so commenting would be appreciated.
+*/
+
+const unscrambleEggs = word => word.split('egg').join('');
+
+console.log(unscrambleEggs("ceggodegge heggeregge"), "code here");
+console.log(unscrambleEggs("FeggUNegg KeggATeggA"), "FUN KATA");
