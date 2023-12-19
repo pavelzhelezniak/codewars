@@ -18925,3 +18925,16 @@ const filterHomogenous = arrays => {
 
 console.log(filterHomogenous([[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]]), [[1, 5, 4], ['b']]);
 console.log(filterHomogenous([[123, 234, 432], ['', 'abc'], [''], ['', 1], ['', '1'], []]), [[123, 234, 432], ['', 'abc'], [''], ['', '1']]);
+
+// Say "Hello World" JS Style (7 kyu)
+
+/* 
+Write the definition of the function "say" such that calling this:
+
+say("Hello")("World")
+returns "Hello World"
+*/
+
+const say = string1 => string2 => `${string1} ${string2}`;
+
+console.log(say('Hello')('World'), 'Hello World');
