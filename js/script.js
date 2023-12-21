@@ -18955,3 +18955,18 @@ const last9 = xs => xs.length === 0 ? null : xs[xs.length - 1];
 
 console.log(last9([1, 2, 3]), 3, "last([1,2,3]) == 3");
 console.log(last9([]), null, "last( [] ) == null");
+
+// Words to sentence (7 kyu)
+
+/* 
+Write function which will create a string from a list of strings, separated by space.
+
+Example:
+
+["hello", "world"] -> "hello world"
+*/
+
+const wordsToSentence = words => words.join(' ');
+
+console.log(wordsToSentence(["hello", "world"]), "hello world");
+
