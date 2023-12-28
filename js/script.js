@@ -18986,26 +18986,26 @@ In this example we have the pre-loaded classes:
 
 class Marine {
   attack(target) {
-    target.health -= 6;
+	 target.health -= 6;
   }
 }
 
 class Zealot {
   attack(target) {
-    target.health -= 8;
+	 target.health -= 8;
   }
 }
 
 class Zergling {
   attack(target) {
-    target.health -= 5;
+	 target.health -= 5;
   }
 }
 
 class Mario {
   jumpAttack() {
-    console.log('Mamamia!');
-    return 3;
+	 console.log('Mamamia!');
+	 return 3;
   }
 }
 Complete the code so that we can create a MarioAdapter that can attack as other units do.
@@ -19021,3 +19021,39 @@ class MarioAdapter {
 		target.health -= this.mario.jumpAttack();
 	}
 }
+
+// Next Palindromic Number. (7 kyu)
+
+/* 
+There were and still are many problem in CW about palindrome numbers and palindrome strings. 
+We suposse that you know which kind of numbers they are. If not, you may search about them using your favourite search engine.
+
+In this kata you will be given a positive integer, 
+val and you have to create the function next_pal()(nextPal Javascript) that will
+ output the smallest palindrome number higher than val.
+
+Let's see:
+
+For Javascript
+nextPal(11) == 22
+
+nextPal(188) == 191
+
+nextPal(191) == 202
+
+nextPal(2541) == 2552
+You will be receiving values higher than 10, all valid.
+*/
+
+const nextPal = val => {
+	for (let i = val + 1; ; i++) {
+		if (i.toString() === i.toString().split('').reverse().join('')) {
+			return i;
+		}
+	}
+};
+
+console.log(nextPal(11), 22)
+console.log(nextPal(188), 191)
+console.log(nextPal(191), 202)
+console.log(nextPal(2541), 2552)
