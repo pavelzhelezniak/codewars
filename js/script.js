@@ -19098,8 +19098,8 @@ console.log(dominantArrayElement([104, 18, 37, 9, 36, 47, 28]), [104, 47, 28]);
 Consider the following class:
 
 var Animal = { 
-    name: "Cat", 
-    numberOfLegs: 4 
+	 name: "Cat", 
+	 numberOfLegs: 4 
 }
 Write a method that accepts a list of objects of type Animal, and returns a new list. 
 The new list should be a copy of the original list, sorted first by the animal's number of legs, 
@@ -19128,3 +19128,33 @@ console.log(sortAnimal([
 	{ name: 'Dog', numberOfLegs: 4 },
 	{ name: 'Pig', numberOfLegs: 4 }
 ]);
+
+// Organise duplicate numbers in list (7 kyu)
+
+/* 
+Sam is an avid collector of numbers. Every time he finds a new number he throws it on the top of his number-pile. 
+Help Sam organise his collection so he can take it to the International Number Collectors Conference in Cologne.
+
+Given an array of numbers, your function should return an array of arrays, 
+where each subarray contains all the duplicates of a particular number. 
+Subarrays should be in the same order as the first occurence of the number they contain:
+
+group([3, 2, 6, 2, 1, 3])
+>>> [[3, 3], [2, 2], [6], [1]]
+Assume the input is always going to be an array of numbers. If the input is an empty array, an empty array should be returned.
+*/
+
+const group = arr => {
+	const includeNumber = [];
+	const res = [];
+	arr.forEach((item, _i, array) => {
+		if (!includeNumber.includes(item)) {
+			res.push(Array(arr.filter(number => number === item).length).fill(item))
+			includeNumber.push(item)
+		}
+	})
+	return res;
+};
+
+console.log(group([3, 2, 6, 2, 1, 3]), [[3, 3], [2, 2], [6], [1]]);
+console.log(group([3, 2, 6, 2]), [[3], [2, 2], [6]]);
