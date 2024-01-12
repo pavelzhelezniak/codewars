@@ -19214,9 +19214,39 @@ since the extra outcomes are just duplicates.
 See test cases for more examples.
 */
 
-const solve = arr =>	arr.map(item => [...new Set(item)].length).reduce((acc, item) => acc * item, 1);
+const solve = arr => arr.map(item => [...new Set(item)].length).reduce((acc, item) => acc * item, 1);
 
 console.log(solve([[1, 2], [4], [5, 6]]), 4);
 console.log(solve([[1, 2], [4, 4], [5, 6, 6]]), 4);
 console.log(solve([[1, 2], [3, 4], [5, 6]]), 8);
 console.log(solve([[1, 2, 3], [3, 4, 6, 6, 7], [8, 9, 10, 12, 5, 6]]), 72);
+
+// Arrays Similar (6 kyu)
+
+/* 
+Write a function that determines whether the passed in sequences are similar. 
+Similar means they contain the same elements, and the same number of occurrences of elements.
+
+var arr1 = [1, 2, 2, 3, 4],
+	 arr2 = [2, 1, 2, 4, 3],
+	 arr3 = [1, 2, 3, 4],
+	 arr4 = [1, 2, 3, "4"]
+arraysSimilar(arr1, arr2); // Should equal true
+arraysSimilar(arr2, arr3); // Should equal false
+arraysSimilar(arr3, arr4); // Should equal false
+*/
+
+const arraysSimilar = (arr1, arr2) => {
+	const arr1Sort = arr1.sort((a, b) => a - b);
+	const arr2Sort = arr2.sort((a, b) => a - b);
+	return arr1Sort.length === arr2Sort.length && arr1Sort.every((item, i) => item === arr2Sort[i]);
+}
+
+const arr12 = [1, 2, 2, 3, 4],
+	arr23 = [2, 1, 2, 4, 3],
+	arr33 = [1, 2, 3, 4],
+	arr4 = [1, 2, 3, "4"]
+
+console.log(arraysSimilar(arr12, arr23), true);
+console.log(arraysSimilar(arr23, arr33), false);
+console.log(arraysSimilar(arr33, arr4), false);
