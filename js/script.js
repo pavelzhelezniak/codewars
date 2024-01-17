@@ -19250,3 +19250,120 @@ const arr12 = [1, 2, 2, 3, 4],
 console.log(arraysSimilar(arr12, arr23), true);
 console.log(arraysSimilar(arr23, arr33), false);
 console.log(arraysSimilar(arr33, arr4), false);
+
+// Coding Meetup #16 - Higher-Order Functions Series - Ask for missing details (6 kyu)
+
+/* 
+You will be given an array of objects representing data about developers who have signed up to 
+attend the next coding meetup that you are organising.
+
+Given the following input array:
+
+var list1 = [
+  { firstName: null, lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
+  { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: null },
+  { firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' } 
+];
+write a function that
+
+adds the question property to each object in the input array where the developer has not provided 
+the relevant details (marked with a null value in JavaScript, with the default value in COBOL). 
+The value of the question property should be the following string:
+Hi, could you please provide your <property name>.
+
+and returns only the developers with missing details:
+[
+  { firstName: null, lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java', 
+  question: 'Hi, could you please provide your firstName.' },
+  { firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: null, 
+  question: 'Hi, could you please provide your language.' }
+]
+Notes:
+
+At most only one of the values will be null / empty.
+Preserve the order of the original list.
+Return an empty array [] if there is no developer with missing details.
+The input array will always be valid and formatted as in the example above.
+*/
+
+const askForMissingDetails = list => list
+	.filter(item => Object.values(item).includes(null))
+	.map(item => {
+		const indexNull = Object.values(item).indexOf(null);
+		const key = Object.keys(item)[indexNull];
+		return { ...item, question: `Hi, could you please provide your ${key}.` }
+	});
+
+const list192 = [
+	{ firstName: null, lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
+	{ firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: null },
+	{ firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' }
+];
+
+const answer19 = [
+	{
+		firstName: null, lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java',
+		question: 'Hi, could you please provide your firstName.'
+	},
+	{
+		firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: null,
+		question: 'Hi, could you please provide your language.'
+	}
+];
+
+console.log(askForMissingDetails(list192), answer19);
+
+
+const list292 = [
+	{ firstName: 'Sofia', lastName: 'I.', country: 'Argentina', continent: 'Americas', age: 35, language: 'Java' },
+	{ firstName: 'Lukas', lastName: 'X.', country: 'Croatia', continent: 'Europe', age: 35, language: 'Python' },
+	{ firstName: 'Madison', lastName: 'U.', country: 'United States', continent: 'Americas', age: 32, language: 'Ruby' }
+];
+
+const answer29 = [];
+
+console.log(askForMissingDetails(list292), answer29);
+
+// Odd-heavy Array (6 kyu)
+
+/* 
+An array is defined to be odd-heavy if it contains at least one odd element and every element whose value is 
+odd is greater than every even-valued element.
+
+eg.
+
+Array [11,4,9,2,8] is odd-heavy,
+because its odd elements [11,9] are greater than all the even elements [4,2,8]
+
+Array [11,4,9,2,3,10] is not odd-heavy,
+because one of its even elements (10 from [4,2,10]) is greater than two of
+its odd elements (9 and 3 from [11,9,3])
+
+Array [] is not odd-heavy,
+because it does not contain any odd numbers
+
+Array [3] is odd-heavy,
+because it does not contain any even numbers.
+write a function called isOddHeavy or is_odd_heavy that accepts an integer array and returns 
+true if the array is odd-heavy else return false.
+*/
+
+const isOddHeavy = n => {
+	const odd = n.filter(item => item % 2 !== 0).sort((a, b) => a - b);
+	const even = n.filter(item => item % 2 == 0);
+	if (odd.length === 0) {
+		return false
+	}
+	for (let i = 0; i < odd.length; i++) {
+		for (let j = 0; j < even.length; j++) {
+			if (odd[i] < even[j]) {
+				return false;
+			}
+		}
+	}
+
+	return true;
+};
+
+console.log(isOddHeavy([0, 2, 19, 4, 4]), true);
+console.log(isOddHeavy([1, -2, -1, 2]), false);
