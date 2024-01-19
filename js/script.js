@@ -19367,3 +19367,40 @@ const isOddHeavy = n => {
 
 console.log(isOddHeavy([0, 2, 19, 4, 4]), true);
 console.log(isOddHeavy([1, -2, -1, 2]), false);
+
+// Inside Out Strings (6 kyu)
+
+/* 
+You are given a string of words (x), for each word within the string you need to turn the word 'inside out'. 
+By this I mean the internal letters will move out, and the external letters move toward the centre.
+
+If the word is even length, all letters will move. 
+If the length is odd, you are expected to leave the 'middle' letter of the word where it is.
+
+An example should clarify:
+
+'taxi' would become 'atix' 'taxis' would become 'atxsi'
+*/
+
+const insideOut = x => {
+	return x.split(' ').map(item => {
+		if (item.length === 1) {
+			return item;
+		}
+		else if (item.length % 2 === 0) {
+			const itemStart = item.slice(0, item.length / 2).split('').reverse().join('');
+			const itemEnd = item.slice(item.length / 2, item.length).split('').reverse().join('');
+			return itemStart + itemEnd;
+		} else {
+			const center = Math.floor(item.length / 2)
+			const itemStart = item.slice(0, center).split('').reverse().join('');
+			const itemEnd = item.slice(center + 1, item.length).split('').reverse().join('');
+			// console.log(itemStart, item[center], itemEnd)
+			return itemStart + item[center] + itemEnd;
+		}
+	}).join(' ')
+};
+
+console.log(insideOut('man i need a taxi up to ubud'), 'man i ende a atix up to budu');
+console.log(insideOut('what time are we climbing up the volcano'), 'hwta item are we milcgnib up the lovcona');
+console.log(insideOut('take me to semynak'), 'atek me to mesykan'); 
