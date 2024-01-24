@@ -19464,3 +19464,22 @@ console.log(solve("codingIsFun", 2, 100), "conuFsIgnid");
 console.log(solve("FunctionalProgramming", 2, 15), "FuargorPlanoitcnmming");
 console.log(solve("abcdefghijklmnopqrstuvwxyz", 0, 20), "utsrqponmlkjihgfedcbavwxyz");
 console.log(solve("abcdefghijklmnopqrstuvwxyz", 5, 20), "abcdeutsrqponmlkjihgfvwxyz");
+
+// Gradually Adding Parameters (7 kyu)
+
+/* 
+This kata is all about adding numbers.
+
+You will create a function named add. This function will return the sum of all the arguments. Sounds easy, doesn't it??
+
+Well here's the twist. The inputs will gradually increase with their index as parameter to the function.
+
+  add(3,4,5); 
+  returns ( 3 * 1 ) + ( 4 * 2 ) + ( 5 * 3 ) = 26
+
+Remember the function will return 0 if no arguments are passed.
+*/
+
+const add = (...arg) => arg.reduce((acc, item, i) => acc + item * (i + 1), 0);
+
+console.log(add(100, 200, 300), 1400);
