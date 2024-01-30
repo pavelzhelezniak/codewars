@@ -19541,3 +19541,42 @@ const inverseSlice = (items, a, b) => [...items.slice(0, a), ...items.slice(b)];
 console.log(inverseSlice([12, 14, 63, 72, 55, 24], 2, 4), [12, 14, 55, 24]);
 console.log(inverseSlice([12, 14, 63, 72, 55, 24], 0, 3), [72, 55, 24]);
 console.log(inverseSlice(['Intuition', 'is', 'a', 'poor', 'guide', 'when', 'facing', 'probabilistic', 'evidence'], 5, 13), ['Intuition', 'is', 'a', 'poor', 'guide']);
+
+// Dead Ants (6 kyu)
+
+/* 
+An orderly trail of ants is marching across the park picnic area.
+
+It looks something like this:
+
+..ant..ant.ant...ant.ant..ant.ant....ant..ant.ant.ant...ant..
+But suddenly there is a rumour that a dropped chicken sandwich has been spotted on the ground ahead. 
+The ants surge forward! Oh No, it's an ant stampede!!
+
+Some of the slower ants are trampled, and their poor little ant bodies are broken up into scattered bits.
+
+The resulting carnage looks like this:
+
+...ant...ant..nat.ant.t..ant...ant..ant..ant.anant..t
+Can you find how many ants have died?
+
+Notes
+When in doubt, assume that the scattered bits are from the same ant. e.g. 2 heads and 1 body = 2 dead ants, not 3
+*/
+
+const deadAntCount = ants => {
+	if (!ants) {
+		return 0;
+	}
+	const str = ants.replace(/ant/g, '');
+	const head = str.replace(/[^a]/g, '').length;
+	const body = str.replace(/[^n]/g, '').length;
+	const tail = str.replace(/[^t]/g, '').length;
+	
+	return Math.max(head, body, tail);
+};
+
+console.log(deadAntCount("ant ant ant ant"), 0, "Nope")
+console.log(deadAntCount(null), 0, "Nope")
+console.log(deadAntCount("ant anantt aantnt"), 2, "Nope")
+console.log(deadAntCount("ant ant .... a nt"), 1, "Nope")
