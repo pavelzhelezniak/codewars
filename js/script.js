@@ -19572,11 +19572,60 @@ const deadAntCount = ants => {
 	const head = str.replace(/[^a]/g, '').length;
 	const body = str.replace(/[^n]/g, '').length;
 	const tail = str.replace(/[^t]/g, '').length;
-	
+
 	return Math.max(head, body, tail);
 };
 
 console.log(deadAntCount("ant ant ant ant"), 0, "Nope")
 console.log(deadAntCount(null), 0, "Nope")
 console.log(deadAntCount("ant anantt aantnt"), 2, "Nope")
-console.log(deadAntCount("ant ant .... a nt"), 1, "Nope")
+console.log(deadAntCount("ant ant .... a nt"), 1, "Nope");
+
+// Image host filename generator (6 kyu)
+
+/* 
+You are developing an image hosting website.
+
+You have to create a function for generating random and unique image filenames.
+
+Create a function for generating a random 6 character string which will be used to access the photo URL.
+
+To make sure the name is not already in use, you are given access to an PhotoManager object.
+
+You can call it like so to make sure the name is unique
+
+// at this point, the website has only one photo, hosted on the 'ABCDEF' url
+photoManager.nameExists('ABCDEF'); // returns true
+photoManager.nameExists('BBCDEF'); // returns false
+Note: We consider two names with same letters but different cases to be unique.
+*/
+
+const generateName = () => {
+	const alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	const name = Array(6).fill(null)
+		.map(e => alpha[Math.floor(Math.random() * 52)])
+		.join('');
+
+	return photoManager.nameExists(name) ? generateName() : name;
+};
+
+// Only Duplicates (6 kyu)
+
+/* 
+Given a string, remove any characters that are unique from the string.
+
+Example:
+
+input: "abccdefee"
+
+output: "cceee"
+*/
+
+const onlyDuplicates = str => str.split('')
+	.filter(letter => str.replace(new RegExp(letter, 'g'), '').length !== str.length - 1)
+	.join('');
+
+console.log(onlyDuplicates('abccdefee'), 'cceee');
+console.log(onlyDuplicates('hello'), 'll');
+console.log(onlyDuplicates('colloquial'), 'ollol');
+console.log(onlyDuplicates('foundersandcoders'), 'ondersndoders');
