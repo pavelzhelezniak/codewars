@@ -19823,3 +19823,34 @@ console.log(selReverse([1, 2, 3, 4, 5, 6], 2), [2, 1, 4, 3, 6, 5]);
 console.log(selReverse([1, 2, 3, 4, 5, 6], 0), [1, 2, 3, 4, 5, 6]);
 console.log(selReverse([1, 2, 3, 4, 5, 6], 1), [1, 2, 3, 4, 5, 6]);
 console.log(selReverse([1, 2, 3, 4, 5, 6], 10), [6, 5, 4, 3, 2, 1]);
+
+// Pairs of Bears (6 kyu)
+
+/* 
+In order to prove it's success and gain funding, the wilderness zoo needs to prove 
+to environmentalists that it has x number of mating pairs of bears.
+
+Task:
+You must check within a string (s) to find all of the mating pairs, 
+returning a list/array of the string containing valid mating pairs and 
+a boolean indicating whether the total number of bears is greater than or equal to x.
+
+Rules for a 'valid' mating pair:
+Bears are either 'B' (male) or '8' (female),
+Bears must be together in male/female pairs 'B8' or '8B',
+Mating pairs must involve two distinct bears each ('B8B' may look fun, but does not count as two pairs).
+Return an array containing a string of the valid mating pairs available (empty string if there are no pairs), 
+and a boolean indicating whether the total number of bears is greater than or equal to x. , e.g:
+
+(6, 'EvHB8KN8ik8BiyxfeyKBmiCMj') ---> ['B88B', false]; in this example, 
+the number of bears(=4) is lesser than the given value of x(=6)
+*/
+
+const bears = (x, s) => {
+	const pairs = s.match(/(B8)|(8B)/g) || [];
+	return [pairs.join(""), pairs.length >= x];
+}
+
+console.log(bears(7, '8j8mBliB8gimjB8B8jlB'), ["B8B8B8", false]);
+console.log(bears(3, '88Bifk8hB8BB8BBBB888chl8BhBfd'), ["8BB8B8B88B", true]);
+console.log(bears(8, '8'), ["", false]); 
