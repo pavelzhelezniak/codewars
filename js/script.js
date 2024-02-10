@@ -19853,4 +19853,32 @@ const bears = (x, s) => {
 
 console.log(bears(7, '8j8mBliB8gimjB8B8jlB'), ["B8B8B8", false]);
 console.log(bears(3, '88Bifk8hB8BB8BBBB888chl8BhBfd'), ["8BB8B8B88B", true]);
-console.log(bears(8, '8'), ["", false]); 
+console.log(bears(8, '8'), ["", false]);
+
+// Turn String Input into Hash (6 kyu)
+
+/* 
+Please write a function that will take a string as input and return a hash. 
+The string will be formatted as such. The key will always be a symbol and the value will always be an integer.
+
+"a=1, b=2, c=3, d=4"
+This string should return a hash that looks like
+
+{ 'a': 1, 'b': 2, 'c': 3, 'd': 4}
+*/
+
+const strToHash = str => {
+	const result = {};
+	if (str.length) {
+
+		str.split(', ').forEach(item => {
+			const [key, value] = item.split('=');
+			result[key] = Number(value);
+		})
+	}
+
+	return result;
+};
+
+console.log(strToHash("a=1, b=2, c=3, d=4"), { 'a': 1, 'b': 2, 'c': 3, 'd': 4 })
+console.log(strToHash(""), {})
