@@ -19882,3 +19882,31 @@ const strToHash = str => {
 
 console.log(strToHash("a=1, b=2, c=3, d=4"), { 'a': 1, 'b': 2, 'c': 3, 'd': 4 })
 console.log(strToHash(""), {})
+
+// Remember (6 kyu)
+
+/* 
+Write a function that takes a string and returns an array of 
+the repeated characters (letters, numbers, whitespace) in the string.
+
+If a charater is repeated more than once, only show it once in the result array.
+
+Characters should be shown by the order of their first repetition. 
+Note that this may be different from the order of first appearance of the character.
+
+Characters are case sensitive.
+*/
+
+const remember = str => str.split('').reduce((acc, item, i, arr) => {
+	if (i !== arr.indexOf(item) && !acc.includes(item)) {
+		acc.push(item);
+	}
+	return acc;
+}, []);
+
+console.log(remember('apple'), ["p"]);
+console.log(remember("apPle"), []);
+console.log(remember("pippi"), ["p", "i"]);
+console.log(remember('Pippi'), ["p", "i"]);
+console.log(remember("limbojackassin the garden"), ["a", "s", "i", " ", "e", "n"]);
+console.log(remember("11pinguin"), ["1", "i", "n"]);
