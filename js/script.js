@@ -20032,3 +20032,65 @@ console.log([1, 2, 3, 4, 5].inRange(1, 3), [1, 2, 3])
 
 console.log([1, 2, 18, 19, 20, 21, 22, 30, 40, 50, 100].even().inRange(18, 30), [18, 20, 22, 30])
 console.log(["a", 1, "b", 300, "x", "q", 63, 122, 181, "z", 0.83, 0.11].even(), [300, 122])
+
+// FIXME: Hello (6 kyu)
+
+/* 
+The code provided has a method hello which is supposed to show only those attributes which have been explicitly set. 
+Furthermore, it is supposed to say them in the same order they were set.
+
+But it's not working properly.
+
+Notes
+There are 3 attributes
+
+name
+age
+sex ('M' or 'F')
+When the same attribute is assigned multiple times the hello method shows it only once. 
+If this happens the order depends on the first assignment of that attribute, but the value is from the last assignment.
+
+Examples
+Hello.
+Hello. My name is Bob. I am 27. I am male.
+Hello. I am 27. I am male. My name is Bob.
+Hello. My name is Alice. I am female.
+Hello. My name is Batman.
+Task
+Fix the code so we can all go home early.
+*/
+
+class Dinglemouse {
+
+	constructor(age, sex, name) {
+		this.person = {};
+	}
+
+	setAge(age) {
+		this.person.age = ` I am ${age}.`;
+		return this
+	}
+
+	setSex(sex) {
+		this.person.sex = ` I am ${sex == 'M' ? 'male' : 'female'}.`;
+		return this
+	}
+
+	setName(name) {
+		this.person.name = ` My name is ${name}.`;
+		return this
+	}
+
+	hello() {
+		return "Hello." + Object.values(this.person).join('')
+	}
+
+};
+
+console.log(new Dinglemouse().setName("Bob").setAge(27).setSex('M'),
+	new Dinglemouse().setName("Bob").setAge(27).setSex('M').hello())
+console.log(new Dinglemouse().setAge(27).setSex('M').setName("Bob"), 
+new Dinglemouse().setAge(27).setSex('M').setName("Bob").hello())
+console.log(new Dinglemouse().setName("Alice").setSex('F'), 
+new Dinglemouse().setName("Alice").setSex('F').hello())
+console.log(new Dinglemouse().setName("Batman"), new Dinglemouse().setName("Batman").hello())
