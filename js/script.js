@@ -20143,3 +20143,38 @@ const addedChar = (s1, s2) => {
 console.log(addedChar("hello", "checlclo"), 'c', "Wrong!");
 console.log(addedChar("abcde", "2db2a2ec"), '2', "Wrong!");
 console.log(addedChar("aabbcc", "aacccbbcc"), 'c', "Wrong!");
+
+// Reverse Vowels In A String (6 kyu)
+
+/* 
+In this kata, your goal is to write a function which will reverse the vowels in a string. 
+Any characters which are not vowels should remain in their original position. Here are some examples:
+
+"Hello!" => "Holle!"
+"Tomatoes" => "Temotaos"
+"Reverse Vowels In A String" => "RivArsI Vewols en e Streng"
+For simplicity, you can treat the letter y as a consonant, not a vowel.
+*/
+
+const reverseVowels = str => {
+	const vowels = ['a', 'e', 'i', 'o', 'u'];
+	let count = 0;
+	let test = '';
+	const result = str.split('');
+	result.forEach((item, _i, arr) => {
+		if (vowels.includes(item.toLowerCase())) {
+			count++;
+			test += item;
+		}
+	});
+	result.forEach((item, i, arr) => {
+		if (vowels.includes(item.toLowerCase())) {
+			arr[i] = test[--count];
+		}
+	});
+	return result.join('');
+};
+
+console.log(reverseVowels("Hello!"), "Holle!");
+console.log(reverseVowels("Tomatoes"), "Temotaos");
+console.log(reverseVowels("Reverse Vowels In A String"), "RivArsI Vewols en e Streng");
