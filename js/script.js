@@ -20178,3 +20178,35 @@ const reverseVowels = str => {
 console.log(reverseVowels("Hello!"), "Holle!");
 console.log(reverseVowels("Tomatoes"), "Temotaos");
 console.log(reverseVowels("Reverse Vowels In A String"), "RivArsI Vewols en e Streng");
+
+// Number of anagrams in an array of words (6 kyu)
+
+/* 
+An anagram is a word, a phrase, or a sentence formed from another by rearranging its letters. 
+An example of this is "angel", which is an anagram of "glean".
+
+Write a function that receives an array of words, 
+and returns the total number of distinct pairs of anagramic words inside it.
+
+Some examples:
+
+There are 2 anagrams in the array ["dell", "ledl", "abc", "cba"]
+There are 7 anagrams in the array ["dell", "ledl", "abc", "cba", "bca", "bac"]
+*/
+
+const anagramCounter = wordsArray => {
+	let count = 0;
+	for (let i = 0; i < wordsArray.length - 1; i++) {
+		for (let j = i + 1; j < wordsArray.length; j++) {
+			const isAnagram = wordsArray[i].split('').sort().join('') === wordsArray[j].split('').sort().join('');
+			if (isAnagram) {
+				count++
+			}
+		}
+	}
+	return count;
+};
+
+console.log(anagramCounter(['dell', 'ledl', 'abc', 'cba']), 2, "This should be 2");
+console.log(anagramCounter(['dell', 'ledl', 'lled', 'cba']), 3, "This should be 3");
+console.log(anagramCounter(['dell', 'ledl', 'abc', 'cba', 'bca', 'bac', 'cab']), 11, "This should be 11"); 
