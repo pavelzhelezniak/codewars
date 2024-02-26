@@ -20241,3 +20241,33 @@ console.log(findUnique([1234567]), 1234567);
 console.log(findUnique([1, 4, 4, 5, 5, 3, 3, 2, 2]), 1);
 console.log(findUnique([2, 2, 5, 5, 4, 3, 3, 1, 1]), 4);
 console.log(findUnique([3, 5, 5, 4, 4, 3, 2, 2, 9]), 9);
+
+// Breaking search bad (6 kyu)
+
+/* 
+The function must return the sequence of titles that match the string passed as an argument.
+
+TITLES is a preloaded sequence of strings.
+
+TITLES = ['Rocky 1', 'Rocky 2', 'My Little Poney']
+search('ock') --> ['Rocky 1', 'Rocky 2']
+But the function return some weird result and skip some of the matching results.
+
+Does the function have special movie taste?
+*/
+const TITLES = [
+	'The Big Bang Theory',
+	'How I Met Your Mother',
+	'Dexter',
+	'Breaking Bad',
+	'Doctor Who',
+	'The Hobbit',
+	'Pacific Rim',
+	'Pulp Fiction',
+	'The Avengers',
+	'Shining'
+];
+
+const search1 = (searchTerm) => TITLES.filter((title) => new RegExp(searchTerm, 'i').test(title));
+
+console.log(search1('ho'), ['How I Met Your Mother', 'Doctor Who', 'The Hobbit'], 'on search term "ho"');
