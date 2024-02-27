@@ -20271,3 +20271,49 @@ const TITLES = [
 const search1 = (searchTerm) => TITLES.filter((title) => new RegExp(searchTerm, 'i').test(title));
 
 console.log(search1('ho'), ['How I Met Your Mother', 'Doctor Who', 'The Hobbit'], 'on search term "ho"');
+
+// Rotate Array (JS) (6 kyu)
+
+/* 
+Note: This kata is a translation of this (Java) one: http://www.codewars.com/kata/rotate-array. 
+I have not translated this first one as usual because I did not solved it, 
+and I fear not being able to solve it (Java is not my cup of... tea). 
+@cjmcgraw, if you want to use my translation on your kata feel free to use it.
+
+Create a function named "rotate" that takes an array and returns a new one with the elements inside rotated n spaces.
+
+If n is greater than 0 it should rotate the array to the right. 
+If n is less than 0 it should rotate the array to the left. If n is 0, then it should return the array unchanged.
+*/
+
+const rotate = (array, n) => {
+	const rot = n % array.length;
+	return n === 0 || rot === 0 ?
+		array :
+		[...array.slice(-rot), ...array.slice(0, -rot)];
+};
+
+
+const data = [1, 2, 3, 4, 5];
+
+console.log(rotate(data, 1), [5, 1, 2, 3, 4])
+console.log(rotate(data, 2), [4, 5, 1, 2, 3])
+console.log(rotate(data, 3), [3, 4, 5, 1, 2])
+console.log(rotate(data, 4), [2, 3, 4, 5, 1])
+console.log(rotate(data, 5), [1, 2, 3, 4, 5])
+
+console.log(rotate(data, 0), [1, 2, 3, 4, 5])
+
+console.log(rotate(data, -1), [2, 3, 4, 5, 1])
+console.log(rotate(data, -2), [3, 4, 5, 1, 2])
+console.log(rotate(data, -3), [4, 5, 1, 2, 3])
+console.log(rotate(data, -4), [5, 1, 2, 3, 4])
+console.log(rotate(data, -5), [1, 2, 3, 4, 5])
+
+console.log(rotate(['a', 'b', 'c'], 1), ['c', 'a', 'b'])
+console.log(rotate([1.0, 2.0, 3.0], 1), [3.0, 1.0, 2.0])
+console.log(rotate([true, true, false], 1), [false, true, true])
+
+console.log(rotate(data, 7), [4, 5, 1, 2, 3])
+console.log(rotate(data, 11), [5, 1, 2, 3, 4])
+console.log(rotate(data, 12478), [3, 4, 5, 1, 2])
