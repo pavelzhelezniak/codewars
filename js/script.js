@@ -20631,3 +20631,40 @@ console.log(sequenceClassifier([8, 9]), 1);
 console.log(sequenceClassifier([8, 8, 8, 8, 8, 9]), 2);
 console.log(sequenceClassifier([9, 8]), 3);
 console.log(sequenceClassifier([9, 9, 9, 8, 8, 8]), 4);
+
+// Create Four Letter Birding Codes from Bird Names (6 kyu)
+
+/* 
+In the world of birding there are four-letter codes for the common names of birds. 
+These codes are created by some simple rules:
+
+If the bird's name has only one word, the code takes the first four letters of that word.
+If the name is made up of two words, the code takes the first two letters of each word.
+If the name is made up of three words, the code is created by taking the first letter from 
+the first two words and the first two letters from the third word.
+If the name is four words long, the code uses the first letter from all the words.
+(There are other ways that codes are created, but this Kata will only use the four rules listed above)
+
+Complete the function that takes an array of strings of common bird names from North America, 
+and create the codes for those names based on the rules above. 
+The function should return an array of the codes in the same order in which the input names were presented.
+
+Additional considertations:
+
+The four-letter codes in the returned array should be in UPPER CASE.
+If a common name has a hyphen/dash, it should be considered a space.
+Example
+If the input array is: ["Black-Capped Chickadee", "Common Tern"]
+
+The return array would be: ["BCCH", "COTE"]
+*/
+
+const birdCode = arr => arr.map(name => {
+	const splitName = name.replace(/-/g, ' ').toUpperCase().split(' ');
+	return splitName.length === 1 ? splitName[0].slice(0, 4) :
+		splitName.length === 2 ? splitName[0].slice(0, 2) + splitName[1].slice(0, 2) :
+			splitName.length === 3 ? splitName[0][0] + splitName[1][0] + splitName[2].slice(0, 2) :
+				splitName[0][0] + splitName[1][0] + splitName[2][0] + splitName[3][0];
+});
+
+console.log(birdCode(["Common Tern", "Black-Capped Chickadee", 'Newbird']), ["COTE", "BCCH", "NEWB"])
