@@ -20668,3 +20668,30 @@ const birdCode = arr => arr.map(name => {
 });
 
 console.log(birdCode(["Common Tern", "Black-Capped Chickadee", 'Newbird']), ["COTE", "BCCH", "NEWB"])
+
+// Consecutive Count (6 kyu)
+
+/* 
+I want to know the size of the longest consecutive elements of X in Y. 
+You will receive two arguments: items and key. 
+Return the length of the longest segment of consecutive keys in the given items.
+
+Notes:
+
+The items and the key will be either an integer or a string (consisting of letters only)
+If the key does not appear in the items, return 0
+Examples
+90000, 0           -->  4
+"abcdaaadse", "a"  -->  3
+"abcdaaadse", "z"  -->  0
+*/
+
+const getConsectiveItems = (items, key) => {
+	const reg = new RegExp(`${key.toString()}+`, 'g');
+	const res = items.toString().match(reg) || [];
+	return res.length ? Math.max(...res.map(item => item.length)) : 0;
+};
+
+console.log(getConsectiveItems(90000, 0), 4);
+console.log(getConsectiveItems('ascasdaiiiasdacasdiiiiicasdasdiiiiiiiiiiisdasdasdiii', 'i'), 11);
+
