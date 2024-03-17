@@ -20854,3 +20854,26 @@ console.log(tank.damage, 5);
 tank.state = new SiegeState();
 console.log(tank.canMove, false);
 console.log(tank.damage, 20);
+
+// Yes No Yes No (6 kyu)
+
+/* 
+Write a code that receives an array of numbers or strings, 
+goes one by one through it while taking one value out, 
+leaving one value in, taking, leaving, and back again to the beginning until all values are out.
+It's like a circle of people who decide that every second person will leave it, until the last person is there. 
+So if the last element of the array is taken, the first element that's still there, will stay.
+The code returns a new re-arranged array with the taken values by their order. 
+The first value of the initial array is always taken.
+*/
+
+const yesNo = arr => {
+	for (let i = 1; i < arr.length; i++) {
+		arr.push(...arr.splice(i, 1))
+	}
+	return arr
+};
+
+console.log(yesNo([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), [1, 3, 5, 7, 9, 2, 6, 10, 8, 4]);
+console.log(yesNo(['this', 'code', 'is', 'right', 'the']), ['this', 'is', 'the', 'right', 'code']);
+console.log(yesNo(['m', 'U', 'X', '9', 'h', 'e', 'D', 'Z']), ['m', 'X', 'h', 'D', 'U', 'e', '9', 'Z']);
