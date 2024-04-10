@@ -20994,3 +20994,47 @@ const isSolved = board => {
 };
 
 console.log(isSolved([[0, 0, 1], [0, 1, 2], [2, 1, 0]]) === -1);
+
+// The Deaf Rats of Hamelin (6 kyu)
+
+/* 
+Story
+The Pied Piper has been enlisted to play his magical tune and coax all the rats out of town.
+
+But some of the rats are deaf and are going the wrong way!
+
+Kata Task
+How many deaf rats are there?
+
+Legend
+P = The Pied Piper
+O~ = Rat going left
+~O = Rat going right
+Example
+ex1 ~O~O~O~O P has 0 deaf rats
+
+ex2 P O~ O~ ~O O~ has 1 deaf rat
+
+ex3 ~O~O~O~OP~O~OO~ has 2 deaf rats
+*/
+
+const countDeafRats = town => {
+	let count = 0;
+	const indexP = town.indexOf('P');
+	const newTown = `${town.slice(indexP + 1, town.length).split('').reverse().join('')}${town.slice(0, indexP)}`.split(' ').join('');
+	console.log(newTown)
+	for (let i = 0; i < newTown.length; i = i + 2) {
+		if (newTown[i] === `O`) {
+			count++;
+		}
+	}
+
+	return count;
+};
+
+console.log(countDeafRats("~O~O~O~O P"), 0);
+console.log(countDeafRats("P O~ O~ ~O O~"), 1);
+console.log(countDeafRats("~O~O~O~OP~O~OO~"), 2);
+console.log(countDeafRats("O~~OO~~OO~~OO~P~OO~~OO~~OO~~O"), 8);
+console.log(countDeafRats("O~~OO~~OO~~OO~ P~OO~~OO~~OO~~O"), 8);
+console.log(countDeafRats("O~~OO~~OO~~OO~P ~OO~~OO~~OO~~O"), 8);
