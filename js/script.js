@@ -21038,3 +21038,39 @@ console.log(countDeafRats("~O~O~O~OP~O~OO~"), 2);
 console.log(countDeafRats("O~~OO~~OO~~OO~P~OO~~OO~~OO~~O"), 8);
 console.log(countDeafRats("O~~OO~~OO~~OO~ P~OO~~OO~~OO~~O"), 8);
 console.log(countDeafRats("O~~OO~~OO~~OO~P ~OO~~OO~~OO~~O"), 8);
+
+// Triangle type (6 kyu)
+
+/* 
+In this kata, you should calculate the type of triangle with three given sides a, b and c (given in any order).
+
+If each angle is less than 90°, this triangle is acute and the function should return 1.
+
+If one angle is strictly 90°, this triangle is right and the function should return 2.
+
+If one angle is more than 90°, this triangle is obtuse and the function should return 3.
+
+If three sides cannot form a triangle, or one angle is 180° (which turns the triangle into a segment) - the function should return 0.
+
+Three input parameters are sides of given triangle. All input values are non-negative floating point or integer numbers (or both, depending on the language).
+*/
+
+const triangleType = (a, b, c) => {
+	const max = Math.max(a, b, c);
+	if (a + b + c <= 2 * max) {
+		return 0;
+	};
+	if (2 * max * max === a * a + b * b + c * c) {
+		return 2;
+	};
+	if (2 * max * max > a * a + b * b + c * c) {
+		return 3;
+	};
+	return 1;
+};
+
+console.log(triangleType([7, 3, 2], 0)); // Not triangle
+console.log(triangleType([2, 4, 6], 0)); // Not triangle
+console.log(triangleType([8, 5, 7], 1)); // Acute
+console.log(triangleType([3, 4, 5], 2)); // Right
+console.log(triangleType([7, 12, 8], 3)); // Obtuse
