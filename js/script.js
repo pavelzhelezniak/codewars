@@ -21074,3 +21074,54 @@ console.log(triangleType([2, 4, 6], 0)); // Not triangle
 console.log(triangleType([8, 5, 7], 1)); // Acute
 console.log(triangleType([3, 4, 5], 2)); // Right
 console.log(triangleType([7, 12, 8], 3)); // Obtuse
+
+// Merged String Checker (5 kyu)
+
+/* 
+At a job interview, you are challenged to write an algorithm to check if a given string, s, 
+can be formed from two other strings, part1 and part2.
+
+The restriction is that the characters in part1 and part2 should be in the same order as in s.
+
+The interviewer gives you the following example and tells you to figure out the rest from the given test cases.
+
+For example:
+
+'codewars' is a merge from 'cdw' and 'oears':
+
+	s:  c o d e w a r s   = codewars
+part1:  c   d   w         = cdw
+part2:    o   e   a r s   = oears
+*/
+
+const isMerge = (s, part1, part2) => {
+	const part = part1 + part2;
+	if (s.length !== part.length) {
+		return false;
+	}
+
+	if (!s.length) {
+		return true;
+	}
+
+	if (part1[0] === s[0] && isMerge(s.slice(1), part1.slice(1), part2)) {
+		return true;
+	}
+
+	if (part2[0] === s[0] && isMerge(s.slice(1), part1, part2.slice(1))) {
+		return true;
+	}
+
+	return false;
+}
+
+console.log(isMerge('xcyc', 'xc', 'yc'), true);
+console.log(isMerge('xcyc', 'yc', 'xc'), true);
+console.log(isMerge('xcyc', 'xc', 'cy'), true);
+console.log(isMerge('xcyc', 'cy', 'xc'), true);
+
+console.log(isMerge('codewars', 'code', 'wars'), true);
+console.log(isMerge('codewars', 'cdwr', 'oeas'), true);
+console.log(isMerge('Making progress', 'Mak pross', 'inggre'), true);
+console.log(isMerge('codewars', 'code', 'code'), false);
+console.log(isMerge('More progress', 'More ess', 'pro'), false);
